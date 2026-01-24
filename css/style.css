@@ -266,8 +266,27 @@ button:hover {
     border: 2px solid var(--pastel-pink);
 }
 
-
 .hidden { display: none !important; }
+
+.collectible-item {
+    width: 40px;
+    height: 40px;
+    background-color: #FFD700; /* 임시: 황금색 (나중에 아이템 이미지로 교체 가능) */
+    border: 2px solid white;
+    border-radius: 50%; /* 동그라미 모양 */
+    position: absolute; /* 위치를 랜덤으로 잡기 위해 필수 */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* 반짝이는 효과 */
+    z-index: 5; /* 배경보다 위에 뜨도록 */
+    animation: bounce 1.5s infinite; /* 둥둥 떠다니는 애니메이션 */
+}
+
+/* 둥둥 떠다니는 효과 */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 
 
 
