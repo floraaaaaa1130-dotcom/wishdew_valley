@@ -53,7 +53,7 @@ function move(locId) {
 }
 
 function renderLocation() {
-    const loc = locations[.currentLocation];
+    const loc = locations[gameState.currentLocation];
     const view = document.getElementById('location-view');
     view.style.backgroundImage = `url(${loc.bg})`;
 
@@ -72,9 +72,9 @@ const npcLayer = document.getElementById('npc-layer');
     
     for (let key in npcs) {
         const npc = npcs[key];
-        const targetLoc = .weather === '비' ? npc.locations.rainy : npc.locations.sunny;
+        const targetLoc = gameState.weather === '비' ? npc.locations.rainy : npc.locations.sunny;
         
-        if (targetLoc === .currentLocation) {
+        if (targetLoc === gameState.currentLocation) {
             const npcSprite = document.createElement('div');
             npcSprite.className = "npc-sprite"; // 공통 클래스 (크기, 위치 등 담당)
 
@@ -574,6 +574,7 @@ function startGame() {
     gameState.playerName = name; // 이름 저장
     playSfx('success');
     
+    document.body.classList.add('game-running');
     // 오프닝 화면 숨기고 농장으로 이동
     document.getElementById('intro-screen').classList.add('hidden');
     move('farm');
@@ -596,3 +597,4 @@ window.onload = () => {
     
     console.log("게임 로드 완료! 오프닝 대기 중...");
 };
+
