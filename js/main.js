@@ -309,7 +309,11 @@ document.getElementById('dialogue-overlay').onclick = (e) => {
 // --- 인벤토리 및 조합 ---
 let selectedItems = [];
 function collectItem(name) {
-    if (gameState.inventory.length >= 12) { alert("가방이 꽉 찼어요!"); return; }
+    // ▼▼▼ 숫자를 12에서 8로 변경해주세요! ▼▼▼
+    if (gameState.inventory.length >= 8) { 
+        alert("가방이 꽉 찼어요!"); 
+        return; 
+    }
     gameState.inventory.push(name);
     updateUI();
 }
@@ -321,20 +325,52 @@ function toggleInventory() {
     renderInventorySlots();
 }
 
+// js/main.js - renderInventorySlots 함수 교체
+
 function renderInventorySlots() {
     const grid = document.querySelector('.inventory-grid');
     grid.innerHTML = "";
-    gameState.inventory.forEach((item, index) => {
+    
+    // 가방 8칸에 맞춰서 슬롯 생성
+    // (현재 gameState.inventory에 있는 아이템만 보여주는 게 아니라 빈 칸도 보여줘야 함)
+    for (let i = 0; i < 8; i++) {
         const slot = document.createElement('div');
         slot.className = "item-slot";
-        slot.innerText = item;
-        slot.onclick = () => {
-            slot.classList.toggle('selected');
-            if (slot.classList.contains('selected')) selectedItems.push(item);
-            else selectedItems = selectedItems.filter(i => i !== item);
-        };
+        
+        const itemName = gameState.inventory[i];
+        
+        if (itemName) {
+            // 아이템이 있으면 이미지 표시
+            if (itemData[itemName] && itemData[itemName].img) {
+                const img = document.createElement('img');
+                img.src = itemData[itemName].img;
+                img.style.width = "100%"; 
+                img.style.height = "100%";
+                slot.appendChild(img);
+            } else {
+                // 이미지가 없으면 글자라도 표시
+                slot.innerText = itemName;
+                slot.style.fontSize = "10px";
+            }
+
+            // 클릭 시 선택 효과
+            slot.onclick = () => {
+                slot.classList.toggle('selected');
+                if (slot.classList.contains('selected')) {
+                    selectedItems.push(itemName);
+                    slot.style.backgroundColor = "var(--pastel-pink)"; // 선택됨 표시
+                } else {
+                    selectedItems = selectedItems.filter(item => item !== itemName);
+                    slot.style.backgroundColor = "white"; // 선택 해제
+                }
+            };
+        } else {
+            // 빈 슬롯은 클릭 안 됨
+            slot.style.cursor = "default";
+        }
+        
         grid.appendChild(slot);
-    });
+    }
 }
 
 function combineItems() {
@@ -409,5 +445,7 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
+
+
 
 
