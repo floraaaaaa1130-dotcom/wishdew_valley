@@ -149,6 +149,19 @@ button:hover {
     object-fit: contain;
 }
 
+.npc-sprite {
+    width: 64px;  /* 추천 너비 */
+    height: 64px; /* 추천 높이 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    cursor: pointer;
+    /* 위치는 js에서 제어하므로 일단 중앙 쯤에 뜨게 테스트 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* 별 모양 인벤토리 버튼 */
 #inventory-icon {
     position: absolute;
@@ -222,3 +235,4 @@ button:hover {
 
 
 .hidden { display: none !important; }
+
