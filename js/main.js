@@ -103,11 +103,6 @@ function displayDialogue(npcKey, dialogueObj) {
     portraitImg.src = npc.portraits[emotionKey] || npc.portraits['default'];
     
     let finalText = dialogueObj.text;
-    // 리쿠 말투 패치 등 기존 로직 유지
-    if (npcKey === 'riku') {
-        finalText = finalText.replace(/있/g, '잇').replace(/했/g, '햇'); 
-    }
-    textZone.innerText = `[${npc.name}]\n${finalText}`;
 
     // 2. 선택지(Choices)가 있는 경우 처리
     choiceArea.innerHTML = ""; // 기존 버튼 초기화
@@ -212,35 +207,58 @@ function giveGift(npcKey) {
 function openDialogue(npcKey) {
     document.getElementById('dialogue-overlay').classList.remove('hidden');
     
-    // 1순위: 오늘 날짜의 고정 이벤트가 있는지 확인
-    let dialogueObj = dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey];
+    let dialogueObj = null;
 
-    // 2순위: 없으면 날씨에 맞는 랜덤 대사 뽑기
+    // [1순위] 오늘 날짜의 고정 이벤트가 있는지 확인
+    // (예: 축제날, 이사 온 날 등 스토리가 진행될 때)
+    if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
+        dialogueObj = dailyScripts[gameState.day][npcKey];
+    }
+
+    // [2순위] 호감도가 높을 때 (예: 50점 이상) 특별 대사 출력
+    // 단, 오늘 이벤트가 없을 때만 실행
+    if (!dialogueObj) {
+        const currentScore = gameState.affinities[npcKey];
+        const highAffinityData = dailyScripts["highAffinity"];
+        
+        // 기준 점수 50점 (원하는 대로 숫자를 바꾸세요!)
+        if (currentScore >= 50 && highAffinityData && highAffinityData[npcKey]) {
+            dialogueObj = highAffinityData[npcKey];
+        }
+    }
+
+    // [3순위] 위의 해당 사항이 없으면 날씨에 맞는 '랜덤 대사' 뽑기
     if (!dialogueObj) {
         const currentWeather = gameState.weather; // '맑음', '비', '벚꽃'
-        const npcRandomData = randomDialogues[npcKey];
-
-        if (npcRandomData && npcRandomData[currentWeather]) {
-            const list = npcRandomData[currentWeather];
+        
+        // randomDialogues 변수와 데이터가 존재하는지 확인
+        if (typeof randomDialogues !== 'undefined' && randomDialogues[npcKey] && randomDialogues[npcKey][currentWeather]) {
+            const list = randomDialogues[npcKey][currentWeather];
             // 배열에서 랜덤으로 하나 뽑기
             dialogueObj = list[Math.floor(Math.random() * list.length)];
         }
     }
 
-    // 3순위: 데이터가 아예 없으면 기본 인사 (안전장치)
+    // [4순위] 데이터가 아예 없으면 기본 인사 (안전장치)
     if (!dialogueObj) {
         dialogueObj = { text: "안녕하세요.", emotion: "default" };
     }
 
+    // 결정된 대사로 화면 표시
     displayDialogue(npcKey, dialogueObj);
+    
     // 선물하기 버튼에 함수 연결
     document.getElementById('gift-btn').onclick = () => giveGift(npcKey);
 
+    // 키워드 대화 보내기 버튼 재연결
     document.getElementById('send-btn').onclick = () => {
         const input = document.getElementById('keyword-input').value;
         if (npcKeywords[npcKey]?.[input]) {
             gameState.affinities[npcKey] += 10;
             displayDialogue(npcKey, npcKeywords[npcKey][input]);
+        } else {
+            // 키워드가 없을 때 반응
+            displayDialogue(npcKey, { text: "그게 무슨 말이에여??", emotion: "default" });
         }
         document.getElementById('keyword-input').value = "";
     };
@@ -324,11 +342,3 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
-
-
-
-
-
-
-
-
