@@ -1,5 +1,5 @@
 let gameState = {
-    day: 1, energy: 3, weather: '맑음', currentLocation: 'farm',
+    day: 1, energy: 4, weather: '맑음', currentLocation: 'farm',
     inventory: [], affinities: { sion: 0, riku: 0, yushi: 0, jaehee: 0, ryo: 0, sakuya: 0 }
 };
 
@@ -25,7 +25,7 @@ function changeBgm(fileName) {
 
 // js/main.js 수정 제안
 function move(locId) {
-    if (gameState.energy <= 0 && gameState.day !== 4) {
+    if (gameState.energy <= 0 && gameState.day !== 5) {
         alert("에너지가 없어요! 잠을 자야 합니다."); 
         endDay(); // 밤 정산 화면을 보여줍니다.
         return;
@@ -33,13 +33,13 @@ function move(locId) {
 
     playSfx('walk');
     gameState.currentLocation = locId;
-    if (gameState.day !== 4) gameState.energy--;
+    if (gameState.day !== 5) gameState.energy--;
     
     updateUI();
     renderLocation();
 
     // 에너지가 0이 된 직후 자동으로 endDay() 실행
-    if (gameState.energy === 0 && gameState.day !== 4) {
+    if (gameState.energy === 0 && gameState.day !== 5) {
         setTimeout(() => {
             endDay(); 
         }, 500); // 0.5초 뒤에 실행하여 부드럽게 전환
@@ -95,17 +95,47 @@ function displayDialogue(npcKey, dialogueObj) {
     const npc = npcs[npcKey];
     const textZone = document.getElementById('dialogue-text');
     const portraitImg = document.getElementById('current-portrait');
-    
+    const inputArea = document.getElementById('input-area');
+    const choiceArea = document.getElementById('choice-area');
+
+    // 1. 텍스트 & 표정 업데이트
     const emotionKey = dialogueObj.emotion || 'default';
     portraitImg.src = npc.portraits[emotionKey] || npc.portraits['default'];
     
     let finalText = dialogueObj.text;
-    if (npcKey === 'riku') {
-        finalText = finalText.replace(/있/g, '잇').replace(/했/g, '햇').replace(/요/g, '여').replace(/\./g, '');
-    }
-    textZone.innerText = `[${npc.name}]\n${finalText}`;
-}
 
+    // 2. 선택지(Choices)가 있는 경우 처리
+    choiceArea.innerHTML = ""; // 기존 버튼 초기화
+
+    if (dialogueObj.choices) {
+        // 선택지 모드: 입력창 숨기고 선택지 영역 보여주기
+        inputArea.classList.add('hidden');
+        choiceArea.classList.remove('hidden');
+
+        // 버튼 생성
+        dialogueObj.choices.forEach(choice => {
+            const btn = document.createElement('button');
+            btn.innerText = choice.label;
+            btn.className = "choice-btn"; // CSS 꾸미기용 클래스
+            btn.style.marginRight = "10px"; // 간격
+            btn.onclick = () => {
+                // 선택 시 효과
+                if (choice.score) gameState.affinities[npcKey] += choice.score;
+                
+                // 답변 대사로 갱신 (선택지는 사라지고 입력창 다시 뜸)
+                displayDialogue(npcKey, { 
+                    text: choice.reply, 
+                    emotion: choice.score > 0 ? "happy" : "shock" 
+                });
+            };
+            choiceArea.appendChild(btn);
+        });
+    } else {
+        // 일반 대화 모드: 선택지 숨기고 입력창 보이기
+        inputArea.classList.remove('hidden');
+        choiceArea.classList.add('hidden');
+    }
+}
 // js/main.js 추가 및 수정
 
 let selectedSlotIndex = null; // 현재 선택된 인벤토리 슬롯 번호
@@ -127,7 +157,8 @@ function selectSlot(index) {
     }
 }
 
-// --- 선물하기 로직 ---
+// js/main.js - giveGift 함수 수정
+
 function giveGift(npcKey) {
     if (selectedSlotIndex === null || !gameState.inventory[selectedSlotIndex]) {
         alert("먼저 인벤토리에서 선물을 선택해주세요 !");
@@ -140,17 +171,22 @@ function giveGift(npcKey) {
     }
 
     const item = gameState.inventory[selectedSlotIndex];
-    const npc = npcs[npcKey];
-    let points = 5; // 기본 점수
-    let response = { text: "에.. 고마워요 ! 잘 받을게요.", emotion: "default" };
+    const npc = npcs[npcKey]; // 이제 여기서 npc 데이터를 가져오면 반응 대사도 같이 딸려옵니다.
+    
+    let points = 5;
+    // 1. 일단 '보통' 반응으로 초기화 (데이터가 없을 경우를 대비해 안전장치 || 뒤에 기본값 둠)
+    let response = npc.giftReactions?.default || { text: "고마워요.", emotion: "default" };
 
-    // 취향 체크
+    // 2. 취향 체크 및 반응 교체
     if (npc.gifts.love.includes(item)) {
         points = 20;
-        response = { text: "와아 ! 제가 정말 좋아하는 거예요 ! 너무 고마워요 ^_^", emotion: "happy" };
-    } else if (npc.gifts.hate.includes(item)) {
+        // 'love' 반응으로 교체
+        if(npc.giftReactions?.love) response = npc.giftReactions.love;
+    } 
+    else if (npc.gifts.hate.includes(item)) {
         points = -10;
-        response = { text: "에..? 이건 제가 조금.. 무서워하는 건데요..", emotion: "shock" };
+        // 'hate' 반응으로 교체
+        if(npc.giftReactions?.hate) response = npc.giftReactions.hate;
     }
 
     // 호감도 반영
@@ -170,18 +206,59 @@ function giveGift(npcKey) {
 // --- 대화창 열기 함수 수정 (선물 버튼 이벤트 연결) ---
 function openDialogue(npcKey) {
     document.getElementById('dialogue-overlay').classList.remove('hidden');
-    let dialogueObj = dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey];
-    if (!dialogueObj) dialogueObj = npcKeywords[npcKey]?.["안녕"] || { text: "...", emotion: "default" };
-    displayDialogue(npcKey, dialogueObj);
+    
+    let dialogueObj = null;
 
+    // [1순위] 오늘 날짜의 고정 이벤트가 있는지 확인
+    // (예: 축제날, 이사 온 날 등 스토리가 진행될 때)
+    if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
+        dialogueObj = dailyScripts[gameState.day][npcKey];
+    }
+
+    // [2순위] 호감도가 높을 때 (예: 50점 이상) 특별 대사 출력
+    // 단, 오늘 이벤트가 없을 때만 실행
+    if (!dialogueObj) {
+        const currentScore = gameState.affinities[npcKey];
+        const highAffinityData = dailyScripts["highAffinity"];
+        
+        // 기준 점수 50점 (원하는 대로 숫자를 바꾸세요!)
+        if (currentScore >= 50 && highAffinityData && highAffinityData[npcKey]) {
+            dialogueObj = highAffinityData[npcKey];
+        }
+    }
+
+    // [3순위] 위의 해당 사항이 없으면 날씨에 맞는 '랜덤 대사' 뽑기
+    if (!dialogueObj) {
+        const currentWeather = gameState.weather; // '맑음', '비', '벚꽃'
+        
+        // randomDialogues 변수와 데이터가 존재하는지 확인
+        if (typeof randomDialogues !== 'undefined' && randomDialogues[npcKey] && randomDialogues[npcKey][currentWeather]) {
+            const list = randomDialogues[npcKey][currentWeather];
+            // 배열에서 랜덤으로 하나 뽑기
+            dialogueObj = list[Math.floor(Math.random() * list.length)];
+        }
+    }
+
+    // [4순위] 데이터가 아예 없으면 기본 인사 (안전장치)
+    if (!dialogueObj) {
+        dialogueObj = { text: "안녕하세요.", emotion: "default" };
+    }
+
+    // 결정된 대사로 화면 표시
+    displayDialogue(npcKey, dialogueObj);
+    
     // 선물하기 버튼에 함수 연결
     document.getElementById('gift-btn').onclick = () => giveGift(npcKey);
 
+    // 키워드 대화 보내기 버튼 재연결
     document.getElementById('send-btn').onclick = () => {
         const input = document.getElementById('keyword-input').value;
         if (npcKeywords[npcKey]?.[input]) {
             gameState.affinities[npcKey] += 10;
             displayDialogue(npcKey, npcKeywords[npcKey][input]);
+        } else {
+            // 키워드가 없을 때 반응
+            displayDialogue(npcKey, { text: "그게 무슨 말이에여??", emotion: "default" });
         }
         document.getElementById('keyword-input').value = "";
     };
@@ -237,7 +314,7 @@ function combineItems() {
 function updateUI() {
     document.getElementById('date-display').innerText = `Day ${gameState.day} - ${gameState.weather}`;
     let hearts = "";
-    for(let i=0; i<gameState.energy; i++) hearts += "♥";
+    for(let i=0; i<gameState.energy; i++) hearts += "★";
     document.getElementById('energy-hearts').innerText = hearts;
     
     const slots = document.querySelectorAll('.slot');
@@ -251,7 +328,7 @@ function updateUI() {
 function startNextDay() {
     if (gameState.day >= 7) { checkEnding(); return; }
     gameState.day++;
-    gameState.energy = 3;
+    gameState.energy = 5;
     const weathers = ['맑음', '맑음', '비', '벚꽃'];
     gameState.weather = weathers[Math.floor(Math.random() * weathers.length)];
     document.getElementById('night-overlay').classList.add('hidden');
@@ -265,7 +342,3 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
-
-
-
-
