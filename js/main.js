@@ -125,6 +125,7 @@ function displayDialogue(npcKey, dialogueObj) {
     portraitImg.src = npc.portraits[emotionKey] || npc.portraits['default'];
     
     let finalText = dialogueObj.text;
+    textZone.innerText = finalText;
 
     // 2. 선택지(Choices)가 있는 경우 처리
     choiceArea.innerHTML = ""; // 기존 버튼 초기화
@@ -575,5 +576,6 @@ function toggleDeleteMode() {
         grid.classList.remove('delete-mode');
     }
 }
+
 
 
