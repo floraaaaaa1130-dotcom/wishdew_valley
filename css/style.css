@@ -81,6 +81,20 @@ button:hover {
     background-color: var(--deep-pink);
 }
 
+.npc-sprite {
+    width: 64px;           /* 캐릭터 크기 */
+    height: 64px;
+    background-size: contain; /* 이미지가 박스 안에 쏙 들어오게 */
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;              /* 임시 위치 (나중에 좌표 데이터로 제어 필요) */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;           /* 배경보다 위에 뜨도록 */
+}
+
 /* 인벤토리 */
 #inventory-slots {
     display: flex;
@@ -235,4 +249,5 @@ button:hover {
 
 
 .hidden { display: none !important; }
+
 
