@@ -505,5 +505,18 @@ button:hover {
     display: none !important;
 }
 
+/* 게임 시작 전에는 게임 UI(상태바, 인벤토리, 대화창)를 숨김 */
+#status-bar, #inventory, #text-box {
+    display: none;
+}
+
+/* 게임이 시작되면(body에 .game-running 클래스가 붙으면) 다시 보여줌 */
+body.game-running #status-bar,
+body.game-running #inventory,
+body.game-running #text-box {
+    display: flex; /* 원래 display 속성에 맞춰주세요 (flex 또는 block) */
+}
+
+
 
 
