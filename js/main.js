@@ -309,7 +309,11 @@ document.getElementById('dialogue-overlay').onclick = (e) => {
 // --- 인벤토리 및 조합 ---
 let selectedItems = [];
 function collectItem(name) {
-    if (gameState.inventory.length >= 12) { alert("가방이 꽉 찼어요!"); return; }
+    // ▼▼▼ 숫자를 12에서 8로 변경해주세요! ▼▼▼
+    if (gameState.inventory.length >= 8) { 
+        alert("가방이 꽉 찼어요!"); 
+        return; 
+    }
     gameState.inventory.push(name);
     updateUI();
 }
@@ -409,5 +413,6 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
+
 
 
