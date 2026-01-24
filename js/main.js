@@ -1,5 +1,5 @@
 let gameState = {
-    day: 1, energy: 3, weather: '맑음', currentLocation: 'farm',
+    day: 1, energy: 4, weather: '맑음', currentLocation: 'farm',
     inventory: [], affinities: { sion: 0, riku: 0, yushi: 0, jaehee: 0, ryo: 0, sakuya: 0 }
 };
 
@@ -25,7 +25,7 @@ function changeBgm(fileName) {
 
 // js/main.js 수정 제안
 function move(locId) {
-    if (gameState.energy <= 0 && gameState.day !== 4) {
+    if (gameState.energy <= 0 && gameState.day !== 5) {
         alert("에너지가 없어요! 잠을 자야 합니다."); 
         endDay(); // 밤 정산 화면을 보여줍니다.
         return;
@@ -33,13 +33,13 @@ function move(locId) {
 
     playSfx('walk');
     gameState.currentLocation = locId;
-    if (gameState.day !== 4) gameState.energy--;
+    if (gameState.day !== 5) gameState.energy--;
     
     updateUI();
     renderLocation();
 
     // 에너지가 0이 된 직후 자동으로 endDay() 실행
-    if (gameState.energy === 0 && gameState.day !== 4) {
+    if (gameState.energy === 0 && gameState.day !== 5) {
         setTimeout(() => {
             endDay(); 
         }, 500); // 0.5초 뒤에 실행하여 부드럽게 전환
@@ -237,7 +237,7 @@ function combineItems() {
 function updateUI() {
     document.getElementById('date-display').innerText = `Day ${gameState.day} - ${gameState.weather}`;
     let hearts = "";
-    for(let i=0; i<gameState.energy; i++) hearts += "♥";
+    for(let i=0; i<gameState.energy; i++) hearts += "★";
     document.getElementById('energy-hearts').innerText = hearts;
     
     const slots = document.querySelectorAll('.slot');
@@ -251,7 +251,7 @@ function updateUI() {
 function startNextDay() {
     if (gameState.day >= 7) { checkEnding(); return; }
     gameState.day++;
-    gameState.energy = 3;
+    gameState.energy = 5;
     const weathers = ['맑음', '맑음', '비', '벚꽃'];
     gameState.weather = weathers[Math.floor(Math.random() * weathers.length)];
     document.getElementById('night-overlay').classList.add('hidden');
@@ -265,6 +265,7 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
+
 
 
 
