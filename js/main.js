@@ -81,12 +81,34 @@ const npcLayer = document.getElementById('npc-layer');
     }
 }
 
+// js/main.js - createItemElement 함수 수정
+
 function createItemElement(itemName) {
     const item = document.createElement('div');
-    item.className = "collectible-item";
+    item.className = "collectible-item"; // css/style.css에 추가했던 클래스 사용
+
+    // 랜덤 위치 설정
     item.style.left = Math.random() * 80 + 10 + "%";
     item.style.top = Math.random() * 50 + 30 + "%";
-    item.onclick = () => { collectItem(itemName); item.remove(); };
+
+    // ▼▼▼ 이미지 적용 코드 추가 ▼▼▼
+    if (itemData[itemName] && itemData[itemName].img) {
+        // 배경 이미지로 아이콘을 넣습니다.
+        item.style.backgroundImage = `url(${itemData[itemName].img})`;
+        item.style.backgroundSize = "contain";
+        item.style.backgroundRepeat = "no-repeat";
+        item.style.backgroundColor = "transparent"; // 노란색 배경 제거
+        item.style.border = "none"; // 테두리 제거 (원하시면 남겨둬도 됨)
+    } else {
+        // 이미지가 없으면 텍스트라도 작게 표시
+        item.innerText = "?"; 
+    }
+
+    item.onclick = () => { 
+        collectItem(itemName); 
+        item.remove(); 
+    };
+    
     document.getElementById('item-layer').appendChild(item);
 }
 
@@ -330,19 +352,44 @@ function combineItems() {
     } else { alert("음.. 아무 일도 일어나지 않았습니다."); }
 }
 
-// --- 기존 updateUI 수정 (슬롯 렌더링 시 이미지/텍스트 표시) ---
 function updateUI() {
+    // 1. 날짜 및 에너지 표시
     document.getElementById('date-display').innerText = `Day ${gameState.day} - ${gameState.weather}`;
     let hearts = "";
-    for(let i=0; i<gameState.energy; i++) hearts += "★";
+    for(let i=0; i<gameState.energy; i++) hearts += "★"; // ♥ 대신 별로 변경
     document.getElementById('energy-hearts').innerText = hearts;
     
+    // 2. 인벤토리 슬롯 표시 (이미지 적용)
     const slots = document.querySelectorAll('.slot');
+    
     slots.forEach((slot, index) => {
-        slot.innerText = gameState.inventory[index] || "";
+        // 기존 내용(글자나 이미지) 싹 비우기
+        slot.innerHTML = "";
+        
+        const itemName = gameState.inventory[index];
+        
+        if (itemName) {
+            // 아이템 데이터에 이미지가 있는지 확인
+            if (itemData[itemName] && itemData[itemName].img) {
+                const img = document.createElement('img');
+                img.src = itemData[itemName].img;
+                img.alt = itemName; // 이미지가 깨지면 이름이라도 나오게
+                // 이미 style.css에 .slot img 스타일(40px)이 있으므로 크기는 자동 적용됨
+                slot.appendChild(img);
+            } else {
+                // 이미지가 없으면 그냥 글자로 표시
+                slot.innerText = itemName;
+            }
+        }
+        
         // 선택 해제 상태로 초기화
         slot.style.borderColor = "var(--deep-pink)";
     });
+
+    // 선택된 슬롯이 있다면 다시 강조 표시
+    if (selectedSlotIndex !== null && slots[selectedSlotIndex]) {
+        slots[selectedSlotIndex].style.borderColor = "yellow";
+    }
 }
 
 function startNextDay() {
@@ -362,4 +409,5 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
+
 
