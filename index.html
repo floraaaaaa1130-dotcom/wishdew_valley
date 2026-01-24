@@ -94,12 +94,53 @@
                 <button onclick="startNextDay()">잠자기</button>
             </div>
         </div>
-    </div>
 
-    <script src="js/script.js"></script>
+        <div id="intro-screen">
+            <div class="logo-area">
+                <h1 class="game-title">WISH VALLEY</h1>
+                <p class="game-subtitle">위시 밸리의 이야기</p>
+            </div>
+
+            <div id="menu-area">
+                <button class="menu-btn" onclick="showNameInput()">시작하기</button>
+                <button class="menu-btn" onclick="openModal('manual-modal')">설명서</button>
+                <button class="menu-btn" onclick="openModal('credit-modal')">크레딧</button>
+            </div>
+
+            <div id="name-input-area" class="hidden">
+                <p>당신의 이름은 무엇인가요?</p>
+                <input type="text" id="player-name-input" placeholder="이름 입력 (최대 6글자)" maxlength="6">
+                <button class="menu-btn" onclick="startGame()">모험 떠나기</button>
+                <button class="cancel-btn" onclick="hideNameInput()">취소</button>
+            </div>
+        </div>
+
+        <div id="manual-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>📖 게임 설명서</h2>
+                <p>1. 마을을 돌아다니며 아이템을 수집하세요.</p>
+                <p>2. 주민들에게 선물을 주어 호감도를 높이세요.</p>
+                <p>3. 인벤토리에서 재료를 조합해 특별한 물건을 만드세요!</p>
+                <p>4. 7일이 지나면 엔딩을 볼 수 있습니다.</p>
+                <button onclick="closeModal('manual-modal')">닫기</button>
+            </div>
+        </div>
+
+        <div id="credit-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>✨ 만든 사람들</h2>
+                <p><strong>기획 & 아트:</strong> [여기에 이름]</p>
+                <p><strong>개발:</strong> [여기에 이름]</p>
+                <p><strong>Special Thanks:</strong> 위시 밸리 주민들</p>
+                <button onclick="closeModal('credit-modal')">닫기</button>
+            </div>
+        </div>
+        </div> <script src="js/script.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
+</html>
+
 
 
 
