@@ -4,7 +4,8 @@ const npcs = {
         name: "시온",
         portraits: {
             default: "assets/images/portraits/sion_default.png",
-            happy: "assets/images/portraits/sion_happy.png"
+            happy: "assets/images/portraits/sion_happy.png",
+            serious: "assets/images/portraits/sion_serious.png"
         },
         locations: { sunny: "hall", rainy: "hall" }
     },
@@ -12,7 +13,9 @@ const npcs = {
         name: "리쿠",
         portraits: {
             default: "assets/images/portraits/riku_default.png",
-            happy: "assets/images/portraits/riku_happy.png"
+            happy: "assets/images/portraits/riku_happy.png",
+            sad: "assets/images/portraits/riku_sad.png",
+            shock: "assets/images/portraits/riku_shock.png"
         },
         locations: { sunny: "shop", rainy: "shop" }
     },
@@ -20,27 +23,27 @@ const npcs = {
         name: "유우시",
         portraits: {
             default: "assets/images/portraits/yushi_default.png",
-            happy: "assets/images/portraits/yushi_happy.png"
+            happy: "assets/images/portraits/yushi_happy.png",
+            shock: "assets/images/portraits/yushi_shock.png"
         },
         locations: { sunny: "forest", rainy: "saloon" }
     },
-    jaehee: { name: "재희", portraits: { default: "assets/images/portraits/jaehee.png" }, locations: { sunny: "square", rainy: "saloon" } },
-    ryo: { name: "료", portraits: { default: "assets/images/portraits/ryo.png" }, locations: { sunny: "square", rainy: "saloon" } },
-    sakuya: { name: "사쿠야", portraits: { default: "assets/images/portraits/sakuya.png" }, locations: { sunny: "saloon", rainy: "saloon" } }
+    jaehee: { name: "재희", portraits: { default: "assets/images/portraits/jaehee_default.png" }, locations: { sunny: "square", rainy: "saloon" } },
+    ryo: { name: "료", portraits: { default: "assets/images/portraits/ryo_default.png" }, locations: { sunny: "square", rainy: "saloon" } },
+    sakuya: { name: "사쿠야", portraits: { default: "assets/images/portraits/sakuya_default.png" }, locations: { sunny: "saloon", rainy: "saloon" } }
 };
 
-// 2. 대본 데이터
+// 2. 대본 및 키워드 데이터
 const dailyScripts = {
     1: {
         riku: { text: "누나 안냥 ! 새로 이사 왓어여?? 리쿠는 리쿠에여 잘 부타캐여 히히", emotion: "happy" },
         yushi: { text: "에.. 새로 오신 농장주님이시군요 ? 만나서 반가워요 !", emotion: "default" }
     },
     4: {
-        sion: { text: "축제라 그런지 다들 즐거워 보여서 좋네요 !", emotion: "happy" },
-        riku: { text: "와 사람 징짜 만타 !! 누나 리쿠 요기 잇어여 !", emotion: "happy" }
+        sion: { text: "축제라 그런지 다들 즐거워 보여서 좋네요. 일 생각은 잠시 잊어도 돼요 !", emotion: "happy" }
     },
     "highAffinity": {
-        riku: { text: "누나 보니까 리쿠 넘 기부니 조타 !", emotion: "happy" }
+        riku: { text: "누나 보니까 리쿠 넘 기부니 조타 ! 오늘두 리쿠랑 마니 놀아조야 대여 히히", emotion: "happy" }
     }
 };
 
@@ -59,6 +62,7 @@ const questLetters = {
     sion: "안녕하세요, 농장주님. 실은 제가 꼭 필요한 물건이 있는데.."
 };
 
+// 3. 장소 및 레시피 데이터
 const locations = {
     farm: { name: "농장", bg: "assets/images/bg/farm.png", items: ["수선화"] },
     square: { name: "마을 광장", bg: "assets/images/bg/square.png", items: ["수선화", "민들레"] },
@@ -69,5 +73,6 @@ const locations = {
 };
 
 const recipes = [
-    { ingredients: ["수선화", "설탕"], result: "꽃 케이크" }
+    { ingredients: ["수선화", "설탕"], result: "꽃 케이크" },
+    { ingredients: ["별조각", "블루 재즈"], result: "반짝이는 유리병" }
 ];
