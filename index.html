@@ -27,16 +27,24 @@
                 <button onclick="move('saloon')">주점</button>
             </div>
             
-            <div id="inventory-container">
-                <p>인벤토리</p>
-                <div id="inventory-slots">
-                    <div class="slot" data-index="0" onclick="selectSlot(0)"></div>
-                    <div class="slot" data-index="1" onclick="selectSlot(1)"></div>
-                    <div class="slot" data-index="2" onclick="selectSlot(2)"></div>
-                    <div class="slot" data-index="3" onclick="selectSlot(3)"></div>
-                    <div class="slot" data-index="4" onclick="selectSlot(4)"></div>
-                </div>
-            </div>
+<div id="inventory-container">
+    <p>인벤토리</p>
+    <div id="inventory-slots">
+        <div class="slot" data-index="0" onclick="selectSlot(0)"></div>
+        <div class="slot" data-index="1" onclick="selectSlot(1)"></div>
+        <div class="slot" data-index="2" onclick="selectSlot(2)"></div>
+        <div class="slot" data-index="3" onclick="selectSlot(3)"></div>
+        <div class="slot" data-index="4" onclick="selectSlot(4)"></div>
+        <div class="slot" data-index="5" onclick="selectSlot(5)"></div>
+        <div class="slot" data-index="6" onclick="selectSlot(6)"></div>
+        <div class="slot" data-index="7" onclick="selectSlot(7)"></div>
+    </div>
+</div>
+            
+<img src="assets/images/ui/star_icon.png" id="inventory-icon" onclick="toggleInventory()" alt="inventory">
+
+<div id="inventory-modal" class="hidden">     
+    
         </div>
 
         <div id="dialogue-overlay" class="hidden">
@@ -80,4 +88,5 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
 
