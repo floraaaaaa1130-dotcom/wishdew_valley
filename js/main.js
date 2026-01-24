@@ -1,6 +1,12 @@
 let gameState = {
-    day: 1, energy: 4, weather: '맑음', currentLocation: 'farm',
-    inventory: [], affinities: { sion: 0, riku: 0, yushi: 0, jaehee: 0, ryo: 0, sakuya: 0 }
+    day: 1, 
+    energy: 4, 
+    weather: '맑음', 
+    currentLocation: 'farm',
+    inventory: [], 
+    affinities: { sion: 0, riku: 0, yushi: 0, jaehee: 0, ryo: 0, sakuya: 0 },
+    hasGiftedToday: {}, // 선물 여부 체크용
+    playerName: "농장주" // 기본 이름 (나중에 입력값으로 바뀜)
 };
 
 // --- 오디오 설정 ---
@@ -47,7 +53,7 @@ function move(locId) {
 }
 
 function renderLocation() {
-    const loc = locations[gameState.currentLocation];
+    const loc = locations[.currentLocation];
     const view = document.getElementById('location-view');
     view.style.backgroundImage = `url(${loc.bg})`;
 
@@ -66,9 +72,9 @@ const npcLayer = document.getElementById('npc-layer');
     
     for (let key in npcs) {
         const npc = npcs[key];
-        const targetLoc = gameState.weather === '비' ? npc.locations.rainy : npc.locations.sunny;
+        const targetLoc = .weather === '비' ? npc.locations.rainy : npc.locations.sunny;
         
-        if (targetLoc === gameState.currentLocation) {
+        if (targetLoc === .currentLocation) {
             const npcSprite = document.createElement('div');
             npcSprite.className = "npc-sprite"; // 공통 클래스 (크기, 위치 등 담당)
 
@@ -125,7 +131,8 @@ function displayDialogue(npcKey, dialogueObj) {
     portraitImg.src = npc.portraits[emotionKey] || npc.portraits['default'];
     
     let finalText = dialogueObj.text;
-    textZone.innerText = finalText;
+    finalText = finalText.replace(/{user}/g, gameState.playerName);
+textZone.innerText = finalText;
 
     // 2. 선택지(Choices)가 있는 경우 처리
     choiceArea.innerHTML = ""; // 기존 버튼 초기화
@@ -466,7 +473,6 @@ function checkEnding() {
     else alert("우정 엔딩!");
 }
 
-window.onload = () => { move('farm'); };
 
 // --- [추가] 아이템 정보 팝업 기능 ---
 let currentPopupItem = null; // 현재 팝업에 띄운 아이템 이름 저장
@@ -535,6 +541,52 @@ function toggleDeleteMode() {
     }
 }
 
+window.onload = () => {
+    // 바로 move('farm') 하지 않고, 오프닝 화면은 HTML에 있으니 가만히 둡니다.
+    // 배경음악 등 초기화가 필요하면 여기서 합니다.
+};
 
+/* --- 오프닝 & 메뉴 기능 --- */
 
+// '시작하기' 버튼 누르면 이름 입력창 보여주기
+function showNameInput() {
+    document.getElementById('menu-area').classList.add('hidden');
+    document.getElementById('name-input-area').classList.remove('hidden');
+    playSfx('click');
+}
 
+// '취소' 버튼 누르면 다시 메뉴로
+function hideNameInput() {
+    document.getElementById('name-input-area').classList.add('hidden');
+    document.getElementById('menu-area').classList.remove('hidden');
+    playSfx('click');
+}
+
+// 진짜 게임 시작! (이름 저장)
+function startGame() {
+    const input = document.getElementById('player-name-input');
+    const name = input.value.trim();
+
+    if (name.length === 0) {
+        alert("이름을 입력해주세요!");
+        return;
+    }
+
+    gameState.playerName = name; // 이름 저장
+    playSfx('success');
+    
+    // 오프닝 화면 숨기고 농장으로 이동
+    document.getElementById('intro-screen').classList.add('hidden');
+    move('farm');
+}
+
+// 설명서, 크레딧 팝업 열기/닫기
+function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+    playSfx('click');
+}
+
+function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+    playSfx('click');
+}
