@@ -18,7 +18,7 @@ body {
     height: 100vh;
     overflow: hidden;
     /* 연핑크 별 모양 마우스 포인터 (이미지 준비 필요) */
-    cursor: url('images/star_cursor.png'), auto;
+    cursor: url('../assets/images/ui/star_cursor.png'), auto;
 }
 
 #game-container {
@@ -219,5 +219,6 @@ button:hover {
     padding: 10px;
     border: 2px solid var(--pastel-pink);
 }
+
 
 .hidden { display: none !important; }
