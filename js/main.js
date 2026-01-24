@@ -545,11 +545,6 @@ function toggleDeleteMode() {
     }
 }
 
-window.onload = () => {
-    // 바로 move('farm') 하지 않고, 오프닝 화면은 HTML에 있으니 가만히 둡니다.
-    // 배경음악 등 초기화가 필요하면 여기서 합니다.
-};
-
 /* --- 오프닝 & 메뉴 기능 --- */
 
 // '시작하기' 버튼 누르면 이름 입력창 보여주기
@@ -595,3 +590,9 @@ function closeModal(id) {
     playSfx('click');
 }
 
+window.onload = () => {
+    // 게임을 바로 시작하지 않고, 오프닝 화면만 보여줍니다.
+    // 기존의 updateUI(); move('farm'); 코드는 지우거나 주석 처리하세요.
+    
+    console.log("게임 로드 완료! 오프닝 대기 중...");
+};
