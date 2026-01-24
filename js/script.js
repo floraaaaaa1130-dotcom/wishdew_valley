@@ -2,6 +2,7 @@
 const npcs = {
     sion: {
         name: "시온",
+        sprite: "assets/images/sprites/sion.png",
         portraits: {
             default: "assets/images/portraits/sion_default.png",
             happy: "assets/images/portraits/sion_happy.png",
@@ -15,6 +16,7 @@ const npcs = {
     },
     riku: {
         name: "리쿠",
+        sprite: "assets/images/sprites/riku.png",
         portraits: {
             default: "assets/images/portraits/riku_default.png",
             happy: "assets/images/portraits/riku_happy.png",
@@ -29,6 +31,7 @@ const npcs = {
     },
     yushi: {
         name: "유우시",
+        sprite: "assets/images/sprites/yushi.png",
         portraits: {
             default: "assets/images/portraits/yushi_default.png",
             happy: "assets/images/portraits/yushi_happy.png",
@@ -42,11 +45,12 @@ const npcs = {
     },
     jaehee: { 
         name: "재희",
+        sprite: "assets/images/sprites/jaehee.png",
         portraits: { 
             default: "assets/images/portraits/jaehee_default.png",
-            happy: "assets/images/portraits/riku_happy.png", // 임시 이미지 경로 주의
-            sad: "assets/images/portraits/riku_sad.png",
-            shock: "assets/images/portraits/riku_shock.png"
+            happy: "assets/images/portraits/jaehee_happy.png", // 임시 이미지 경로 주의
+            sad: "assets/images/portraits/jaehee_sad.png",
+            shock: "assets/images/portraits/jaehee_shock.png"
         },
         gifts: {
             love: ["별조각", "에너지 드링크"],
@@ -56,11 +60,12 @@ const npcs = {
     },
     ryo: { 
         name: "료", 
+        sprite: "assets/images/sprites/ryp.png",
         portraits: { 
             default: "assets/images/portraits/ryo_default.png",
-            happy: "assets/images/portraits/riku_happy.png",
-            sad: "assets/images/portraits/riku_sad.png",
-            shock: "assets/images/portraits/riku_shock.png"
+            happy: "assets/images/portraits/ryo_happy.png",
+            sad: "assets/images/portraits/ryo_sad.png",
+            shock: "assets/images/portraits/ryo_shock.png"
         },
         gifts: {
             love: ["별조각", "에너지 드링크"],
@@ -70,11 +75,12 @@ const npcs = {
     },
     sakuya: { 
         name: "사쿠야",
+        sprite: "assets/images/sprites/sakuya.png",
         portraits: { 
             default: "assets/images/portraits/sakuya_default.png",
-            happy: "assets/images/portraits/riku_happy.png",
-            sad: "assets/images/portraits/riku_sad.png",
-            shock: "assets/images/portraits/riku_shock.png"
+            happy: "assets/images/portraits/sakuya_happy.png",
+            sad: "assets/images/portraits/sakuya_sad.png",
+            shock: "assets/images/portraits/sakuya_shock.png"
         },
         gifts: {
             love: ["별조각", "에너지 드링크"],
@@ -127,3 +133,4 @@ const recipes = [
     { ingredients: ["수선화", "설탕"], result: "꽃 케이크" },
     { ingredients: ["별조각", "블루 재즈"], result: "반짝이는 유리병" }
 ];
+
