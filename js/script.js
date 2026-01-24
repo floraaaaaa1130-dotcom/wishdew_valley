@@ -64,15 +64,16 @@ const questLetters = {
 
 // 3. 장소 및 레시피 데이터
 const locations = {
-    farm: { name: "농장", bg: "assets/images/bg/farm.png", items: ["수선화"] },
-    square: { name: "마을 광장", bg: "assets/images/bg/square.png", items: ["수선화", "민들레"] },
-    forest: { name: "비밀의 숲", bg: "assets/images/bg/forest.png", items: ["별조각", "블루 재즈"] },
-    shop: { name: "피에르 상점", bg: "assets/images/bg/shop.png", items: ["설탕"] },
-    hall: { name: "마을 회관", bg: "assets/images/bg/hall.png", items: ["낡은 신문"] },
-    saloon: { name: "별빛 주점", bg: "assets/images/bg/saloon.png", items: ["딸기 빵"] }
+    farm: { name: "농장", bg: "assets/images/backgrounds/farm.png", items: ["수선화"] },
+    square: { name: "마을 광장", bg: "assets/images/backgrounds/square.png", items: ["수선화", "민들레"] },
+    forest: { name: "비밀의 숲", bg: "assets/images/backgrounds/forest.png", items: ["별조각", "블루 재즈"] },
+    shop: { name: "피에르 상점", bg: "assets/images/backgrounds/shop.png", items: ["설탕"] },
+    hall: { name: "마을 회관", bg: "assets/images/backgrounds/hall.png", items: ["낡은 신문"] },
+    saloon: { name: "별빛 주점", bg: "assets/images/backgrounds/saloon.png", items: ["딸기 빵"] }
 };
 
 const recipes = [
     { ingredients: ["수선화", "설탕"], result: "꽃 케이크" },
     { ingredients: ["별조각", "블루 재즈"], result: "반짝이는 유리병" }
 ];
+
