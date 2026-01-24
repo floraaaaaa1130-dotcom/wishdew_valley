@@ -127,7 +127,8 @@ function selectSlot(index) {
     }
 }
 
-// --- 선물하기 로직 ---
+// js/main.js - giveGift 함수 수정
+
 function giveGift(npcKey) {
     if (selectedSlotIndex === null || !gameState.inventory[selectedSlotIndex]) {
         alert("먼저 인벤토리에서 선물을 선택해주세요 !");
@@ -140,17 +141,22 @@ function giveGift(npcKey) {
     }
 
     const item = gameState.inventory[selectedSlotIndex];
-    const npc = npcs[npcKey];
-    let points = 5; // 기본 점수
-    let response = { text: "에.. 고마워요 ! 잘 받을게요.", emotion: "default" };
+    const npc = npcs[npcKey]; // 이제 여기서 npc 데이터를 가져오면 반응 대사도 같이 딸려옵니다.
+    
+    let points = 5;
+    // 1. 일단 '보통' 반응으로 초기화 (데이터가 없을 경우를 대비해 안전장치 || 뒤에 기본값 둠)
+    let response = npc.giftReactions?.default || { text: "고마워요.", emotion: "default" };
 
-    // 취향 체크
+    // 2. 취향 체크 및 반응 교체
     if (npc.gifts.love.includes(item)) {
         points = 20;
-        response = { text: "와아 ! 제가 정말 좋아하는 거예요 ! 너무 고마워요 ^_^", emotion: "happy" };
-    } else if (npc.gifts.hate.includes(item)) {
+        // 'love' 반응으로 교체
+        if(npc.giftReactions?.love) response = npc.giftReactions.love;
+    } 
+    else if (npc.gifts.hate.includes(item)) {
         points = -10;
-        response = { text: "에..? 이건 제가 조금.. 무서워하는 건데요..", emotion: "shock" };
+        // 'hate' 반응으로 교체
+        if(npc.giftReactions?.hate) response = npc.giftReactions.hate;
     }
 
     // 호감도 반영
@@ -265,6 +271,7 @@ function checkEnding() {
 }
 
 window.onload = () => { move('farm'); };
+
 
 
 
