@@ -17,6 +17,16 @@ let gameState = {
     isEnding: false // 엔딩 진행 중인지 여부
 };
 
+// ★ [추가] 대화 끝난 후 멤버별 행동 묘사 (원하는 멘트로 수정하세요)
+const npcActions = {
+    sion: "(멍하니 하늘을 바라보고 있다...)",
+    riku: "(무언가 골똘히 생각하는 듯하다.)",
+    yushi: "(작게 콧노래를 흥얼거리고 있다.)",
+    jaehee: "(가볍게 스트레칭을 하고 있다.)",
+    ryo: "(먼 곳을 응시하고 있다.)",
+    sakuya: "(주변을 두리번거리고 있다.)"
+};
+
 // --- 전역 변수 (Global Variables) ---
 let dialogueQueue = []; // 대사 목록 큐
 let currentDialogueIndex = 0; // 현재 대사 순서
@@ -397,39 +407,87 @@ function toggleDeleteMode() {
    5. 대화 시스템 (Dialogue System)
    ========================================================================== */
 
+// [교체] 대화창 열기 함수
 function openDialogue(npcKey) {
     lastInteractedNPC = npcKey; 
     const overlay = document.getElementById('dialogue-overlay');
     overlay.classList.remove('hidden');
     
-    // UI 초기화
-    document.getElementById('input-area').classList.add('hidden');
-    document.getElementById('choice-area').classList.add('hidden');
-    
-    // 버튼 연결
-    const giftBtn = document.getElementById('gift-btn');
-    if(giftBtn) giftBtn.onclick = () => giveGift(npcKey);
-
+    // UI 요소 가져오기
+    const inputArea = document.getElementById('input-area');
+    const keywordInput = document.getElementById('keyword-input');
     const sendBtn = document.getElementById('send-btn');
+    const giftBtn = document.getElementById('gift-btn');
+
+    // 버튼 이벤트 연결 (기존 유지)
+    if(giftBtn) giftBtn.onclick = () => giveGift(npcKey);
     if(sendBtn) sendBtn.onclick = () => sendKeyword(npcKey);
 
-    // 대사 데이터 가져오기 (1.오늘의 대사 -> 2.랜덤 대사 -> 3.기본값)
-    let scriptData = null;
-    if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
-        scriptData = dailyScripts[gameState.day][npcKey];
-    } else if (randomDialogues[npcKey]) {
-        const weather = gameState.weather;
-        const list = randomDialogues[npcKey][weather];
-        if(list) scriptData = list[Math.floor(Math.random() * list.length)];
+    // --- [핵심 로직 변경] ---
+    
+    // CASE 1: 오늘 이미 대화를 한 경우 (두 번째 클릭부터)
+    if (gameState.hasTalkedToday[npcKey]) {
+        // 1. 행동 묘사 텍스트 출력
+        const actionText = npcActions[npcKey] || "(멍을 때리고 있다...)";
+        
+        // 큐 초기화하지 않고 바로 텍스트 출력 (타이핑 효과)
+        dialogueQueue = [{ text: actionText, emotion: 'default' }];
+        currentDialogueIndex = 0;
+        showNextLine(npcKey);
+
+        // 2. 입력창과 '말하기' 버튼 숨기기
+        keywordInput.classList.add('hidden');
+        sendBtn.classList.add('hidden');
+        
+        // 3. 선물 버튼 제어 (선물 안 줬으면 보이고, 줬으면 숨김)
+        if (!gameState.hasGiftedToday[npcKey]) {
+            inputArea.classList.remove('hidden'); // 부모 박스는 보여줌
+            giftBtn.classList.remove('hidden');   // 선물 버튼 보임
+        } else {
+            inputArea.classList.add('hidden');    // 선물도 줬으면 박스 전체 숨김
+        }
+
+    } 
+    // CASE 2: 오늘 첫 대화인 경우
+    else {
+        // 대화 했음 표시!
+        gameState.hasTalkedToday[npcKey] = true;
+
+        // 1. UI 전체 복구 (숨겼던 입력창들 다시 보이게)
+        inputArea.classList.remove('hidden');
+        keywordInput.classList.remove('hidden');
+        sendBtn.classList.remove('hidden');
+        giftBtn.classList.remove('hidden');
+
+        // 2. 대사 데이터 가져오기 (랜덤 X, 순차적 or 하루 고정)
+        let scriptData = null;
+        
+        // (1) 날짜별 고정 대사 우선
+        if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
+            scriptData = dailyScripts[gameState.day][npcKey];
+        } 
+        // (2) 고정 대사가 없다면 랜덤 대사 중 하나 가져오기
+        else if (randomDialogues[npcKey]) {
+            const weather = gameState.weather;
+            const list = randomDialogues[npcKey][weather];
+            if(list) {
+                // ★ 여기서 랜덤으로 하나를 뽑아서 '고정'시킴
+                // 하지만 요구사항은 "하루에 대사 하나만"이므로,
+                // 이미 hasTalkedToday 체크를 했으니 매번 랜덤이어도 상관없음 
+                // (어차피 하루에 한 번만 진입하니까요!)
+                scriptData = list[Math.floor(Math.random() * list.length)];
+            }
+        }
+
+        // 데이터 없으면 기본값
+        if (!scriptData) scriptData = [{ text: "안녕하세요.", emotion: "default" }];
+        if (!Array.isArray(scriptData)) scriptData = [scriptData];
+
+        // 대화 시작
+        dialogueQueue = scriptData;
+        currentDialogueIndex = 0;
+        showNextLine(npcKey);
     }
-
-    if (!scriptData) scriptData = [{ text: "안녕하세요.", emotion: "default" }];
-    if (!Array.isArray(scriptData)) scriptData = [scriptData];
-
-    // 큐 초기화 및 시작
-    dialogueQueue = scriptData;
-    currentDialogueIndex = 0;
-    showNextLine(npcKey);
 }
 
 // 다음 대사 출력 (타이핑 효과)
@@ -676,6 +734,9 @@ function startNextDay() {
     gameState.day++;
     gameState.energy = 3; // 에너지 충전
     gameState.hasGiftedToday = {}; // 선물 기록 초기화
+   // ★ [추가] 하루가 지났으니 기록 초기화
+    gameState.hasGiftedToday = {}; 
+    gameState.hasTalkedToday = {};
     
     // 날씨 랜덤 변경
     const weathers = ['맑음', '맑음', '비', '벚꽃'];
@@ -684,7 +745,6 @@ function startNextDay() {
     document.getElementById('night-overlay').classList.add('hidden');
     updateUI(); 
     move('farm'); // 집(농장)에서 시작
-    alert(`Day ${gameState.day} 아침이 밝았습니다!`);
 }
 
 
@@ -747,3 +807,4 @@ function playEndingSequence(data) {
         }, 100);
     }, 2000);
 }
+
