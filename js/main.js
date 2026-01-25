@@ -803,6 +803,49 @@ function playEndingSequence(data, npcKey) {
     // 입력창 등 불필요한 UI 숨기기
     document.getElementById('input-area').classList.add('hidden');
     document.getElementById('choice-area').classList.add('hidden');
+   // [수정] 대화창 클릭 이벤트
+document.getElementById('dialogue-overlay').onclick = (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+
+    // 1. 타이핑 중이면 스킵
+    if (isTyping) {
+        finishTyping();
+        return;
+    }
+
+    // 2. 다음 대사가 남아있으면 넘기기
+    if (currentDialogueIndex < dialogueQueue.length - 1) {
+        currentDialogueIndex++;
+        
+        // 엔딩 중일 땐 npcKey가 없을 수도 있으니 예외 처리
+        const data = dialogueQueue[currentDialogueIndex];
+        const textZone = document.getElementById('dialogue-text');
+        typeWriter(data.text, textZone);
+        return;
+    }
+
+    // 3. 대사가 모두 끝났을 때
+    
+    // ★ [추가된 부분] 엔딩 모드라면 -> 최종 팝업 띄우기
+    if (gameState.isEnding) {
+        showFinalPopup();
+        return;
+    }
+
+    // (일반 모드 로직 유지)
+    // 선택지가 있으면 닫지 않음
+    if (dialogueQueue[currentDialogueIndex].choices) return;
+
+    // 일반 대화 종료: 입력창 보여주기
+    const inputArea = document.getElementById('input-area');
+    if (!inputArea.classList.contains('hidden')) {
+        document.getElementById('dialogue-overlay').classList.add('hidden');
+        return;
+    }
+    document.getElementById('next-cursor').classList.add('hidden');
+    inputArea.classList.remove('hidden');
+    document.getElementById('dialogue-text').innerText = ""; 
+};
 
     // 2. 텍스트를 줄바꿈(\n) 기준으로 나눠서 대화 큐에 넣기
     // (script.js에 텍스트가 긴 문자열로 되어있다고 가정)
@@ -852,6 +895,7 @@ function showFinalPopup() {
     // 버튼 표시
     btn.classList.remove('hidden');
 }
+
 
 
 
