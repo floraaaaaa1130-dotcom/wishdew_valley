@@ -15,10 +15,13 @@
 }
 
 @font-face {
-    font-family: 'DungGeunMo';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'MyGameFont'; /* 기본 게임 폰트 이름 */
+    src: url('../assets/fonts/main_font.ttf'); /* 파일명 정확히 맞출 것 */
+}
+
+@font-face {
+    font-family: 'MyLetterFont'; /* 편지용 폰트 이름 */
+    src: url('../assets/fonts/letter_font.ttf');
 }
 
 body {
@@ -28,6 +31,11 @@ body {
     display: flex; justify-content: center; align-items: center;
     height: 100vh; overflow: hidden;
     cursor: url('../assets/images/ui/star_cursor.png'), auto;
+}
+
+/* 편지 본문에만 손글씨 폰트 적용 */
+#letter-text {
+    font-family: 'MyLetterFont', serif !important;
 }
 
 /* 2. 게임 메인 컨테이너 */
@@ -495,6 +503,34 @@ button:active { transform: translateY(1px); box-shadow: none; }
     background-color: var(--deep-pink);
 }
 
+/* =========================================
+   [추가] 날씨 효과 오버레이
+   ========================================= */
 
+/* 공통 설정: 위치 잡기 및 클릭 통과시키기 */
+#location-view.weather-rain::after,
+#location-view.weather-blossom::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;      /* 화면에 꽉 차게 */
+    background-position: center;
+    pointer-events: none;        /* 효과 위를 클릭해도 아래 아이템이 눌리도록 설정 */
+    z-index: 5;                  /* 배경(0)보다 위, NPC(10)보다 아래 */
+}
 
+/* 1. 비 오는 날: 어두운 배경 + 비 GIF */
+#location-view.weather-rain::after {
+    background-color: rgba(0, 0, 0, 0.3); /* 검은색 30% 투명도 (화면 어둡게) */
+    background-image: url('../assets/images/effects/rain.gif');
+    opacity: 0.8; /* 너무 진하면 조절하세요 */
+}
+
+/* 2. 벚꽃 날리는 날: 분홍빛 배경 + 벚꽃 GIF */
+#location-view.weather-blossom::after {
+    background-color: rgba(255, 192, 203, 0.15); /* 연한 핑크색 틴트 */
+    background-image: url('../assets/images/effects/blossom.gif');
+    /* mix-blend-mode: screen; */ /* 벚꽃 GIF 배경이 검정이면 이 주석을 푸세요 */
+}
 
