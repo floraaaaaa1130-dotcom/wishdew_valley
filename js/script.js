@@ -218,7 +218,7 @@ const dailyScripts = {
             { text: "일 생각은 잠시 잊어도 돼요 !", emotion: "happy" }
         ]
      }
-    },
+    };
     
 
 // ★ 기존 randomDialogues 삭제!
@@ -559,6 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
