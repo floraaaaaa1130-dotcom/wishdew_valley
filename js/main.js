@@ -147,7 +147,7 @@ function renderLocation() {
     const view = document.getElementById('location-view');
     view.style.backgroundImage = `url(${loc.bg})`;
 
-   / 1. 아이템(채집물) 그리기 - [수정됨: 랜덤 3개만]
+   // 1. 아이템(채집물) 그리기 - [수정됨: 랜덤 3개만]
     const itemLayer = document.getElementById('item-layer');
     itemLayer.innerHTML = "";
     
