@@ -3,11 +3,7 @@ const npcs = {
     sion: {
         name: "시온",
         sprite: "assets/images/sprites/sion.png",
-        portraits: {
-            default: "assets/images/portraits/sion_default.png",
-            happy: "assets/images/portraits/sion_happy.png",
-            shock: "assets/images/portraits/sion_serious.png"
-        },
+        portraits: "assets/images/portraits/sion_default.png",
         gifts: {
             love: ["커피", "에너지 드링크", "설탕", "회"],
             hate: ["블롭피쉬"]
@@ -28,12 +24,7 @@ const npcs = {
     riku: {
         name: "리쿠",
         sprite: "assets/images/sprites/riku.png",
-        portraits: {
-            default: "assets/images/portraits/riku_default.png",
-            happy: "assets/images/portraits/riku_happy.png",
-            sad: "assets/images/portraits/riku_sad.png",
-            shock: "assets/images/portraits/riku_shock.png"
-        },
+        portraits: "assets/images/portraits/riku_default.png",
         unknownReaction: { text: "엥? 그게 뭐예여? 먹는 거예여?", emotion: "shock" },
         gifts: {
             love: ["도토리", "초코케이크", "아이스크림"],
@@ -54,11 +45,7 @@ const npcs = {
     yushi: {
         name: "유우시",
         sprite: "assets/images/sprites/yushi.png",
-        portraits: {
-            default: "assets/images/portraits/yushi_default.png",
-            happy: "assets/images/portraits/yushi_happy.png",
-            shock: "assets/images/portraits/yushi_shock.png"
-        },
+        portraits: "assets/images/portraits/yushi_default.png",
         gifts: { // gifts 속성 추가 (코드 일관성을 위해 임의 추가함, 필요시 수정)
              love: ["스타푸르트", "블루 재즈"],
              hate: ["쓰레기"]
@@ -79,12 +66,7 @@ const npcs = {
     jaehee: { 
         name: "재희",
         sprite: "assets/images/sprites/jaehee.png",
-        portraits: { 
-            default: "assets/images/portraits/jaehee_default.png",
-            happy: "assets/images/portraits/jaehee_happy.png", // 임시 이미지 경로 주의
-            sad: "assets/images/portraits/jaehee_sad.png",
-            shock: "assets/images/portraits/jaehee_shock.png"
-        },
+        portraits: "assets/images/portraits/jaehee_default.png",
         gifts: {
             love: ["행운의 점심", "에너지 드링크"],
             hate: ["쓰레기"]
@@ -107,12 +89,7 @@ const npcs = {
     ryo: { 
         name: "료", 
         sprite: "assets/images/sprites/ryo.png",
-        portraits: { 
-            default: "assets/images/portraits/ryo_default.png",
-            happy: "assets/images/portraits/ryo_happy.png",
-            sad: "assets/images/portraits/ryo_sad.png",
-            shock: "assets/images/portraits/ryo_shock.png"
-        },
+        portraits: "assets/images/portraits/ryo_default.png",
         gifts: {
             love: ["블롭피쉬", "에너지 드링크"],
             hate: ["쓰레기", "잉어"]
@@ -134,12 +111,7 @@ const npcs = {
     sakuya: { 
         name: "사쿠야",
         sprite: "assets/images/sprites/sakuya.png",
-        portraits: { 
-            default: "assets/images/portraits/sakuya_default.png",
-            happy: "assets/images/portraits/sakuya_happy.png",
-            sad: "assets/images/portraits/sakuya_sad.png",
-            shock: "assets/images/portraits/sakuya_shock.png"
-        },
+        portraits: "assets/images/portraits/sakuya_default.png",
         gifts: {
             love: ["핑크케이크"],
             hate: ["쓰레기", "잉어"]
@@ -438,18 +410,101 @@ const questScripts = {
     // 나머지 멤버들도 같은 형식으로 추가 (jaehee, ryo, sakuya 등)
 };
 
+/* ==========================================================================
+   [추가] 이미지 업로드 및 Cropper.js 처리 로직
+   ========================================================================== */
 
+let currentCropper = null;
+let currentMemberId = null;
 
+// HTML이 모두 로드된 후 실행
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 모달 관련 요소 가져오기 (index.html에 이 ID들이 있어야 함)
+    const modal = document.getElementById('crop-modal');
+    const imageToCrop = document.getElementById('image-to-crop');
+    const btnCrop = document.getElementById('btn-crop');
+    const btnCancel = document.getElementById('btn-cancel');
 
+    // NPC 목록을 순회하며 이벤트 연결
+    const members = Object.keys(npcs); // ['sion', 'riku', 'yushi', ...]
 
+    members.forEach(member => {
+        const input = document.getElementById(`upload-${member}`);
+        
+        if (input) {
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        // 1. 현재 어떤 멤버를 수정 중인지 저장
+                        currentMemberId = member; 
+                        
+                        // 2. 모달에 이미지 띄우기
+                        imageToCrop.src = event.target.result;
+                        if(modal) modal.style.display = 'flex';
 
+                        // 3. 기존 크로퍼 초기화
+                        if (currentCropper) {
+                            currentCropper.destroy();
+                        }
 
+                        // 4. 새 크로퍼 생성 (1:1 비율 강제)
+                        currentCropper = new Cropper(imageToCrop, {
+                            aspectRatio: 1, 
+                            viewMode: 1,
+                            minContainerWidth: 300,
+                            minContainerHeight: 300
+                        });
+                    };
+                    reader.readAsDataURL(file);
+                }
+                // 같은 파일 다시 선택 가능하게 초기화
+                e.target.value = ''; 
+            });
+        }
+    });
 
+    // [자르기 & 저장 버튼 클릭 시]
+    if (btnCrop) {
+        btnCrop.addEventListener('click', function() {
+            if (currentCropper && currentMemberId) {
+                // 자른 이미지를 Base64 데이터로 변환
+                const croppedCanvas = currentCropper.getCroppedCanvas({
+                    width: 200, // 게임 내 표시될 크기
+                    height: 200
+                });
+                const croppedImage = croppedCanvas.toDataURL();
 
+                // 1) 미리보기 이미지 업데이트
+                const preview = document.getElementById(`preview-${currentMemberId}`);
+                if (preview) preview.src = croppedImage;
 
+                // 2) 게임 데이터(npcs) 업데이트 ★핵심★
+                if (npcs[currentMemberId]) {
+                    npcs[currentMemberId].portrait = croppedImage;
+                    console.log(`${currentMemberId}의 초상화가 변경되었습니다.`);
+                }
 
+                // 3) 정리
+                modal.style.display = 'none';
+                currentCropper.destroy();
+                currentCropper = null;
+            }
+        });
+    }
 
-
-
+    // [취소 버튼 클릭 시]
+    if (btnCancel) {
+        btnCancel.addEventListener('click', function() {
+            if(modal) modal.style.display = 'none';
+            if (currentCropper) {
+                currentCropper.destroy();
+                currentCropper = null;
+            }
+        });
+    }
+});
 
 
