@@ -686,10 +686,6 @@ document.getElementById('dialogue-overlay').onclick = (e) => {
         document.getElementById('dialogue-overlay').classList.add('hidden');
     }
 };
-    document.getElementById('next-cursor').classList.add('hidden');
-    inputArea.classList.remove('hidden');
-    document.getElementById('dialogue-text').innerText = ""; 
-};
 
 function displayDialogue(npcKey, dialogueObj) {
     dialogueQueue = [dialogueObj];
@@ -876,5 +872,6 @@ function showFinalPopup() {
     
     btn.classList.remove('hidden');
 }
+
 
 
