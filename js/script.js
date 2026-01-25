@@ -17,7 +17,7 @@ const npcs = {
             hate: { text: "마음은 고맙지만.. 이건 좀 처치하기 곤란하네요.", emotion: "serious" },
             default: { text: "선물인가요? 고맙습니다.", emotion: "default" }
         },
-        locations: { sunny: "hall", rainy: "hall" }
+        locations: { sunny: "hall", rainy: "hall" },
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             hall: { top: "75%", left: "25%" },
@@ -42,7 +42,7 @@ const npcs = {
             hate: { text: "마음은 고맙지만.. 이건 좀 처치하기 곤란하네요.", emotion: "serious" },
             default: { text: "선물인가요? 고맙습니다.", emotion: "default" }
         },
-        locations: { sunny: "shop", rainy: "shop" }
+        locations: { sunny: "shop", rainy: "shop" },
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             hall: { top: "40%", left: "70%" }, // 회관에서는 오른쪽 위에
@@ -66,7 +66,7 @@ const npcs = {
             hate: { text: "마음은 고맙지만.. 이건 좀 처치하기 곤란하네요.", emotion: "serious" },
             default: { text: "선물인가요? 고맙습니다.", emotion: "default" }
         },
-        locations: { sunny: "forest", rainy: "saloon" }
+        locations: { sunny: "forest", rainy: "saloon" },
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             hall: { top: "40%", left: "70%" }, // 회관에서는 오른쪽 위에
@@ -91,7 +91,7 @@ const npcs = {
             hate: { text: "마음은 고맙지만.. 이건 좀 처치하기 곤란하네요.", emotion: "serious" },
             default: { text: "선물인가요? 고맙습니다.", emotion: "default" }
         },
-        locations: { sunny: "square", rainy: "saloon" } 
+        locations: { sunny: "square", rainy: "saloon" },
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             hall: { top: "40%", left: "70%" }, // 회관에서는 오른쪽 위에
@@ -116,7 +116,7 @@ const npcs = {
             hate: { text: "마음은 고맙지만.. 이건 좀 처치하기 곤란하네요.", emotion: "serious" },
             default: { text: "선물인가요? 고맙습니다.", emotion: "default" }
         },
-        locations: { sunny: "square", rainy: "saloon" } 
+        locations: { sunny: "square", rainy: "saloon" }, 
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             hall: { top: "40%", left: "70%" }, // 회관에서는 오른쪽 위에
@@ -141,7 +141,7 @@ const npcs = {
             hate: { text: "마음은 고맙지만.. 이건 좀 처치하기 곤란하네요.", emotion: "serious" },
             default: { text: "선물인가요? 고맙습니다.", emotion: "default" }
         },
-        locations: { sunny: "square", rainy: "saloon" } 
+        locations: { sunny: "square", rainy: "saloon" }, 
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             hall: { top: "40%", left: "70%" }, // 회관에서는 오른쪽 위에
@@ -350,6 +350,7 @@ const questScripts = {
     },
     // 나머지 멤버들도 같은 형식으로 추가 (jaehee, ryo, sakuya 등)
 };
+
 
 
 
