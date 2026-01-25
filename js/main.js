@@ -449,67 +449,101 @@ function toggleDeleteMode() {
 
 // [교체] 대화창 열기 함수 (로직 단순화)
 function openDialogue(npcKey) {
-    lastInteractedNPC = npcKey; 
+    lastInteractedNPC = npcKey;
     const overlay = document.getElementById('dialogue-overlay');
-    overlay.classList.remove('hidden');
 
-    // ★ 대화 시작 시 기본값: 입력창 띄우지 않음
+    // UI 및 버튼 초기화
     shouldShowInput = false;
-    
-    // UI 초기화: 일단 모두 숨김
-    const inputArea = document.getElementById('input-area');
-    inputArea.classList.add('hidden'); 
+    document.getElementById('input-area').classList.add('hidden');
     document.getElementById('choice-area').classList.add('hidden');
-    
-    // 버튼 기능 연결
+
     const giftBtn = document.getElementById('gift-btn');
     const sendBtn = document.getElementById('send-btn');
-    
     if(giftBtn) giftBtn.onclick = () => giveGift(npcKey);
     if(sendBtn) sendBtn.onclick = () => sendKeyword(npcKey);
 
-    // --- [대화 로직 분기] ---
-    
-    // CASE 1: 오늘 이미 대화를 한 경우 (행동 묘사 + 선물하기 버튼)
+    // ---------------------------------------------
+    // [CASE 1] 오늘 이미 대화를 한 경우
+    // ---------------------------------------------
     if (gameState.hasTalkedToday[npcKey]) {
+        overlay.classList.remove('hidden');
         const actionText = npcActions[npcKey] || "(멍을 때리고 있다...)";
         dialogueQueue = [{ text: actionText, emotion: 'default' }];
         currentDialogueIndex = 0;
 
-        // ★ 이미 대화했으니, 아직 선물 안 줬으면 '타자 끝나고 버튼 보여줘' 설정
+        // 선물 아직 안 줬으면 버튼 보이기 예약
         if (!gameState.hasGiftedToday[npcKey]) {
-            shouldShowInput = true; 
-        } else {
-            shouldShowInput = false;
+            shouldShowInput = true;
         }
-
         showNextLine(npcKey);
-    } 
-    // CASE 2: 오늘 첫 대화인 경우 (스토리 진행)
-    else {
-        gameState.hasTalkedToday[npcKey] = true;
+        return;
+    }
 
-        // ★ 첫 대화가 끝나고 나서는 선물 버튼 등이 안 떠야 하므로 false
-        // (단, 대사 중간에 '키워드 입력' 타입이 있다면 그건 finishTyping에서 처리됨)
-        shouldShowInput = false; 
+    // ---------------------------------------------
+    // [CASE 2] 오늘 첫 대화 (스토리 vs 이벤트 vs 랜덤)
+    // ---------------------------------------------
+    gameState.hasTalkedToday[npcKey] = true;
+    shouldShowInput = false;
 
-        // 대사 데이터 가져오기
-        let scriptData = null;
-        if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
-            scriptData = dailyScripts[gameState.day][npcKey];
-        } else if (randomDialogues[npcKey]) {
-            const weather = gameState.weather;
-            const list = randomDialogues[npcKey][weather];
-            if(list) scriptData = list[Math.floor(Math.random() * list.length)];
-        }
-
-        if (!scriptData) scriptData = [{ text: "안녕하세요.", emotion: "default" }];
+    // ★ [1순위] 날짜별 고정 스토리 (dailyScripts) 확인 - 이걸 꼭 넣어야 함!
+    if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
+        overlay.classList.remove('hidden');
+        let scriptData = dailyScripts[gameState.day][npcKey];
         if (!Array.isArray(scriptData)) scriptData = [scriptData];
-
+        
         dialogueQueue = scriptData;
         currentDialogueIndex = 0;
         showNextLine(npcKey);
+        return;
     }
+
+    // ★ [2순위] 호감도 이벤트 (affinityEvents) 확인
+    const currentAffinity = gameState.affinities[npcKey];
+    if (typeof affinityEvents !== 'undefined' && affinityEvents[npcKey]) {
+        const events = affinityEvents[npcKey];
+        // 조건: 호감도 달성 AND 아직 안 본 이벤트
+        const targetEvent = events.find(e => 
+            currentAffinity >= e.threshold && 
+            gameState.seenEvents && !gameState.seenEvents.includes(e.id)
+        );
+
+        if (targetEvent) {
+            // 이벤트 트리거 (overlay는 triggerEvent 함수 안에서 페이드 효과와 함께 켜짐)
+            triggerEvent(targetEvent);
+            return;
+        }
+    }
+
+    // ★ [3순위] 호감도별 랜덤 대사 (affinityDialogues)
+    overlay.classList.remove('hidden');
+
+    // (1) 호감도 단계 판단
+    let stage = 'low';
+    if (currentAffinity >= 70) stage = 'high';
+    else if (currentAffinity >= 30) stage = 'mid';
+
+    // (2) 날씨 확인
+    const weather = gameState.weather;
+
+    // (3) 대사 풀 가져오기
+    let pool = [];
+    if (affinityDialogues[npcKey] && 
+        affinityDialogues[npcKey][stage] && 
+        affinityDialogues[npcKey][stage][weather]) {
+        pool = affinityDialogues[npcKey][stage][weather];
+    }
+
+    // (4) 데이터가 없으면 기본값
+    if (!pool || pool.length === 0) {
+        pool = [{ text: "안녕하세요.", emotion: "default" }];
+    }
+
+    // (5) 랜덤 뽑기
+    const randomPick = pool[Math.floor(Math.random() * pool.length)];
+    dialogueQueue = Array.isArray(randomPick) ? randomPick : [randomPick];
+
+    currentDialogueIndex = 0;
+    showNextLine(npcKey);
 }
 
 function showNextLine(npcKey) {
@@ -972,5 +1006,6 @@ function enterGame() {
     updateUI(); 
     move('farm'); 
 }
+
 
 
