@@ -490,7 +490,9 @@ function showNextLine(npcKey) {
     const portraitDiv = document.getElementById('dialogue-portrait');
     const portraitImg = document.getElementById('current-portrait');
    
-    // NPC가 있을 때
+    // ★★★ [수정] if 문 추가됨 ★★★
+    if (npcs[npcKey]) { 
+        // NPC가 있을 때
         portraitDiv.style.display = 'block'; 
         const npc = npcs[npcKey];
         const emotion = data.emotion || 'default';
@@ -500,6 +502,11 @@ function showNextLine(npcKey) {
         portraitDiv.style.display = 'none'; 
     }
 
+    // 텍스트 출력
+    const textZone = document.getElementById('dialogue-text');
+    let textContent = data.text.replace(/{user}/g, gameState.playerName);
+    typeWriter(textContent, textZone);
+}
     // 텍스트 출력
     const textZone = document.getElementById('dialogue-text');
     let textContent = data.text.replace(/{user}/g, gameState.playerName);
@@ -853,6 +860,7 @@ function showFinalPopup() {
     
     btn.classList.remove('hidden');
 }
+
 
 
 
