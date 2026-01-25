@@ -517,7 +517,8 @@ body.game-running #text-box {
     display: flex; /* 원래 display 속성에 맞춰주세요 (flex 또는 block) */
 }
 
-/* --- 엔딩 화면 스타일 --- */
+/* css/style.css 맨 아래 수정 */
+
 #ending-overlay {
     position: absolute;
     top: 0; left: 0;
@@ -527,13 +528,20 @@ body.game-running #text-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000; /* 최상위 */
-    opacity: 0;
-    transition: opacity 2s ease-in; /* 서서히 나타나는 효과 */
+    z-index: 2000;
+    
+    opacity: 0; /* 투명하지만 존재함 */
+    transition: opacity 2s ease-in;
+    
+    /* [핵심 수정] 평소에는 클릭이 통과되도록 설정 */
+    pointer-events: none; 
 }
 
 #ending-overlay.visible {
     opacity: 1;
+    
+    /* [핵심 수정] 엔딩이 보일 때만 클릭을 막음 (버튼 클릭 등을 위해) */
+    pointer-events: auto; 
 }
 
 .ending-content {
@@ -592,6 +600,7 @@ body.game-running #text-box {
 
 /* 타자 효과 중에는 커서 숨김 */
 .hidden { display: none !important; }
+
 
 
 
