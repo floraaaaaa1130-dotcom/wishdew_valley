@@ -47,6 +47,8 @@
             <div id="dialogue-box">
                 <div id="dialogue-content">
                     <div id="dialogue-text"></div>
+                    <div id="next-cursor" class="hidden">▼</div>
+                    
                     <div id="dialogue-portrait">
                         <img id="current-portrait" src="" alt="portrait">
                     </div>
@@ -93,6 +95,16 @@
                 <h2>오늘 하루가 끝났습니다...</h2>
                 <button onclick="startNextDay()">잠자기</button>
             </div>
+            <div id="ending-overlay" class="hidden">
+    <div class="ending-content">
+        <h1 id="ending-title">Happy Ending</h1>
+        <div id="ending-image-wrapper">
+            <img id="ending-image" src="" alt="ending">
+        </div>
+        <p id="ending-text"></p>
+        <button id="restart-btn" onclick="location.reload()" class="hidden">처음으로 돌아가기</button>
+    </div>
+</div>
         </div>
 
         <div id="intro-screen">
@@ -139,6 +151,7 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
 
 
 
