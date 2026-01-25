@@ -161,12 +161,19 @@ button:active { transform: translateY(1px); box-shadow: none; }
 }
 
 .inventory-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 5px; padding: 15px;
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); /* 가로 4칸 균등 분할 */
+    gap: 10px; 
+    padding: 15px;
     background-color: #fff0f5;
     border: 2px solid var(--pastel-pink);
-    border-radius: 5px; margin-bottom: 15px;
-    min-height: 100px; justify-content: center;
+    border-radius: 5px; 
+    margin-bottom: 15px;
+    min-height: 100px; 
+    
+    /* [수정] 이 두 줄을 추가하면 슬롯이 각 칸의 가운데로 옵니다! */
+    justify-items: center; /* 가로 중앙 정렬 */
+    align-items: center;   /* 세로 중앙 정렬 */
 }
 
 .item-slot {
@@ -566,6 +573,7 @@ button:active { transform: translateY(1px); box-shadow: none; }
     background-color: rgba(255, 192, 203, 0.15); /* 연한 핑크색 틴트 */
     background-image: url('../assets/effects/blossom.gif');
 }
+
 
 
 
