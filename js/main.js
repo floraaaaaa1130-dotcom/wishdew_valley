@@ -18,6 +18,9 @@ let gameState = {
     isEnding: false, // 엔딩 진행 중인지 여부
     // ★ [추가] 퀘스트 상태 저장 (target: 누구, item: 뭘 원하는지)
     activeQuest: null
+    seenEvents: [],       // 이미 본 이벤트 ID 저장
+    isEventPlaying: false, // 현재 이벤트 진행 중인가?
+    originalLoc: null     // 이벤트 끝나고 돌아갈 원래 배경
 };
 
 // ★ [추가] 입력창(선물 버튼 등)을 현재 대사와 함께 띄울지 판단하는 변수
@@ -755,20 +758,17 @@ function giveGift(npcKey) {
     playSfx('success');
 }
 
-// [수정] 대화창 클릭 처리 (로직 완전 단순화: 빈 화면 생성 방지)
+// [수정] 대화창 클릭 처리
 document.getElementById('dialogue-overlay').onclick = (e) => {
     // 버튼, 입력창 클릭은 무시
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
 
-    // 타자 치는 중이면 바로 완성
     if (isTyping) {
         finishTyping(); 
         return;
     }
 
     const currentData = dialogueQueue[currentDialogueIndex];
-
-    // 선택지나 키워드 입력 상태면 클릭으로 넘어가지 않음
     if (currentData.choices || currentData.type === "keyword") return;
 
     // 다음 대사가 있으면 진행
@@ -778,16 +778,19 @@ document.getElementById('dialogue-overlay').onclick = (e) => {
         return;
     }
 
-    // 엔딩이면 팝업
+    // --- [대화 종료 시점] ---
+
     if (gameState.isEnding) {
         showFinalPopup();
         return;
     }
 
-    // ★ [문제 해결 1 & 3] 대사가 끝났으면 무조건 창 닫기!
-    // 이전 코드처럼 '입력창 띄우기'를 여기서 하지 않음.
-    // (입력창은 finishTyping에서 이미 떠 있어야 함)
-    document.getElementById('dialogue-overlay').classList.add('hidden');
+    // ★ [수정됨] 이벤트 중이었다면 endEvent() 호출, 아니면 그냥 닫기
+    if (gameState.isEventPlaying) {
+        endEvent(); 
+    } else {
+        document.getElementById('dialogue-overlay').classList.add('hidden');
+    }
 };
 
 function displayDialogue(npcKey, dialogueObj) {
@@ -1006,6 +1009,80 @@ function enterGame() {
     updateUI(); 
     move('farm'); 
 }
+
+/* ==========================================================================
+   [추가] 이벤트 시스템 함수
+   ========================================================================== */
+
+function triggerEvent(eventData) {
+    gameState.isEventPlaying = true;
+    if (!gameState.seenEvents) gameState.seenEvents = []; // 안전장치
+    gameState.seenEvents.push(eventData.id); // 이벤트 본 것으로 처리
+    
+    // 원래 배경 저장 (현재 위치 기준)
+    if (locations[gameState.currentLocation]) {
+        gameState.originalLoc = locations[gameState.currentLocation].bg;
+    }
+
+    const fadeOverlay = document.getElementById('fade-overlay'); // index.html에 추가했는지 확인 필요
+    const view = document.getElementById('location-view');
+
+    // 1. 페이드 아웃 (화면 검게)
+    if (fadeOverlay) fadeOverlay.classList.add('visible');
+
+    // 2. 1초 뒤 배경 바꾸고 대화 시작
+    setTimeout(() => {
+        // 배경 변경
+        view.style.backgroundImage = `url(${eventData.bg})`;
+        
+        // NPC 등 레이어 숨기기 (깔끔한 연출 위해)
+        document.getElementById('npc-layer').style.display = 'none';
+        document.getElementById('item-layer').style.display = 'none';
+
+        // 페이드 인 (다시 밝게)
+        if (fadeOverlay) fadeOverlay.classList.remove('visible');
+
+        // 대화창 열기
+        document.getElementById('dialogue-overlay').classList.remove('hidden');
+        
+        // 대사 큐 교체
+        dialogueQueue = eventData.script;
+        currentDialogueIndex = 0;
+        
+        // 입력창 숨기기 (이벤트 중에는 선물/키워드 금지)
+        document.getElementById('input-area').classList.add('hidden');
+        
+        showNextLine(lastInteractedNPC);
+
+    }, 1000); 
+}
+
+function endEvent() {
+    const fadeOverlay = document.getElementById('fade-overlay');
+    const view = document.getElementById('location-view');
+
+    // 대화창 닫기
+    document.getElementById('dialogue-overlay').classList.add('hidden');
+
+    // 1. 다시 페이드 아웃
+    if (fadeOverlay) fadeOverlay.classList.add('visible');
+
+    setTimeout(() => {
+        // 2. 원래 배경 및 NPC 복구
+        if (gameState.originalLoc) {
+            view.style.backgroundImage = `url(${gameState.originalLoc})`;
+        }
+        document.getElementById('npc-layer').style.display = 'block';
+        document.getElementById('item-layer').style.display = 'block';
+        
+        gameState.isEventPlaying = false; // 이벤트 상태 해제
+
+        // 3. 페이드 인
+        if (fadeOverlay) fadeOverlay.classList.remove('visible');
+    }, 1000);
+}
+
+
 
 
 
