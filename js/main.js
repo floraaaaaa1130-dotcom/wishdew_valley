@@ -713,9 +713,9 @@ function renderChoices(choices) {
     });
 }
 
-// 5. 대화창 클릭 이벤트 (다음 대사 넘기기)
+// 5. 대화창 클릭 이벤트 (수정됨: 대화 끝나면 닫기 기능 추가)
 document.getElementById('dialogue-overlay').onclick = (e) => {
-    // 버튼이나 입력창 클릭은 무시
+    // 버튼이나 입력창(input)을 눌렀을 때는 닫히면 안 됨
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
 
     // A. 타이핑 중이면 -> 즉시 전체 텍스트 보여주기 (스킵)
@@ -724,29 +724,31 @@ document.getElementById('dialogue-overlay').onclick = (e) => {
         return;
     }
 
-    // B. 대사가 남아있으면 -> 다음 대사로
+    // B. 다음 대사가 남아있으면 -> 다음 대사로 넘기기
     if (currentDialogueIndex < dialogueQueue.length - 1) {
         currentDialogueIndex++;
         showNextLine(lastInteractedNPC); 
         return;
     }
 
-    // C. 선택지가 떠 있으면 -> 클릭으로 닫지 못하게 함
+    // C. 선택지가 떠 있다면 -> 배경 클릭으로 못 닫게 함 (선택지를 골라야 함)
     const currentData = dialogueQueue[currentDialogueIndex];
     if (currentData && currentData.choices) return;
 
-    // D. 대화 종료: 입력창 보여주고 커서 숨기기 (엔딩 중이 아닐 때만)
+    // D. 대화가 끝났을 때
     if (!gameState.isEnding) {
+        const inputArea = document.getElementById('input-area');
+        
+        // [핵심] 입력창이 이미 떠 있는 상태에서 배경을 또 누르면 -> 창 닫기!
+        if (!inputArea.classList.contains('hidden')) {
+            document.getElementById('dialogue-overlay').classList.add('hidden');
+            return;
+        }
+
+        // 대화가 막 끝난 시점 -> 입력창 보여주기 (선물/키워드용)
         document.getElementById('next-cursor').classList.add('hidden');
-        
-        // 입력창(선물/대화)을 보여줌
-        document.getElementById('input-area').classList.remove('hidden');
-        
-        // 텍스트를 비워줌 (깔끔하게)
-        document.getElementById('dialogue-text').innerText = ""; 
-        
-        // 만약 대화창을 아예 닫고 싶다면 아래 주석을 해제하세요.
-        // document.getElementById('dialogue-overlay').classList.add('hidden');
+        inputArea.classList.remove('hidden');
+        document.getElementById('dialogue-text').innerText = ""; // 텍스트 비우기
     }
 };
 
@@ -791,6 +793,7 @@ window.onload = () => {
     
     console.log("게임 로드 완료! 오프닝 대기 중...");
 };
+
 
 
 
