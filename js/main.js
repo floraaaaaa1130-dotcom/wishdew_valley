@@ -168,7 +168,12 @@ function renderLocation() {
     for (let key in npcs) {
         const npc = npcs[key];
         // 날씨에 따른 등장 장소 확인
-        const targetLoc = gameState.weather === '비' ? npc.locations.rainy : npc.locations.sunny;
+        let targetLoc = npc.locations.sunny; // 기본값 (맑음)
+        if (gameState.weather === '비') {
+            targetLoc = npc.locations.rainy;
+        } else if (gameState.weather === '벚꽃') {
+            targetLoc = npc.locations.blossom; // 🌸 벚꽃 장소 설정 사용
+        }
         
         // 현재 장소에 있는 NPC라면?
         if (targetLoc === gameState.currentLocation) {
@@ -897,3 +902,4 @@ document.getElementById('game-container').addEventListener('click', function(e) 
     console.log(coordMsg); // 개발자 도구 콘솔에도 출력
     alert("이 위치의 좌표:\n" + coordMsg);
 });
+
