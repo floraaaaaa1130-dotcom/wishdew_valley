@@ -17,6 +17,9 @@ let gameState = {
     isEnding: false // 엔딩 진행 중인지 여부
 };
 
+// ★ [추가] 입력창을 나중에 띄울지 판단하는 변수
+let shouldShowInput = false;
+
 // ★ [추가] 대화 끝난 후 멤버별 행동 묘사 (원하는 멘트로 수정하세요)
 const npcActions = {
     sion: "(멍하니 하늘을 바라보고 있다...)",
@@ -413,77 +416,67 @@ function openDialogue(npcKey) {
     const overlay = document.getElementById('dialogue-overlay');
     overlay.classList.remove('hidden');
     
-    // UI 요소 가져오기
+    // ★ 1. 일단 모든 입력창과 버튼을 숨기고 시작합니다. (텍스트가 먼저 나오게!)
     const inputArea = document.getElementById('input-area');
-    const keywordInput = document.getElementById('keyword-input');
-    const sendBtn = document.getElementById('send-btn');
+    inputArea.classList.add('hidden'); 
+    
+    document.getElementById('choice-area').classList.add('hidden'); // 선택지도 숨김
+    
+    // 버튼 기능 연결
     const giftBtn = document.getElementById('gift-btn');
-
-    // 버튼 이벤트 연결 (기존 유지)
+    const sendBtn = document.getElementById('send-btn');
+    const keywordInput = document.getElementById('keyword-input');
+    
     if(giftBtn) giftBtn.onclick = () => giveGift(npcKey);
     if(sendBtn) sendBtn.onclick = () => sendKeyword(npcKey);
 
-    // --- [핵심 로직 변경] ---
+    // --- [대화 로직 분기] ---
     
-    // CASE 1: 오늘 이미 대화를 한 경우 (두 번째 클릭부터)
+    // CASE 1: 오늘 이미 대화를 한 경우 (행동 묘사)
     if (gameState.hasTalkedToday[npcKey]) {
-        // 1. 행동 묘사 텍스트 출력
+        // 행동 묘사 텍스트 가져오기
         const actionText = npcActions[npcKey] || "(멍을 때리고 있다...)";
         
-        // 큐 초기화하지 않고 바로 텍스트 출력 (타이핑 효과)
+        // 큐 설정
         dialogueQueue = [{ text: actionText, emotion: 'default' }];
         currentDialogueIndex = 0;
-        showNextLine(npcKey);
 
-        // 2. 입력창과 '말하기' 버튼 숨기기
-        keywordInput.classList.add('hidden');
-        sendBtn.classList.add('hidden');
-        
-        // 3. 선물 버튼 제어 (선물 안 줬으면 보이고, 줬으면 숨김)
+        // ★ 입력창 설정: 선물 안 줬을 때만 '선물 버튼' 보여주기
         if (!gameState.hasGiftedToday[npcKey]) {
-            inputArea.classList.remove('hidden'); // 부모 박스는 보여줌
-            giftBtn.classList.remove('hidden');   // 선물 버튼 보임
+            keywordInput.classList.add('hidden'); // 키워드 입력 숨김
+            sendBtn.classList.add('hidden');      // 말하기 버튼 숨김
+            giftBtn.classList.remove('hidden');   // 선물 버튼만 보임
+            shouldShowInput = true; // 타자 끝나면 보여줘!
         } else {
-            inputArea.classList.add('hidden');    // 선물도 줬으면 박스 전체 숨김
+            // 선물도 줬으면 아무것도 안 보여줌
+            shouldShowInput = false;
         }
 
+        showNextLine(npcKey);
     } 
     // CASE 2: 오늘 첫 대화인 경우
     else {
-        // 대화 했음 표시!
-        gameState.hasTalkedToday[npcKey] = true;
+        gameState.hasTalkedToday[npcKey] = true; // 대화함 체크
 
-        // 1. UI 전체 복구 (숨겼던 입력창들 다시 보이게)
-        inputArea.classList.remove('hidden');
+        // ★ 입력창 설정: 모든 기능 활성화 (하지만 아직은 숨겨둠)
         keywordInput.classList.remove('hidden');
         sendBtn.classList.remove('hidden');
         giftBtn.classList.remove('hidden');
+        shouldShowInput = true; // 타자 끝나면 보여줘!
 
-        // 2. 대사 데이터 가져오기 (랜덤 X, 순차적 or 하루 고정)
+        // 대사 데이터 가져오기 (날짜별 -> 랜덤)
         let scriptData = null;
-        
-        // (1) 날짜별 고정 대사 우선
         if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
             scriptData = dailyScripts[gameState.day][npcKey];
-        } 
-        // (2) 고정 대사가 없다면 랜덤 대사 중 하나 가져오기
-        else if (randomDialogues[npcKey]) {
+        } else if (randomDialogues[npcKey]) {
             const weather = gameState.weather;
             const list = randomDialogues[npcKey][weather];
-            if(list) {
-                // ★ 여기서 랜덤으로 하나를 뽑아서 '고정'시킴
-                // 하지만 요구사항은 "하루에 대사 하나만"이므로,
-                // 이미 hasTalkedToday 체크를 했으니 매번 랜덤이어도 상관없음 
-                // (어차피 하루에 한 번만 진입하니까요!)
-                scriptData = list[Math.floor(Math.random() * list.length)];
-            }
+            if(list) scriptData = list[Math.floor(Math.random() * list.length)];
         }
 
-        // 데이터 없으면 기본값
         if (!scriptData) scriptData = [{ text: "안녕하세요.", emotion: "default" }];
         if (!Array.isArray(scriptData)) scriptData = [scriptData];
 
-        // 대화 시작
         dialogueQueue = scriptData;
         currentDialogueIndex = 0;
         showNextLine(npcKey);
@@ -523,18 +516,27 @@ function typeWriter(text, element, speed = 50) {
     }, speed);
 }
 
-// 타자 효과 즉시 완료 (스킵)
+// [교체] 타자 효과 종료 함수
 function finishTyping() {
     clearInterval(typingInterval);
     isTyping = false;
-    document.getElementById('dialogue-text').innerHTML = currentFullText;
+    document.getElementById('dialogue-text').innerHTML = currentFullText; // 전체 텍스트 표시
     
     const currentData = dialogueQueue[currentDialogueIndex];
     
+    // 1. 선택지가 있는 경우 -> 선택지 표시
     if (currentData.choices) {
-        renderChoices(currentData.choices); // 선택지 표시
-    } else {
-        document.getElementById('next-cursor').classList.remove('hidden'); // 커서 표시
+        renderChoices(currentData.choices);
+    } 
+    // 2. 선택지가 없는 경우
+    else {
+        // 커서 표시
+        document.getElementById('next-cursor').classList.remove('hidden');
+        
+        // ★ 핵심: 텍스트 출력이 끝났고, 입력창을 보여줘야 하는 상태라면 지금 보여줌!
+        if (shouldShowInput) {
+            document.getElementById('input-area').classList.remove('hidden');
+        }
     }
 }
 
@@ -732,8 +734,7 @@ function startNextDay() {
     }
     
     gameState.day++;
-    gameState.energy = 3; // 에너지 충전
-    gameState.hasGiftedToday = {}; // 선물 기록 초기화
+    gameState.energy = 4; // 에너지 충전
    // ★ [추가] 하루가 지났으니 기록 초기화
     gameState.hasGiftedToday = {}; 
     gameState.hasTalkedToday = {};
@@ -752,12 +753,13 @@ function startNextDay() {
    7. 엔딩 시스템 (Ending)
    ========================================================================== */
 
+// [수정] 엔딩 체크 함수
 function checkEnding() {
-    gameState.isEnding = true;
-    document.getElementById('night-overlay').classList.add('hidden');
-    document.getElementById('dialogue-overlay').classList.add('hidden');
+    gameState.isEnding = true; // 엔딩 모드 ON
+    document.getElementById('night-overlay').classList.add('hidden'); // 밤 화면 끄기
+    document.getElementById('dialogue-overlay').classList.add('hidden'); // 대화창 일단 끄기 (리셋용)
 
-    // 호감도 계산
+    // 호감도 정렬
     const sorted = Object.entries(gameState.affinities).sort((a, b) => b[1] - a[1]);
     const topNpcKey = sorted[0][0];
     const topScore = sorted[0][1];
@@ -766,45 +768,89 @@ function checkEnding() {
     const highAffinityCount = sorted.filter(item => item[1] >= 80).length;
 
     let endingData = null;
+    let targetNpc = null; // 엔딩 주인공 키
 
     if (highAffinityCount >= 2 && endingScripts.cheater) {
         endingData = endingScripts.cheater;
+        targetNpc = null; // 특수 엔딩은 NPC 없음
     } else if (topScore >= 80 && endingScripts[topNpcKey]) {
         endingData = endingScripts[topNpcKey];
+        targetNpc = topNpcKey; // 해당 NPC 지정
     } else {
-        endingData = endingScripts.normal; // 기본 엔딩
+        endingData = endingScripts.normal;
+        targetNpc = null;
     }
 
-    playEndingSequence(endingData);
+    // 엔딩 연출 시작 (데이터와 NPC키 전달)
+    playEndingSequence(endingData, targetNpc);
 }
 
-function playEndingSequence(data) {
-    if (!data) return;
+// 전역 변수 추가 (엔딩 데이터 임시 저장용)
+let currentEndingData = null;
 
+// [수정] 엔딩 연출 시작 (대화창 모드)
+function playEndingSequence(data, npcKey) {
+    if (!data) return;
+    
+    currentEndingData = data; // 나중에 팝업 띄울 때 쓰려고 저장
+    gameState.isEnding = true;
+
+    // 1. 대화창 띄우기
+    const overlay = document.getElementById('dialogue-overlay');
+    overlay.classList.remove('hidden');
+    
+    // 입력창 등 불필요한 UI 숨기기
+    document.getElementById('input-area').classList.add('hidden');
+    document.getElementById('choice-area').classList.add('hidden');
+
+    // 2. 텍스트를 줄바꿈(\n) 기준으로 나눠서 대화 큐에 넣기
+    // (script.js에 텍스트가 긴 문자열로 되어있다고 가정)
+    const lines = data.text.split('\n'); 
+    
+    dialogueQueue = lines.map(line => {
+        return { text: line, emotion: 'happy' }; // 표정은 일단 happy로 통일 (원하면 수정 가능)
+    });
+
+    // 3. 초상화 설정
+    const portraitImg = document.getElementById('current-portrait');
+    if (npcKey && npcs[npcKey]) {
+        // NPC 엔딩이면 그 NPC 얼굴 (happy 표정)
+        portraitImg.src = npcs[npcKey].portraits.happy || npcs[npcKey].portraits.default;
+        portraitImg.style.display = 'block';
+    } else {
+        // NPC 없는 엔딩(노멀/히든)이면 초상화 숨기거나 기본 이미지
+        portraitImg.style.display = 'none'; 
+    }
+
+    // 4. 첫 대사 출력
+    currentDialogueIndex = 0;
+    
+    // showNextLine은 npcKey가 필요하므로, 없으면 더미 객체를 만들어 처리하거나
+    // 여기서 직접 typeWriter를 호출합니다.
+    const textZone = document.getElementById('dialogue-text');
+    typeWriter(dialogueQueue[0].text, textZone);
+}
+
+// [신규] 대화가 다 끝나면 뜨는 최종 팝업
+function showFinalPopup() {
     const overlay = document.getElementById('ending-overlay');
     const title = document.getElementById('ending-title');
     const img = document.getElementById('ending-image');
-    const text = document.getElementById('ending-text');
+    const text = document.getElementById('ending-text'); // 팝업엔 텍스트 안 띄울 거면 비워둠
     const btn = document.getElementById('restart-btn');
 
-    title.innerText = data.title;
-    if (data.image) img.src = data.image;
-    text.innerText = ""; 
+    // 데이터 세팅
+    title.innerText = currentEndingData.title; // "누구와의 엔딩"
+    if (currentEndingData.image) img.src = currentEndingData.image; // 엔딩 일러스트
+    text.innerText = ""; // 팝업에는 텍스트 생략 (이미 대화로 다 봤으니)
 
+    // 대화창 닫고 팝업 열기
+    document.getElementById('dialogue-overlay').classList.add('hidden');
     overlay.classList.remove('hidden');
-
-    // 2초 뒤 텍스트 출력
-    setTimeout(() => {
-        let i = 0;
-        const fullText = data.text;
-        const endingTyping = setInterval(() => {
-            text.innerText += fullText.charAt(i);
-            i++;
-            if (i >= fullText.length) {
-                clearInterval(endingTyping);
-                setTimeout(() => { btn.classList.remove('hidden'); }, 1000);
-            }
-        }, 100);
-    }, 2000);
+    
+    // 버튼 표시
+    btn.classList.remove('hidden');
 }
+
+
 
