@@ -15,7 +15,7 @@ let gameState = {
     hasGiftedToday: {}, // 오늘 선물 줬는지 체크 (NPC별)
     hasTalkedToday: {}, // 오늘 대화했는지 체크 (NPC별)
     playerName: "농장주", // 플레이어 이름
-    isEnding: false // 엔딩 진행 중인지 여부
+    isEnding: false, // 엔딩 진행 중인지 여부
    // ★ [추가] 퀘스트 상태 저장 (target: 누구, item: 뭘 원하는지)
    activeQuest: null
 };
@@ -968,6 +968,7 @@ function showFinalPopup() {
     
     btn.classList.remove('hidden');
 }
+
 
 
 
