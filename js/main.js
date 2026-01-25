@@ -254,8 +254,8 @@ function renderInventorySlots() {
     if (isDeleteMode) grid.classList.add('delete-mode');
     else grid.classList.remove('delete-mode');
 
-    // 슬롯 16개 생성 (큰 가방)
-    for (let i = 0; i < 16; i++) {
+    // 슬롯 8개 생성 (큰 가방)
+    for (let i = 0; i < 8; i++) {
         const slot = document.createElement('div');
         slot.className = "item-slot";
         
@@ -348,7 +348,7 @@ function combineItems() {
         renderInventorySlots();
         updateUI();
     } else { 
-        alert("음.. 아무 일도 일어나지 않았습니다. (맞는 레시피가 없어요)"); 
+        alert("음.. 아무 일도 일어나지 않았습니다."); 
         selectedItems = [];
         renderInventorySlots();
     }
@@ -484,15 +484,21 @@ function openDialogue(npcKey) {
     }
 }
 
-// 다음 대사 출력 (타이핑 효과)
+// [수정] 다음 대사 출력 (NPC가 없을 때 안전장치 추가)
 function showNextLine(npcKey) {
-    const npc = npcs[npcKey];
     const data = dialogueQueue[currentDialogueIndex];
     
-    // 초상화 변경
+    // 초상화 변경 (NPC가 존재할 때만)
     const portraitImg = document.getElementById('current-portrait');
-    const emotion = data.emotion || 'default';
-    portraitImg.src = npc.portraits[emotion] || npc.portraits['default'];
+    if (npcKey && npcs[npcKey]) {
+        const npc = npcs[npcKey];
+        const emotion = data.emotion || 'default';
+        portraitImg.src = npc.portraits[emotion] || npc.portraits['default'];
+        portraitImg.style.display = 'block';
+    } else {
+        // NPC 정보가 없으면 초상화 숨김 (엔딩 나레이션 등)
+        portraitImg.style.display = 'none';
+    }
 
     // 텍스트 출력
     const textZone = document.getElementById('dialogue-text');
@@ -579,7 +585,7 @@ function sendKeyword(npcKey) {
         gameState.affinities[npcKey] += 10;
         dialogueQueue = Array.isArray(keywordData[input]) ? keywordData[input] : [keywordData[input]];
     } else {
-        dialogueQueue = [{ text: "음.. 그게 무슨 말인지 잘 모르겠어요.", emotion: "shock" }];
+        dialogueQueue = [{ text: "음.. 무슨 말인지 잘 모르겠어요.", emotion: "shock" }];
     }
     
     document.getElementById('keyword-input').value = "";
@@ -625,47 +631,46 @@ function giveGift(npcKey) {
     playSfx('success');
 }
 
-// 대화창 클릭 처리 (넘기기 / 닫기)
+// [수정] 대화창 클릭 처리 (엔딩 팝업 연결)
 document.getElementById('dialogue-overlay').onclick = (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
 
     if (isTyping) {
-        finishTyping(); // 스킵
+        finishTyping(); 
         return;
     }
 
+    // 다음 대사가 남아있으면
     if (currentDialogueIndex < dialogueQueue.length - 1) {
         currentDialogueIndex++;
         showNextLine(lastInteractedNPC);
         return;
     }
 
-    // 선택지가 있으면 닫지 않음
+    // 선택지가 있으면 대기
     if (dialogueQueue[currentDialogueIndex].choices) return;
 
-    // 대화 종료
-    if (!gameState.isEnding) {
-        const inputArea = document.getElementById('input-area');
-        
-        // 입력창이 떠 있으면 -> 닫기
-        if (!inputArea.classList.contains('hidden')) {
-            document.getElementById('dialogue-overlay').classList.add('hidden');
-            return;
-        }
-
-        // 입력창 보여주기 (대화 후 추가 행동 유도)
-        document.getElementById('next-cursor').classList.add('hidden');
-        inputArea.classList.remove('hidden');
-        document.getElementById('dialogue-text').innerText = ""; 
+    // ★ [핵심] 엔딩 모드이고 마지막 대사라면 -> 결과 팝업 표시
+    if (gameState.isEnding) {
+        showFinalPopup();
+        return;
     }
+
+    // 일반 대화 종료 처리
+    const inputArea = document.getElementById('input-area');
+    if (!inputArea.classList.contains('hidden')) {
+        document.getElementById('dialogue-overlay').classList.add('hidden');
+        return;
+    }
+
+    document.getElementById('next-cursor').classList.add('hidden');
+    inputArea.classList.remove('hidden');
+    document.getElementById('dialogue-text').innerText = ""; 
 };
 
-// 단순 대사 출력 (선물 반응 등)
 function displayDialogue(npcKey, dialogueObj) {
     dialogueQueue = [dialogueObj];
     currentDialogueIndex = 0;
-    
-    // 입력창 숨기고 대사 출력 시작
     document.getElementById('input-area').classList.add('hidden');
     showNextLine(npcKey);
 }
@@ -795,106 +800,65 @@ function playEndingSequence(data, npcKey) {
     
     currentEndingData = data; // 나중에 팝업 띄울 때 쓰려고 저장
     gameState.isEnding = true;
+   lastInteractedNPC = npcKey; // 엔딩 주인공 설정
 
-    // 1. 대화창 띄우기
+    // 1. UI 및 방해 요소 제거 (인벤토리, 상태바, 아이템 등)
+    document.getElementById('status-bar').style.display = 'none';
+    document.getElementById('control-panel').style.display = 'none'; 
+    document.getElementById('inventory-icon').classList.add('hidden');
+    document.getElementById('delete-toggle-btn').classList.add('hidden');
+
+    // 2. 화면에 떠있는 아이템과 NPC 지우기
+    document.getElementById('item-layer').innerHTML = "";
+    document.getElementById('npc-layer').innerHTML = "";
+
+    // 3. 엔딩 전용 배경 적용 (data.bg가 있으면)
+    if (data.bg) {
+        document.getElementById('location-view').style.backgroundImage = `url(${data.bg})`;
+    }
+
+    // 4. 대화창 띄우기
     const overlay = document.getElementById('dialogue-overlay');
     overlay.classList.remove('hidden');
     
-    // 입력창 등 불필요한 UI 숨기기
     document.getElementById('input-area').classList.add('hidden');
     document.getElementById('choice-area').classList.add('hidden');
-   // [수정] 대화창 클릭 이벤트
-document.getElementById('dialogue-overlay').onclick = (e) => {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
-
-    // 1. 타이핑 중이면 스킵
-    if (isTyping) {
-        finishTyping();
-        return;
-    }
-
-    // 2. 다음 대사가 남아있으면 넘기기
-    if (currentDialogueIndex < dialogueQueue.length - 1) {
-        currentDialogueIndex++;
-        
-        // 엔딩 중일 땐 npcKey가 없을 수도 있으니 예외 처리
-        const data = dialogueQueue[currentDialogueIndex];
-        const textZone = document.getElementById('dialogue-text');
-        typeWriter(data.text, textZone);
-        return;
-    }
-
-    // 3. 대사가 모두 끝났을 때
     
-    // ★ [추가된 부분] 엔딩 모드라면 -> 최종 팝업 띄우기
-    if (gameState.isEnding) {
-        showFinalPopup();
-        return;
-    }
-
-    // (일반 모드 로직 유지)
-    // 선택지가 있으면 닫지 않음
-    if (dialogueQueue[currentDialogueIndex].choices) return;
-
-    // 일반 대화 종료: 입력창 보여주기
-    const inputArea = document.getElementById('input-area');
-    if (!inputArea.classList.contains('hidden')) {
-        document.getElementById('dialogue-overlay').classList.add('hidden');
-        return;
-    }
-    document.getElementById('next-cursor').classList.add('hidden');
-    inputArea.classList.remove('hidden');
-    document.getElementById('dialogue-text').innerText = ""; 
-};
-
-    // 2. 텍스트를 줄바꿈(\n) 기준으로 나눠서 대화 큐에 넣기
-    // (script.js에 텍스트가 긴 문자열로 되어있다고 가정)
     const lines = data.text.split('\n'); 
     
     dialogueQueue = lines.map(line => {
-        return { text: line, emotion: 'happy' }; // 표정은 일단 happy로 통일 (원하면 수정 가능)
+        return { text: line, emotion: 'happy' }; 
     });
 
-    // 3. 초상화 설정
-    const portraitImg = document.getElementById('current-portrait');
-    if (npcKey && npcs[npcKey]) {
-        // NPC 엔딩이면 그 NPC 얼굴 (happy 표정)
-        portraitImg.src = npcs[npcKey].portraits.happy || npcs[npcKey].portraits.default;
-        portraitImg.style.display = 'block';
-    } else {
-        // NPC 없는 엔딩(노멀/히든)이면 초상화 숨기거나 기본 이미지
-        portraitImg.style.display = 'none'; 
-    }
-
-    // 4. 첫 대사 출력
     currentDialogueIndex = 0;
     
-    // showNextLine은 npcKey가 필요하므로, 없으면 더미 객체를 만들어 처리하거나
-    // 여기서 직접 typeWriter를 호출합니다.
-    const textZone = document.getElementById('dialogue-text');
-    typeWriter(dialogueQueue[0].text, textZone);
+    // 안전하게 첫 대사 출력 (showNextLine 사용)
+    showNextLine(lastInteractedNPC);
 }
 
-// [신규] 대화가 다 끝나면 뜨는 최종 팝업
+// 최종 팝업 (엔딩 결과 화면)
 function showFinalPopup() {
     const overlay = document.getElementById('ending-overlay');
     const title = document.getElementById('ending-title');
     const img = document.getElementById('ending-image');
-    const text = document.getElementById('ending-text'); // 팝업엔 텍스트 안 띄울 거면 비워둠
+    const text = document.getElementById('ending-text'); 
     const btn = document.getElementById('restart-btn');
 
-    // 데이터 세팅
-    title.innerText = currentEndingData.title; // "누구와의 엔딩"
-    if (currentEndingData.image) img.src = currentEndingData.image; // 엔딩 일러스트
-    text.innerText = ""; // 팝업에는 텍스트 생략 (이미 대화로 다 봤으니)
+    title.innerText = currentEndingData.title; 
+    if (currentEndingData.image) img.src = currentEndingData.image; 
+    text.innerText = ""; 
 
-    // 대화창 닫고 팝업 열기
     document.getElementById('dialogue-overlay').classList.add('hidden');
-    overlay.classList.remove('hidden');
     
-    // 버튼 표시
+    overlay.classList.remove('hidden');
+    // CSS 트랜지션을 위해 약간 지연 후 visible 클래스 추가
+    setTimeout(() => {
+        overlay.classList.add('visible');
+    }, 50);
+    
     btn.classList.remove('hidden');
 }
+
 
 
 
