@@ -227,7 +227,78 @@ const dailyScripts = {
     }
 };
 
-const randomDialogues = {
+// ★ 기존 randomDialogues 삭제!
+const affinityDialogues = {
+    sion: {
+        low: { // 0~29점
+            "맑음": [
+                { text: "아직은 좀 어색하네요.", emotion: "default" },
+                { text: "마을 회관 일은 항상 바쁩니다.", emotion: "default" }
+            ],
+            "비": [
+                { text: "비가 오네요. 우산은 챙기셨나요?", emotion: "default" }
+            ],
+            "벚꽃": [
+                { text: "꽃가루 알레르기 같은 건 없으시죠?", emotion: "default" }
+            ]
+        },
+        mid: { // 30~69점
+            "맑음": [
+                { text: "농장주님을 보면 기분이 좋아져요.", emotion: "happy" },
+                // [배열] 클릭하면 이어지는 대화
+                [
+                    { text: "오늘 날씨가 참 좋죠?", emotion: "happy" },
+                    { text: "당신과 산책하고 싶은 날씨네요.", emotion: "shy" }
+                ]
+            ],
+            "비": [
+                { text: "빗소리를 들으며 차 한잔하는 걸 좋아해요.", emotion: "happy" }
+            ],
+            "벚꽃": [
+                { text: "꽃잎이 떨어지는 게 참 예쁘네요.", emotion: "happy" }
+            ]
+        },
+        high: { // 70점 이상
+            "맑음": [
+                { text: "당신은 제게 정말 특별한 사람입니다.", emotion: "happy" },
+                { text: "하루 종일 당신 생각만 했어요.", emotion: "love" }
+            ],
+            "비": [
+                { text: "비 오는 날 당신이 곁에 있어 따뜻하네요.", emotion: "love" }
+            ],
+            "벚꽃": [
+                { text: "이 아름다운 풍경보다 당신이 더 눈부셔요.", emotion: "love" }
+            ]
+        }
+    },
+    
+    // 리쿠 예시 (나머지 멤버도 같은 구조로 추가)
+    riku: {
+        low: {
+            "맑음": [{ text: "안냐세여!", emotion: "default" }],
+            "비": [{ text: "비 시러여.. 축축해..", emotion: "sad" }],
+            "벚꽃": [{ text: "분홍색 눈이 내려여!", emotion: "happy" }]
+        },
+        mid: {
+            "맑음": [
+                [
+                    { text: "누나누나! 저기 봐바여!", emotion: "shock" },
+                    { text: "개미가 지나가여!!", emotion: "happy" }
+                ]
+            ],
+            "비": [{ text: "누나 우산 같이 써도 대여?", emotion: "shy" }],
+            "벚꽃": [{ text: "누나 머리에 꽃잎 붙어써여! 헤헤", emotion: "happy" }]
+        },
+        high: {
+            "맑음": [{ text: "누나! 리쿠가 세상에서 젤 조아해!!", emotion: "happy" }],
+            "비": [{ text: "비 와도 누나랑 있으면 죠아!", emotion: "happy" }],
+            "벚꽃": [{ text: "나랑 평생 꽃놀이 같이 가여 약속!", emotion: "happy" }]
+        }
+    }
+    // 유우시, 재희, 료, 사쿠야도 위와 똑같은 구조(low/mid/high -> 맑음/비/벚꽃)로 만드시면 됩니다.
+};
+
+// const randomDialogues = {
     riku: {
         맑음: [
             // 일반 대화
@@ -507,6 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
