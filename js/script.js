@@ -45,7 +45,7 @@ const npcs = {
         locations: { sunny: "shop", rainy: "saloon", blossom: "shop" },
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
-            shop: { top: "70%", left: "24%" },
+            shop: { top: "75%", left: "24%" },
             saloon: { top: "80%", left: "16%" }
         }
     },
@@ -431,6 +431,7 @@ const questScripts = {
     },
     // 나머지 멤버들도 같은 형식으로 추가 (jaehee, ryo, sakuya 등)
 };
+
 
 
 
