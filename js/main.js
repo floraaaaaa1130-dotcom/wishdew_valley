@@ -125,7 +125,7 @@ function closeModal(id) {
 
 function move(locId) {
     if (gameState.energy <= 0) { 
-        alert("에너지가 부족합니다! 잠을 자야 해요."); 
+        showAlert("에너지가 부족합니다! 잠을 자야 해요."); 
         showSleepAlert();
         return;
     }
@@ -147,14 +147,21 @@ function renderLocation() {
     const view = document.getElementById('location-view');
     view.style.backgroundImage = `url(${loc.bg})`;
 
+   / 1. 아이템(채집물) 그리기 - [수정됨: 랜덤 3개만]
     const itemLayer = document.getElementById('item-layer');
     itemLayer.innerHTML = "";
-    if (loc.items) {
-        loc.items.forEach(itemName => {
+    
+    if (loc.items && loc.items.length > 0) {
+        // (1) 배열을 섞는다 (Shuffle)
+        const shuffled = [...loc.items].sort(() => Math.random() - 0.5);
+        // (2) 앞에서 3개만 자른다 (아이템이 3개보다 적으면 있는 만큼만 나옴)
+        const selectedItems = shuffled.slice(0, 3);
+
+        // (3) 선택된 아이템만 화면에 뿌린다
+        selectedItems.forEach(itemName => {
             createItemElement(itemName);
         });
     }
-
     const npcLayer = document.getElementById('npc-layer');
     npcLayer.innerHTML = "";
     
@@ -201,7 +208,7 @@ function createItemElement(itemName) {
 
 function collectItem(name) {
     if (gameState.inventory.length >= 8) { 
-        alert("가방이 꽉 찼어요!"); 
+        showAlert("가방이 꽉 찼어요!"); 
         return; 
     }
     gameState.inventory.push(name);
@@ -283,7 +290,7 @@ function selectSlot(index) {
 
 function combineItems() {
     if (selectedItems.length < 2) { 
-        alert("재료를 2개 이상 선택해 주세요!"); 
+        showAlert("재료를 2개 이상 선택해 주세요!"); 
         return; 
     }
     const recipe = recipes.find(r => 
@@ -298,12 +305,12 @@ function combineItems() {
             if (idx > -1) gameState.inventory.splice(idx, 1);
         });
         gameState.inventory.push(recipe.result);
-        alert(`짠! [${recipe.result}]을(를) 만들었어요!`);
+        showAlert(`짠! [${recipe.result}]을(를) 만들었어요!`);
         selectedItems = [];
         renderInventorySlots();
         updateUI();
     } else { 
-        alert("음.. 아무 일도 일어나지 않았습니다."); 
+        showAlert("음.. 아무 일도 일어나지 않았습니다."); 
         selectedItems = [];
         renderInventorySlots();
     }
@@ -332,7 +339,7 @@ function closeItemInfo() {
 function selectForCombine() {
     if (!currentPopupItem) return;
     if (selectedItems.includes(currentPopupItem)) {
-        alert("이미 담은 아이템입니다!");
+        showAlert("이미 담은 아이템입니다!");
     } else {
         selectedItems.push(currentPopupItem);
         renderInventorySlots(); 
@@ -347,7 +354,7 @@ function toggleDeleteMode() {
     if (isDeleteMode) {
         btn.classList.add('active');
         grid.classList.add('delete-mode');
-        alert("버릴 아이템을 클릭하세요.");
+        showAlert("버릴 아이템을 클릭하세요.");
     } else {
         btn.classList.remove('active');
         grid.classList.remove('delete-mode');
@@ -564,11 +571,11 @@ function checkKeywordAnswer(currentData) {
 
 function giveGift(npcKey) {
     if (selectedSlotIndex === null || !gameState.inventory[selectedSlotIndex]) {
-        alert("먼저 인벤토리(가방)에서 줄 선물을 선택해주세요!");
+        showAlert("먼저 인벤토리(가방)에서 줄 선물을 선택해주세요!");
         return;
     }
     if (gameState.hasGiftedToday[npcKey]) {
-        alert("오늘은 이미 선물을 줬어요!");
+        showAlert("오늘은 이미 선물을 줬어요!");
         return;
     }
 
@@ -842,4 +849,19 @@ function showFinalPopup() {
     }, 50);
     
     btn.classList.remove('hidden');
+}
+
+// [신규] 커스텀 알림창 띄우기
+function showAlert(message) {
+    const modal = document.getElementById('alert-modal');
+    const msgBox = document.getElementById('alert-msg');
+    msgBox.innerText = message;
+    modal.classList.remove('hidden');
+    playSfx('click'); // 알림음 (선택 사항)
+}
+
+// [신규] 커스텀 알림창 닫기
+function closeAlert() {
+    document.getElementById('alert-modal').classList.add('hidden');
+    playSfx('click');
 }
