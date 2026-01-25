@@ -501,12 +501,7 @@ function showNextLine(npcKey) {
         // NPC가 없을 때 (엔딩 등)
         portraitDiv.style.display = 'none'; 
     }
-
-    // 텍스트 출력
-    const textZone = document.getElementById('dialogue-text');
-    let textContent = data.text.replace(/{user}/g, gameState.playerName);
-    typeWriter(textContent, textZone);
-}
+   
     // 텍스트 출력
     const textZone = document.getElementById('dialogue-text');
     let textContent = data.text.replace(/{user}/g, gameState.playerName);
@@ -860,6 +855,7 @@ function showFinalPopup() {
     
     btn.classList.remove('hidden');
 }
+
 
 
 
