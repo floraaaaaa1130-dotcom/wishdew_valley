@@ -127,6 +127,17 @@ const dailyScripts = {
         riku: [
             { text: "누나 안냥 ! 새로 이사 왓어여??", emotion: "happy" },
             { text: "리쿠는 리쿠에여 잘 부타캐여 히히", emotion: "happy" }
+            { 
+                text: "누나는 무슨 색이 제일 조아여?", 
+                emotion: "shy",
+                type: "keyword", // ★ 여기가 핵심! 키워드 입력 타입 지정
+                answers: {
+                    // 키워드 : { 반응 대사 데이터 }
+                    "노랑": { text: "와! 저도 노란색 제일 좋아하는데! 통했네요!", emotion: "happy", score: 10 },
+                    "노란": { text: "와! 저도 노란색 제일 좋아하는데! 통했네요!", emotion: "happy", score: 10 },
+                    // 그 외 답변일 때
+                    "default": { text: "아~ 그 색을 좋아하는구낭", emotion: "default", score: 0 }
+                }
         ],
         yushi: [
             { text: "에.. 새로 오신 농장주님이시군요 ?", emotion: "default" },
@@ -300,4 +311,5 @@ const endingScripts = {
         text: "7일간의 체험이 끝났습니다.\n특별한 인연은 만들지 못했지만, 훌륭한 농장주가 되었습니다.\n\n- The End -"
     }
 };
+
 
