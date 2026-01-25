@@ -149,62 +149,63 @@
                 </div>
             </div>
             <div id="portrait-setup" style="display:none; text-align: center; padding-top: 50px;">
-    <h3 id="setup-title">멤버 사진 설정 (1/6)</h3>
-    <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+    <h3 id="setup-title" style="color: white; text-shadow: 2px 2px 2px #000;">멤버 사진 설정 (1/6)</h3>
+    
+    <p style="color: white; font-size: 16px; margin-bottom: 20px; text-shadow: 1px 1px 2px #000;">
         사진을 업로드하면 적용되고, 넘어가면 기본 이미지가 사용됩니다.
     </p>
 
     <div id="step-sion" class="setup-step">
-        <h2 style="color: var(--deep-green);">1. 시온 (Sion)</h2>
+        <h2 style="color: white; text-shadow: 2px 2px 2px #000;">1. 시온 (Sion)</h2>
         <img id="preview-sion" src="assets/images/portraits/sion_default.png" 
-             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
+             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); object-fit: cover;">
         <br><br>
         <input type="file" id="upload-sion" accept="image/*">
     </div>
 
     <div id="step-riku" class="setup-step" style="display:none;">
-        <h2 style="color: var(--deep-green);">2. 리쿠 (Riku)</h2>
+        <h2 style="color: white; text-shadow: 2px 2px 2px #000;">2. 리쿠 (Riku)</h2>
         <img id="preview-riku" src="assets/images/portraits/riku_default.png" 
-             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
+             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); object-fit: cover;">
         <br><br>
         <input type="file" id="upload-riku" accept="image/*">
     </div>
 
     <div id="step-yushi" class="setup-step" style="display:none;">
-        <h2 style="color: var(--deep-green);">3. 유우시 (Yushi)</h2>
+        <h2 style="color: white; text-shadow: 2px 2px 2px #000;">3. 유우시 (Yushi)</h2>
         <img id="preview-yushi" src="assets/images/portraits/yushi_default.png" 
-             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
+             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); object-fit: cover;">
         <br><br>
         <input type="file" id="upload-yushi" accept="image/*">
     </div>
 
     <div id="step-jaehee" class="setup-step" style="display:none;">
-        <h2 style="color: var(--deep-green);">4. 재희 (Jaehee)</h2>
+        <h2 style="color: white; text-shadow: 2px 2px 2px #000;">4. 재희 (Jaehee)</h2>
         <img id="preview-jaehee" src="assets/images/portraits/jaehee_default.png" 
-             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
+             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); object-fit: cover;">
         <br><br>
         <input type="file" id="upload-jaehee" accept="image/*">
     </div>
 
     <div id="step-ryo" class="setup-step" style="display:none;">
-        <h2 style="color: var(--deep-green);">5. 료 (Ryo)</h2>
+        <h2 style="color: white; text-shadow: 2px 2px 2px #000;">5. 료 (Ryo)</h2>
         <img id="preview-ryo" src="assets/images/portraits/ryo_default.png" 
-             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
+             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); object-fit: cover;">
         <br><br>
         <input type="file" id="upload-ryo" accept="image/*">
     </div>
 
     <div id="step-sakuya" class="setup-step" style="display:none;">
-        <h2 style="color: var(--deep-green);">6. 사쿠야 (Sakuya)</h2>
+        <h2 style="color: white; text-shadow: 2px 2px 2px #000;">6. 사쿠야 (Sakuya)</h2>
         <img id="preview-sakuya" src="assets/images/portraits/sakuya_default.png" 
-             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover;">
+             style="width: 150px; height: 150px; border: 4px solid white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); object-fit: cover;">
         <br><br>
         <input type="file" id="upload-sakuya" accept="image/*">
     </div>
 
     <br><br>
     <button id="next-step-btn" onclick="nextMemberStep()" 
-            style="padding: 15px 40px; font-size: 18px; background: var(--deep-green); color: white; border: none; border-radius: 30px; cursor: pointer;">
+            style="padding: 15px 40px; font-size: 18px; background: var(--deep-green); color: white; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
         다음 멤버 설정 >
     </button>
 </div>
@@ -246,6 +247,7 @@
     
 </body>
 </html>
+
 
 
 
