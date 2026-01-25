@@ -27,7 +27,7 @@
 body {
     margin: 0; padding: 0;
     background-color: #fce4ec;
-    font-family: 'DungGeunMo', 'SUIT', sans-serif;
+    font-family: 'MyGameFont', 'DungGeunMo', 'SUIT', sans-serif;
     display: flex; justify-content: center; align-items: center;
     height: 100vh; overflow: hidden;
     cursor: url('../assets/images/ui/star_cursor.png'), auto;
@@ -523,14 +523,12 @@ button:active { transform: translateY(1px); box-shadow: none; }
 /* 1. 비 오는 날: 어두운 배경 + 비 GIF */
 #location-view.weather-rain::after {
     background-color: rgba(0, 0, 0, 0.3); /* 검은색 30% 투명도 (화면 어둡게) */
-    background-image: url('../assets/images/effects/rain.gif');
-    opacity: 0.8; /* 너무 진하면 조절하세요 */
+    background-image: url('../assets/effects/rain.gif');
+    opacity: 0.7; /* 너무 진하면 조절하세요 */
 }
 
 /* 2. 벚꽃 날리는 날: 분홍빛 배경 + 벚꽃 GIF */
 #location-view.weather-blossom::after {
     background-color: rgba(255, 192, 203, 0.15); /* 연한 핑크색 틴트 */
-    background-image: url('../assets/images/effects/blossom.gif');
-    /* mix-blend-mode: screen; */ /* 벚꽃 GIF 배경이 검정이면 이 주석을 푸세요 */
+    background-image: url('../assets/effects/blossom.gif');
 }
-
