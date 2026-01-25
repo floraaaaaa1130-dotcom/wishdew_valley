@@ -217,6 +217,7 @@ const dailyScripts = {
             { text: "축제라 그런지 다들 즐거워 보여서 좋네요.", emotion: "happy" },
             { text: "일 생각은 잠시 잊어도 돼요 !", emotion: "happy" }
         ]
+     }
     },
     
 
@@ -232,7 +233,7 @@ const affinityDialogues = {
                 { text: "비가 오네요.", emotion: "default" }
             ],
             "벚꽃": [
-                { text: "산책 나오셨어요?", emotion: "default" }
+                { text: "산책 나오셨어요?", emotion: "default" },
                 { text: "저는 할 일이 좀 남아서요. 먼저 가보세요.", emotion: "default" }
             ]
         },
@@ -558,6 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
