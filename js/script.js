@@ -218,7 +218,7 @@ const dailyScripts = {
             { text: "일 생각은 잠시 잊어도 돼요 !", emotion: "happy" }
         ]
      }
-    },
+    };
     
 
 // ★ 기존 randomDialogues 삭제!
@@ -226,8 +226,10 @@ const affinityDialogues = {
     sion: {
         very_low: {
             "맑음": [
+                [
                 { text: "...", emotion: "default" },
                 { text: "(가볍게 목례만 한다.)", emotion: "default" }
+                ]
             ],
             "비": [
                 { text: "비가 오네요.", emotion: "default" }
@@ -559,6 +561,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
 
 
 
