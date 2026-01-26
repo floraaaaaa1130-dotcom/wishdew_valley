@@ -208,9 +208,8 @@ const dailyScripts = {
                     { label: "사쿠빵쨩ㅎㅎ", score: 10, reply: "맞아요 ! 종종 밤에 와서 하늘을 보는데 정말 예뻐요 ^_^ 다음에 같이 봐요 ~" }
                 ]
             },
-        ]
-        
-    };
+        ] 
+    },
 
 // ★ 기존 randomDialogues 삭제!
 const affinityDialogues = {
@@ -884,6 +883,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
