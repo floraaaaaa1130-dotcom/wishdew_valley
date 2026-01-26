@@ -66,9 +66,9 @@ function playSfx(type) {
     }
 }
 
-function changeBgm(fileName) {
+function changeBgm(FileName) {
     if (currentBgm) currentBgm.pause();
-    currentBgm = new Audio(`assets/sounds/bgm/${fileName}`);
+    currentBgm = new Audio(`assets/sounds/bgm/${FileName}`);
     currentBgm.loop = true;
     currentBgm.play().catch(e => console.log("BGM 파일 없음"));
 }
@@ -1089,6 +1089,7 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
 
 
 
