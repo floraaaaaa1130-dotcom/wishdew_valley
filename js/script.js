@@ -295,7 +295,7 @@ const affinityDialogues = {
                 { text: "벚꽃 비가 정말 예쁘죠?", emotion: "default" }
                 ],
                 { 
-                text: "(떨어지는 벚꽃잎을 잡으려다 놓친다) "아... 쉽지 않네요."", 
+                text: "(떨어지는 벚꽃잎을 잡으려다 놓친다) 아... 쉽지 않네요.", 
                 emotion: "happy",
                 choices: [
                     { label: "무슨 소원 비시려고요?ㅎㅎ", score: 3, reply: "음... 더 나은 사람이 되게 해달라고요." },
@@ -308,7 +308,7 @@ const affinityDialogues = {
         
         mid: { // 30~69점
             "맑음": [
-                { text: ""왔어요? 마침 심심했는데 잘됐다. 저랑 잠깐 농땡이... 아니, 휴식 좀 취할래요?"", emotion: "happy" },
+                { text: "왔어요? 마침 심심했는데 잘됐다. 저랑 잠깐 농땡이... 아니, 휴식 좀 취할래요?", emotion: "happy" },
                 { 
                 text: "오늘따라 일이 손에 안 잡히네요. 자꾸 딴생각이 들어서.", 
                 emotion: "happy",
@@ -343,7 +343,7 @@ const affinityDialogues = {
         high: { // 70점 이상
             "맑음": [
                 { text: "오늘은 왜 이렇게 늦게 왔어요? 시계만 쳐다보고 있었잖아요. ...농담이에요ㅎㅎ", emotion: "happy" },
-                { text: ""내일도 날씨 맑대요. 내일도... 회관 들러주실 거죠?", emotion: "love" }
+                { text: "내일도 날씨 맑대요. 내일도... 회관 들러주실 거죠?", emotion: "love" }
             ],
             
             "비": [
@@ -612,6 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
