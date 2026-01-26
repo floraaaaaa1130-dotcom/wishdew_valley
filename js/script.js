@@ -520,7 +520,8 @@ const questScripts = {
    [추가] 이미지 업로드 및 Cropper.js 처리 로직
    ========================================================================== */
 
-let currentCropper = null;
+// window 객체에 할당하여 main.js에서도 접근 가능하게 수정
+window.window.currentCropper = null;
 let currentMemberId = null;
 
 // HTML이 모두 로드된 후 실행
@@ -552,12 +553,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         if(modal) modal.style.display = 'flex';
 
                         // 3. 기존 크로퍼 초기화
-                        if (currentCropper) {
-                            currentCropper.destroy();
+                        if (window.currentCropper) {
+                            window.currentCropper.destroy();
                         }
 
                         // 4. 새 크로퍼 생성 (1:1 비율 강제)
-                        currentCropper = new Cropper(imageToCrop, {
+                        window.currentCropper = new Cropper(imageToCrop, {
                             aspectRatio: 1, 
                             viewMode: 1,
                             minContainerWidth: 300,
@@ -575,9 +576,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // [자르기 & 저장 버튼 클릭 시]
     if (btnCrop) {
         btnCrop.addEventListener('click', function() {
-            if (currentCropper && currentMemberId) {
+            if (window.currentCropper && currentMemberId) {
                 // 자른 이미지를 Base64 데이터로 변환
-                const croppedCanvas = currentCropper.getCroppedCanvas({
+                const croppedCanvas = window.currentCropper.getCroppedCanvas({
                     width: 200, // 게임 내 표시될 크기
                     height: 200
                 });
@@ -595,8 +596,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // 3) 정리
                 modal.style.display = 'none';
-                currentCropper.destroy();
-                currentCropper = null;
+                window.currentCropper.destroy();
+                window.currentCropper = null;
             }
         });
     }
@@ -605,13 +606,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnCancel) {
         btnCancel.addEventListener('click', function() {
             if(modal) modal.style.display = 'none';
-            if (currentCropper) {
-                currentCropper.destroy();
-                currentCropper = null;
+            if (window.currentCropper) {
+                window.currentCropper.destroy();
+                window.currentCropper = null;
             }
         });
     }
 });
+
 
 
 
