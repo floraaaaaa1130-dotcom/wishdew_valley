@@ -550,25 +550,34 @@ document.addEventListener('DOMContentLoaded', function() {
                         // 2. 모달 띄우기 (순서 중요: display가 none이면 크로퍼가 크기를 못 잡음)
                         if(modal) modal.style.display = 'flex';
 
-                        // 3. 이미지 소스 설정
-                        imageToCrop.src = event.target.result;
+// 3. 이미지 소스 설정
+imageToCrop.src = event.target.result;
 
-                        // ★ [수정 핵심] 이미지가 로드된 "직후"에 크로퍼를 붙여야 함
-                        imageToCrop.onload = function() {
-                            // 기존 크로퍼 초기화
-                            if (currentCropper) {
-                                currentCropper.destroy();
-                            }
-                            // 새 크로퍼 생성
-                            currentCropper = new Cropper(imageToCrop, {
-                                aspectRatio: 1, 
-                                viewMode: 1,
-                                minContainerWidth: 300,
-                                minContainerHeight: 300,
-                                autoCropArea: 1 // 이미지를 꽉 채우게 선택
-                            });
-                        };
-                    };
+// 🔥 이미지 로드 보장 방식으로 변경
+imageToCrop.addEventListener(
+    'load',
+    function handleLoad() {
+        // 기존 크로퍼 초기화
+        if (currentCropper) {
+            currentCropper.destroy();
+            currentCropper = null;
+        }
+
+        // 새 크로퍼 생성
+        currentCropper = new Cropper(imageToCrop, {
+            aspectRatio: 1,
+            viewMode: 1,
+            minContainerWidth: 300,
+            minContainerHeight: 300,
+            autoCropArea: 1
+        });
+
+        // ★ 한 번만 실행되게 제거
+        imageToCrop.removeEventListener('load', handleLoad);
+    },
+    { once: true }
+);
+                    
                     reader.readAsDataURL(file);
                 }
                 // 같은 파일 다시 선택 가능하게 초기화
@@ -617,6 +626,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
