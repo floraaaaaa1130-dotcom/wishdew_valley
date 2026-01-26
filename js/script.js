@@ -521,7 +521,7 @@ const questScripts = {
    ========================================================================== */
 
 // window 객체에 할당하여 main.js에서도 접근 가능하게 수정
-window.window.currentCropper = null;
+window.currentCropper = null;
 let currentMemberId = null;
 
 // HTML이 모두 로드된 후 실행
@@ -613,6 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
