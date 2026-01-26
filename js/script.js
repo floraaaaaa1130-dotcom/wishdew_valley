@@ -218,7 +218,7 @@ const dailyScripts = {
             { text: "일 생각은 잠시 잊어도 돼요 !", emotion: "happy" }
         ]
      }
-    };
+    },
     
 
 // ★ 기존 randomDialogues 삭제!
@@ -226,10 +226,8 @@ const affinityDialogues = {
     sion: {
         very_low: {
             "맑음": [
-                [
                 { text: "...", emotion: "default" },
                 { text: "(가볍게 목례만 한다.)", emotion: "default" }
-                ]
             ],
             "비": [
                 { text: "비가 오네요.", emotion: "default" }
@@ -239,7 +237,6 @@ const affinityDialogues = {
                 { text: "저는 할 일이 좀 남아서요. 먼저 가보세요.", emotion: "default" }
             ]
         },
-        
         low: {
             "맑음": [
                 [
@@ -270,86 +267,36 @@ const affinityDialogues = {
             "비": [
                 { text: "비가 오니 마을이 조용하네요. 빗소리 들으면서 업무 보는 것도 좋아요.", emotion: "default" },
                 { text: "우산 쓰고 다니세요. 감기 걸리면 본인만 손해니까요.", emotion: "default" },
-                { 
-                text: "비 오는 날은 습기 때문에 책 관리가 까다로워요. 제습기라도 하나 더 놔야 하나...", 
-                emotion: "happy",
-                choices: [
-                    { label: "제가 좀 도와드릴까요?", score: 5, reply: "어... 괜찮으시겠어요? 감사합니다. 다음에 커피라도 한 잔 살게요." },
-                    { label: "에궁ㅠㅠ 수고가 많으시네요!", score: 0, reply: "뭘요. 제 일이니까 열심히 해야죠." }
-                ]
-            },
-                { 
-                text: "비가 계속 오니까 따뜻한 게 마시고 싶네요.", 
-                emotion: "happy",
-                choices: [
-                    { label: "저도요. 아메리카노 먹고 싶어요!", score: 5, reply: "오, 저도 아메리카노 생각하고 있었어요. 커피 좋아하시는구나." },
-                    { label: "저도요. 캐모마일차 먹고 싶어요!", score: 0, reply: "그렇구나. 상점에 차 종류가 꽤 많은데 보셨어요?" },
-                    { label: "저도요. 핫초코 먹고 싶어요!", score: 3, reply: "ㅋㅋ다음에 료랑 같이 회관 놀러오세요. 핫초코 타드릴게요." }
-                ]
-            },
             ],
             
             "벚꽃": [
-                [
-                { text: "잠시 머리 좀 식히러 나왔어요. 회관에만 있으면 답답할 때가 있어서요.", emotion: "happy" },
-                { text: "벚꽃 비가 정말 예쁘죠?", emotion: "default" }
-                ],
-                { 
-                text: "(떨어지는 벚꽃잎을 잡으려다 놓친다) 아... 쉽지 않네요.", 
-                emotion: "happy",
-                choices: [
-                    { label: "무슨 소원 비시려고요?ㅎㅎ", score: 3, reply: "음... 더 나은 사람이 되게 해달라고요." },
-                    { label: "아 그거 그렇게 하는 거 아닌데", score: 0, reply: "네? 그럼 뭐 어떻게 해야하죠..." },
-                    { label: "(벚꽃잎을 하나 잡아 건넨다.)", score: 5, reply: "어... 저 주시는 거예요? 감사합니다. {user} 님도 같이 소원 빌어요." }
-                ]
-            }
+                { text: "꽃가루 알레르기 같은 건 없으시죠?", emotion: "default" }
             ]
         },
-        
         mid: { // 30~69점
             "맑음": [
-                { text: "왔어요? 마침 심심했는데 잘됐다. 저랑 잠깐 농땡이... 아니, 휴식 좀 취할래요?", emotion: "happy" },
-                { 
-                text: "오늘따라 일이 손에 안 잡히네요. 자꾸 딴생각이 들어서.", 
-                emotion: "happy",
-                choices: [
-                    { label: "무슨 생각 하는데요?", score: 3, reply: "음... 그냥 맛있는 거 먹고 싶다는 생각? 퀸아망에 아아라던가." },
-                    { label: "어허. 집중력 부족.", score: 0, reply: "으... 팩트폭력 너무 아픈데요." },
-                    { label: "그런 날은 그냥 푹 쉬거나 노는 것도 방법이에요!", score: 5, reply: "오... 이도저도 아닌 것보단 그게 낫겠네요. 근데 저랑 놀아주실 거예요?" }
+                { text: "농장주님을 보면 기분이 좋아져요.", emotion: "happy" },
+                // [배열] 클릭하면 이어지는 대화
+                [
+                    { text: "오늘 날씨가 참 좋죠?", emotion: "happy" },
+                    { text: "당신과 산책하고 싶은 날씨네요.", emotion: "shy" }
                 ]
-                },
-                { 
-                text: "저 방금 스타주점 다녀왔는데 뭐 샀게요?", 
-                emotion: "shy",
-                type: "keyword", // ★ 여기가 핵심! 키워드 입력 타입 지정
-                answers: {
-                    "아메리카노": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 5 },
-                    "아아": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 5 },
-                    "커피": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 5 },
-                }
             ],
-            
             "비": [
-                { text: "비 오니까 파전에 막걸... 아니, 따뜻한 커피 한 잔 하고 싶네요 ㅎㅎ", emotion: "happy" },
-                { text: "...좀 전에 천둥칠 때 제 쪽 안 보셨죠? 못 봤다고 해주세요.", emotion: "happy" }
+                { text: "빗소리를 들으며 차 한잔하는 걸 좋아해요.", emotion: "happy" }
             ],
-            
             "벚꽃": [
-                { text: "옛날엔 여기서 숨바꼭질하고 놀았는데. 저 꽤 잘 숨어요. 찾아볼래요?", emotion: "happy" },
-                { text: "어, 머리에 꽃잎 붙었다. ...가만히 있어봐요.", emotion: "happy" }
+                { text: "꽃잎이 떨어지는 게 참 예쁘네요.", emotion: "happy" }
             ]
         },
-        
         high: { // 70점 이상
             "맑음": [
-                { text: "오늘은 왜 이렇게 늦게 왔어요? 시계만 쳐다보고 있었잖아요. ...농담이에요ㅎㅎ", emotion: "happy" },
-                { text: "내일도 날씨 맑대요. 내일도... 회관 들러주실 거죠?", emotion: "love" }
+                { text: "당신은 제게 정말 특별한 사람입니다.", emotion: "happy" },
+                { text: "하루 종일 당신 생각만 했어요.", emotion: "love" }
             ],
-            
             "비": [
                 { text: "비 오는 날 당신이 곁에 있어 따뜻하네요.", emotion: "love" }
             ],
-            
             "벚꽃": [
                 { text: "이 아름다운 풍경보다 당신이 더 눈부셔요.", emotion: "love" }
             ]
@@ -520,8 +467,7 @@ const questScripts = {
    [추가] 이미지 업로드 및 Cropper.js 처리 로직
    ========================================================================== */
 
-// window 객체에 할당하여 main.js에서도 접근 가능하게 수정
-window.currentCropper = null;
+let currentCropper = null;
 let currentMemberId = null;
 
 // HTML이 모두 로드된 후 실행
@@ -553,12 +499,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         if(modal) modal.style.display = 'flex';
 
                         // 3. 기존 크로퍼 초기화
-                        if (window.currentCropper) {
-                            window.currentCropper.destroy();
+                        if (currentCropper) {
+                            currentCropper.destroy();
                         }
 
                         // 4. 새 크로퍼 생성 (1:1 비율 강제)
-                        window.currentCropper = new Cropper(imageToCrop, {
+                        currentCropper = new Cropper(imageToCrop, {
                             aspectRatio: 1, 
                             viewMode: 1,
                             minContainerWidth: 300,
@@ -576,9 +522,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // [자르기 & 저장 버튼 클릭 시]
     if (btnCrop) {
         btnCrop.addEventListener('click', function() {
-            if (window.currentCropper && currentMemberId) {
+            if (currentCropper && currentMemberId) {
                 // 자른 이미지를 Base64 데이터로 변환
-                const croppedCanvas = window.currentCropper.getCroppedCanvas({
+                const croppedCanvas = currentCropper.getCroppedCanvas({
                     width: 200, // 게임 내 표시될 크기
                     height: 200
                 });
@@ -596,8 +542,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // 3) 정리
                 modal.style.display = 'none';
-                window.currentCropper.destroy();
-                window.currentCropper = null;
+                currentCropper.destroy();
+                currentCropper = null;
             }
         });
     }
@@ -606,20 +552,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnCancel) {
         btnCancel.addEventListener('click', function() {
             if(modal) modal.style.display = 'none';
-            if (window.currentCropper) {
-                window.currentCropper.destroy();
-                window.currentCropper = null;
+            if (currentCropper) {
+                currentCropper.destroy();
+                currentCropper = null;
             }
         });
     }
 });
-
-
-
-
-
-
-
 
 
 
