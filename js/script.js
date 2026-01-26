@@ -461,13 +461,13 @@ const affinityDialogues = {
             ],
             "벚꽃": [
                 {
-                    text: "나중에 은퇴하면 어디서 살고 싶어요?"
+                    text: "나중에 은퇴하면 어디서 살고 싶어요?",
                     emotion: "happy",
                     type: "keyword",
                     answers: {
                         "시골": { text: "저돈데. 한적한 곳에서 좋아하는 사람들이랑... 생각만 해도 좋네요.", emotion: "happy", score: 5 },
-                        "바다": { text: "저도요! 사실 고향이 바닷가 마을이거든요. ...다음에 {uesr} 님도 초대하고 싶어요.", emotion: "happy", score: 5 },
-                        "바닷가": { text: "저도요! 사실 고향이 바닷가 마을이거든요. ...다음에 {uesr} 님도 초대하고 싶어요.", emotion: "happy", score: 5 },
+                        "바다": { text: "저도요! 사실 고향이 바닷가 마을이거든요. ...다음에 {user} 님도 초대하고 싶어요.", emotion: "happy", score: 5 },
+                        "바닷가": { text: "저도요! 사실 고향이 바닷가 마을이거든요. ...다음에 {user} 님도 초대하고 싶어요.", emotion: "happy", score: 5 },
                         "도시": { text: "도시라... 편리하긴 하죠. 전 그래도 여기가 더 좋은 것 같아요.", emotion: "default", score: 3 },
                         "너랑": { text: "...! 그런 멘트는 어디서 배우시는 거예요...", emotion: "love", score: 15 },
                         "시온": { text: "...! 그런 멘트는 어디서 배우시는 거예요...", emotion: "love", score: 15 }
@@ -727,7 +727,7 @@ const endingScripts = {
     sion: {
         title: "시온과의 따뜻한 티타임",
         image: "assets/images/portraits/sion_happy.png",
-        text: "어, {user}님. 아직 안 가셨네요? 해 졌는데.\n\기다려봐요. 농장까지 같이 가요. 가로등도 별로 없어서 위험해요.\n...저기, 혹시 이번 주말에 시간 괜찮으세요?\n얼마 전에 진짜 괜찮은 원두를 구했거든요. 향이 진짜 좋은데...\n제일 먼저 {user}님한테 내려주고 싶어요. ...우리 집 놀러 올래요?\n맛있는 커피랑, 귀여운 소들이랑... 그리고 저도 기다리고 있을게요."
+        text: "어, {user}님. 아직 안 가셨네요? 해 졌는데.\n기다려봐요. 농장까지 같이 가요. 가로등도 별로 없어서 위험해요.\n...저기, 혹시 이번 주말에 시간 괜찮으세요?\n얼마 전에 진짜 괜찮은 원두를 구했거든요. 향이 진짜 좋은데...\n제일 먼저 {user}님한테 내려주고 싶어요. ...우리 집 놀러 올래요?\n맛있는 커피랑, 귀여운 소들이랑... 그리고 저도 기다리고 있을게요."
     },
     riku: {
         title: "리쿠의 영원한 단짝",
@@ -884,6 +884,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
