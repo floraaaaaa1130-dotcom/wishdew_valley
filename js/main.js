@@ -125,20 +125,21 @@ function startGame() {
     updateSetupUI();
 }
 
-// [신규] 다음 멤버로 넘어가는 함수
 function nextMemberStep() {
-    playSfx('click');
+  // 🔴 크롭 중이면 단계 이동 막기
+  if (window.currentCropper) {
+    alert("사진 자르기를 완료해주세요!");
+    return;
+  }
 
-    // 현재 인덱스 증가
-    currentSetupIndex++;
+  currentMemberIndex++;
 
-    // 모든 멤버 설정이 끝났으면 게임 시작
-    if (currentSetupIndex >= setupOrder.length) {
-        enterGame();
-    } else {
-        // 아니면 다음 멤버 보여주기
-        updateSetupUI();
-    }
+  if (currentMemberIndex >= members.length) {
+    startGame();
+    return;
+  }
+
+  updateMemberUI();
 }
 
 // [신규] 현재 순서에 맞는 멤버만 화면에 보여주는 함수
@@ -1089,6 +1090,7 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
 
 
 
