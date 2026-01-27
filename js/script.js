@@ -187,7 +187,7 @@ const dailyScripts = {
         ],
 
         ryo: [
-            { text: "{ text: "오.. 안녕하세료. 료입니다아.", emotion: "default" },", emotion: "default" },
+            { text: "{ text: "오.. 안녕하세료. 료입니다아.", emotion: "default" }, emotion: "default" },
             { 
                 text: "(말똥말똥한 눈으로 바라보기만 한다.)", 
                 emotion: "happy",
@@ -880,7 +880,7 @@ const affinityDialogues = {
                     answers: {
                         "핫초코": { text: "달달한 거 좋아하시는구나. 저도 초코 진짜 좋아해요 ! ^_^", emotion: "love", score: 5 },
                         "우유": { text: "따뜻한 우유.. 잠 잘 오겠네요. 아기 같아요 ~", emotion: "happy", score: 5 },
-                        "커피": { text: "에- 역시 {user](은)는 어른이네요. 시온이 형도 커피를 참 좋아하지요 ^_^", emotion: "sad", score: 5 }
+                        "커피": { text: "에- 역시 {user}(은)는 어른이네요. 시온이 형도 커피를 참 좋아하지요 ^_^", emotion: "sad", score: 5 }
                     }
                 },
                 {
@@ -1517,7 +1517,7 @@ ryo: {
             ],
             
             "벚꽃": [
-                { text: "세상이 제 물건들처럼 변했네요. 예쁘다.", emotion: "happy" }
+                { text: "세상이 제 물건들처럼 변했네요. 예쁘다.", emotion: "happy" },
                 {
                         text: "가방 무거워 보인다고요? 키링 78개밖에 안 달렸는데.", // 키워드 (수집광)
                         emotion: "default",
