@@ -187,7 +187,7 @@ const dailyScripts = {
         ],
 
         ryo: [
-            { text: "{ text: "오.. 안녕하세료. 료입니다아.", emotion: "default" }, emotion: "default" },
+            { text: "오.. 안녕하세료. 료입니다아.", emotion: "default" },
             { 
                 text: "(말똥말똥한 눈으로 바라보기만 한다.)", 
                 emotion: "happy",
