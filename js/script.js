@@ -122,7 +122,7 @@ const npcs = {
             default: { text: "에- 엄청 다정하네요. 이런 걸 다 챙겨주고. 고맙습니다.", emotion: "default" }
         },
         unknownReaction: { text: "에.. 죄송해요. 무슨 말씀이신지 잘 모르겠어요.. ^_^;", emotion: "shock" },
-        locations: { sunny: "square", rainy: "saloon", blossom: "forest" }, 
+        locations: { sunny: "saloon", rainy: "saloon", blossom: "forest" }, 
         // ★ [추가] 장소별 좌표 설정 (top: 위에서 거리, left: 왼쪽에서 거리)
         positions: {
             forest: { top: "85%", left: "50%" },
@@ -1731,7 +1731,7 @@ const recipes = [
 const itemData = {
     "수선화": { img: "assets/images/items/daffodil.png", desc: "봄에 피는 노란 꽃" }, //ㅎㅇ
     "민들레": { img: "assets/images/items/dandelion.png", desc: "후 불면 날아갈 것 같다" }, //ㅎㅇ
-    "커피": { img: "assets/images/items/coffee.png", desc: "고소한 원두 향이 난다" }, //ㅎㅇ
+    "커피": { img: "assets/images/items/Coffee.png", desc: "고소한 원두 향이 난다" }, //ㅎㅇ
     "블루 재즈": { img: "assets/images/items/bluejazz.png", desc: "동그란 모양의 푸른 꽃" }, //ㅎㅇ
     "치즈": { img: "assets/images/items/cheese.png", desc: "꼬릿꼬릿한 냄새가 난다" }, //ㅎㅇ
     "설탕": { img: "assets/images/items/Sugar.png", desc: "혈당 관리 해야하는데..." }, //ㅎㅇ
@@ -1742,12 +1742,20 @@ const itemData = {
     "밀가루": { img: "assets/images/items/Flour.png", desc: "제빵의 기본 재료" }, //ㅎㅇ
     "달걀": { img: "assets/images/items/egg.png", desc: "작고 소중한 달걀" }, //ㅎㅇ
     "흙": { img: "assets/images/items/Clay.png", desc: "흙이다" }, //ㅎㅇ
-    "스타푸르트": { img: "assets/images/items/Starfruit.png", desc: "별 모양의 과일" }, //ㅎㅇ
+    "우유": { img: "assets/images/items/Milk.png", desc: "신선한 우유" }, //ㅎㅇ
+    "카메라": { img: "assets/images/items/camera.png", desc: "누군가의 카메라" }, //ㅎㅇ
+    "콜라": { img: "assets/images/items/Cola.png", desc: "흙이다" }, //ㅎㅇ
+    "외계인 인형": { img: "assets/images/items/doll.png", desc: "왹.." }, //ㅎㅇ
+    "만년필": { img: "assets/images/items/pen.png", desc: "누군가의 만년필" }, //ㅎㅇ
+    "아이스크림": { img: "assets/images/items/Clay.png", desc: "세가지 맛의 아이스크림 콘" }, //ㅎㅇ
+    "스타푸르트": { img: "assets/images/items/Ice.png", desc: "별 모양의 과일" }, //ㅎㅇ
     "스타드롭커피": { img: "assets/images/items/stardropcoffee.png", desc: "커피가 상큼할 수 있다니" }, //ㅎㅇ
-    "리모컨": { img: "assets/images/items/remote.png", desc: "음...?" }, //ㅎㅇ
-    "꽃다발": { img: "assets/images/items/bouquet.png", desc: "받으면 행복할 것 같다" }, //ㅎㅇ
-    "블롭피쉬": { img: "assets/images/items/blobfish.png", desc: "오우..." }, //ㅎㅇ
-    "도토리": { img: "assets/images/items/acorn.png", desc: "다람쥐가 좋아할 것 같다" }, //ㅎㅇ
+    "리모컨": { img: "assets/images/items/Remote.png", desc: "음...?" }, //ㅎㅇ
+    "꽃다발": { img: "assets/images/items/Bouquet.png", desc: "받으면 행복할 것 같다" }, //ㅎㅇ
+    "오마모리": { img: "assets/images/items/Bouquet.png", desc: "누군가의 오마모리 키링" }, //ㅎㅇ
+    "블롭피쉬": { img: "assets/images/items/Blobfish.png", desc: "오우..." }, //ㅎㅇ
+    "별자리 도감": { img: "assets/images/items/Starbook.png", desc: "별들의 이야기가 가득 담긴 책이다." }, //ㅎㅇ
+    "도토리": { img: "assets/images/items/Acorn.png", desc: "다람쥐가 좋아할 것 같다" }, //ㅎㅇ
     "에너지 드링크": { img: "assets/images/items/energytonic.png", desc: "피로가 싹 가신다" } //ㅎㅇ
 };
 
@@ -1913,6 +1921,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
