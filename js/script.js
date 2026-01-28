@@ -237,7 +237,7 @@ const dailyScripts = {
                 emotion: "happy",
                 choices: [
                     { label: "노래 한 곡 부탁해요", score: 10, reply: "네? 어.. 뭐 불러드릴까요?!" },
-                    { label: "반가워요 재희님. 잘 부탁해요!", score: 5, reply: "네네! 저야말로 잘 부탁드려요! 우리 잘 지내봐요!" }
+                    { label: "반가워요 재희님. 잘 부탁해요!", score: 3, reply: "네네! 저야말로 잘 부탁드려요! 우리 잘 지내봐요!" }
                 ]
             },
         ],
@@ -249,7 +249,7 @@ const dailyScripts = {
                 emotion: "happy",
                 choices: [
                     { label: "왜 그렇게 쳐다봐?", score: 10, reply: "앗... 죄송해요. 그냥 처음 보는 분이라 신기해서료.. (눈을 피한다)" },
-                    { label: "안녕ㅎㅎ 귀엽게 생겼네", score: 5, reply: "에..? 저, 저요..? 아.. 가, 감사합니다.." }
+                    { label: "안녕ㅎㅎ 귀엽게 생겼네", score: 3, reply: "에..? 저, 저요..? 아.. 가, 감사합니다.." }
                 ]
             },
         ],
@@ -260,7 +260,7 @@ const dailyScripts = {
                 text: "아 저는 사쿠야예요. 스타주점 안에 있는 빵집에서 일하고 있어요. 빵 사러 마니 와주세요.", 
                 emotion: "happy",
                 choices: [
-                    { label: "고마워! 잘 먹을게", score: 5, reply: "아무것도 하지 않아요 ! 사람이 없는 곳이 마음이 편해서요 ^_^" },
+                    { label: "고마워! 잘 먹을게", score: 3, reply: "아무것도 하지 않아요 ! 사람이 없는 곳이 마음이 편해서요 ^_^" },
                     { label: "사쿠빵쨩ㅎㅎ", score: 10, reply: "맞아요 ! 종종 밤에 와서 하늘을 보는데 정말 예뻐요 ^_^ 다음에 같이 봐요 ~" }
                 ]
             },
@@ -284,8 +284,8 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "전입신고": { text: "오, 잘 아시네요. 저기 함에 넣어주세요.", emotion: "default", score: 5 },
-                        "신고서": { text: "오, 잘 아시네요. 저기 함에 넣어주세요.", emotion: "default", score: 5 },
+                        "전입신고": { text: "오, 잘 아시네요. 저기 함에 넣어주세요.", emotion: "default", score: 3 },
+                        "신고서": { text: "오, 잘 아시네요. 저기 함에 넣어주세요.", emotion: "default", score: 3 },
                         "몰라": { text: "음... 전입신고서입니다. 저기 있어요.", emotion: "default", score: 0 },
                         "뭐": { text: "음... 전입신고서입니다. 저기 있어요.", emotion: "default", score: 0 },
                         "모르겠": { text: "음... 전입신고서입니다. 저기 있어요.", emotion: "default", score: 0 }
@@ -307,8 +307,8 @@ const affinityDialogues = {
                 text: "혹시 우산 색깔 뭐예요? 입구에 꽂아두신 거.", 
                 emotion: "happy",
                 choices: [
-                    { label: "핑크", score: 3, reply: "아ㅋㅋ 우산 귀엽네요. 사쿠야 건 줄 알았어요." },
-                    { label: "투명", score: 5, reply: "역시 투명이 앞이 잘 보여서 좋죠. 실용적이네요." },
+                    { label: "핑크", score: 1, reply: "아ㅋㅋ 우산 귀엽네요. 사쿠야 건 줄 알았어요." },
+                    { label: "투명", score: 3, reply: "역시 투명이 앞이 잘 보여서 좋죠. 실용적이네요." },
                     { label: "검정", score: 0, reply: "다른 사람들 거랑 섞이지 않게 조심하세요." }
                 ]
                 }
@@ -341,7 +341,7 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "커피": { text: "진짜요? 수확하면 저한테 좀 팔아주실 수 있나요?", emotion: "love", score: 5 },
+                        "커피": { text: "진짜요? 수확하면 저한테 좀 팔아주실 수 있나요?", emotion: "love", score: 3 },
                         "밀": { text: "오, 사쿠야가 좋아하겠다.", emotion: "happy", score: 3 },
                         "파": { text: "파... 건강에 좋죠. 요리할 때 필수니까.", emotion: "default", score: 0 }
                     }
@@ -359,7 +359,7 @@ const affinityDialogues = {
                 emotion: "happy",
                 choices: [
                     { label: "헉, 있는 줄 몰랐어요. 지금 읽어볼게요!", score: 0, reply: "네. 궁금한 부분 있으면 알려드릴게요." },
-                    { label: "네! 누가 쓴 건지 아주 완벽하던데요?", score: 5, reply: "아... 알아봐 주시니 감사하네요. 열심히 썼거든요." }
+                    { label: "네! 누가 쓴 건지 아주 완벽하던데요?", score: 3, reply: "아... 알아봐 주시니 감사하네요. 열심히 썼거든요." }
                 ]
             },
                 { 
@@ -383,7 +383,7 @@ const affinityDialogues = {
                     text: "주로 어떤 장르의 노래 들으세요?",
                     emotion: "default",
                     choices: [
-                    { label: "힙합", score: 5, reply: "오! 진짜요? 저도요. 혹시 괜찮으면 플레이리스트 공유할래요? R&B도 좋아하세요?" },
+                    { label: "힙합", score: 3, reply: "오! 진짜요? 저도요. 혹시 괜찮으면 플레이리스트 공유할래요? R&B도 좋아하세요?" },
                     { label: "클래식", score: 0, reply: "차분해지고 좋죠. 일할 때 들으면 집중 잘 될 것 같아요." },
                     { label: "동요", score: 3, reply: "동요요? ㅋㅋㅋ 귀여우시네요. 의외로 힐링 될지도..." }
                 ]
@@ -393,7 +393,7 @@ const affinityDialogues = {
                 text: "비 오는 날은 습기 때문에 책 관리가 까다로워요. 제습기라도 하나 더 놔야 하나...", 
                 emotion: "happy",
                 choices: [
-                    { label: "제가 좀 도와드릴까요?", score: 5, reply: "어... 괜찮으시겠어요? 감사합니다. 다음에 커피라도 한 잔 살게요." },
+                    { label: "제가 좀 도와드릴까요?", score: 3, reply: "어... 괜찮으시겠어요? 감사합니다. 다음에 커피라도 한 잔 살게요." },
                     { label: "에궁ㅠㅠ 수고가 많으시네요!", score: 0, reply: "뭘요. 제 일이니까 열심히 해야죠." }
                 ]
             },
@@ -401,7 +401,7 @@ const affinityDialogues = {
                 text: "비가 계속 오니까 따뜻한 게 마시고 싶네요.", 
                 emotion: "happy",
                 choices: [
-                    { label: "저도요. 아메리카노 먹고 싶어요!", score: 5, reply: "오, 저도 아메리카노 생각하고 있었어요. 커피 좋아하시는구나." },
+                    { label: "저도요. 아메리카노 먹고 싶어요!", score: 3, reply: "오, 저도 아메리카노 생각하고 있었어요. 커피 좋아하시는구나." },
                     { label: "저도요. 캐모마일차 먹고 싶어요!", score: 0, reply: "그렇구나. 상점에 차 종류가 꽤 많은데 보셨어요?" },
                     { label: "저도요. 핫초코 먹고 싶어요!", score: 3, reply: "ㅋㅋ다음에 료랑 같이 회관 놀러오세요. 핫초코 타드릴게요." }
                 ]
@@ -422,7 +422,7 @@ const affinityDialogues = {
                         "김치볶음밥": { text: "저 김치볶음밥 좋아해요. 잘 만드세요? ㅎㅎ", emotion: "love", score: 3 },
                         "케이크": { text: "좋죠. 사실 저 밥 대신 디저트만 먹어도 돼요ㅎㅎ", emotion: "happy", score: 3 },
                         "디저트": { text: "좋죠. 사실 저 밥 대신 디저트만 먹어도 돼요ㅎㅎ", emotion: "happy", score: 3 },
-                        "두쫀쿠": { text: "어? 두쫑쿠? 어디서 사오게요? 혹시 만들 줄 아세요? 우와...", emotion: "happy", score: 5 },
+                        "두쫀쿠": { text: "어? 두쫑쿠? 어디서 사오게요? 혹시 만들 줄 아세요? 우와...", emotion: "happy", score: 3 },
                         "빵": { text: "좋죠. 사실 저 밥 대신 디저트만 먹어도 돼요ㅎㅎ", emotion: "happy", score: 3 }
                     }
                 },
@@ -430,9 +430,9 @@ const affinityDialogues = {
                 text: "(떨어지는 벚꽃잎을 잡으려다 놓친다) 아... 쉽지 않네요.", 
                 emotion: "happy",
                 choices: [
-                    { label: "무슨 소원 비시려고요?ㅎㅎ", score: 3, reply: "음... 더 나은 사람이 되게 해달라고요." },
+                    { label: "무슨 소원 비시려고요?ㅎㅎ", score: 1, reply: "음... 더 나은 사람이 되게 해달라고요." },
                     { label: "아 그거 그렇게 하는 거 아닌데", score: 0, reply: "네? 그럼 뭐 어떻게 해야하죠..." },
-                    { label: "(벚꽃잎을 하나 잡아 건넨다.)", score: 5, reply: "어... 저 주시는 거예요? 감사합니다. {user} 님도 같이 소원 빌어요." }
+                    { label: "(벚꽃잎을 하나 잡아 건넨다.)", score: 3, reply: "어... 저 주시는 거예요? 감사합니다. {user} 님도 같이 소원 빌어요." }
                 ]
             }
             ]
@@ -461,9 +461,9 @@ const affinityDialogues = {
                 text: "오늘따라 일이 손에 안 잡히네요. 자꾸 딴생각이 들어서.", 
                 emotion: "happy",
                 choices: [
-                    { label: "무슨 생각 하는데요?", score: 3, reply: "음... 그냥 맛있는 거 먹고 싶다는 생각? 퀸아망에 아아라던가." },
+                    { label: "무슨 생각 하는데요?", score: 1, reply: "음... 그냥 맛있는 거 먹고 싶다는 생각? 퀸아망에 아아라던가." },
                     { label: "어허. 집중력 부족.", score: 0, reply: "으... 팩트폭력 너무 아픈데요." },
-                    { label: "그런 날은 그냥 푹 쉬거나 노는 것도 방법이에요!", score: 5, reply: "오... 이도저도 아닌 것보단 그게 낫겠네요. 근데 저랑 놀아주실 거예요?" }
+                    { label: "그런 날은 그냥 푹 쉬거나 노는 것도 방법이에요!", score: 3, reply: "오... 이도저도 아닌 것보단 그게 낫겠네요. 근데 저랑 놀아주실 거예요?" }
                 ]
                 },
                 { 
@@ -471,9 +471,9 @@ const affinityDialogues = {
                 emotion: "shy",
                 type: "keyword", // ★ 여기가 핵심! 키워드 입력 타입 지정
                 answers: {
-                    "아메리카노": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 5 },
-                    "아아": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 5 },
-                    "커피": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 5 }
+                    "아메리카노": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 3 },
+                    "아아": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 3 },
+                    "커피": { text: "ㅎㅎ맞아요. 한 모금 드실래요?", emotion: "happy", score: 3 }
                 }
                 }
             ],
@@ -484,8 +484,8 @@ const affinityDialogues = {
                      text: "공기가 눅눅하네요. 이럴 땐 제습기 틀고 가만히 있는 게 최곤데.", // 현실적인 고민
                      emotion: "default",
                     choices: [
-                        { label: "같이 있자", score: 0, reply: "그럴까요? 문 닫고 조용히 빗소리만 듣죠. 방해 안 받을게요." },
-                        { label: "일해야지", score: 5, reply: "하하.. 알겠어요. 농땡이 안 피울게요." }
+                        { label: "같이 있자", score: 3, reply: "그럴까요? 문 닫고 조용히 빗소리만 듣죠. 방해 안 받을게요." },
+                        { label: "일해야지", score: 0, reply: "하하.. 알겠어요. 농땡이 안 피울게요." }
                     ]
                  }
             ],
@@ -498,7 +498,7 @@ const affinityDialogues = {
                     emotion: "default",
                     choices: [
                         { label: "김치~ (브이 한다)", score: 0, reply: "ㅋㅋ자연스럽게 잘 나왔네요. 보내드릴게요." },
-                        { label: "같이 찍어요!", score: 5, reply: "네? 저요? 아... 전 사진 잘 안 찍는데... 그래도 오늘은 벚꽃이 유난히 예쁘니까 한 장 남겨야겠네요." }
+                        { label: "같이 찍어요!", score: 3, reply: "네? 저요? 아... 전 사진 잘 안 찍는데... 그래도 오늘은 벚꽃이 유난히 예쁘니까 한 장 남겨야겠네요." }
                     ]
                 },
             ]
@@ -511,17 +511,17 @@ const affinityDialogues = {
                     text: "{user}, 주말에 시내 LP바 갈 건데 혹시 같이 갈래요?", //
                     emotion: "default",
                     choices: [
-                        { label: "좋아", score: 0, reply: "다행이다. 맛있는 것도 먹고 와요 우리." },
-                        { label: "글쎄", score: 5, reply: "부담 주는 건 아니에요. 그래도... 같이 가면 좋을 것 같아서요." }
+                        { label: "좋아", score: 3, reply: "다행이다. 맛있는 것도 먹고 와요 우리." },
+                        { label: "글쎄", score: 0, reply: "부담 주는 건 아니에요. 그래도... 같이 가면 좋을 것 같아서요." }
                     ]
                 },
                 {
                     text: "오늘 일찍 퇴근할 것 같은데... 혹시 저녁에 뭐 하세요?", // 선택지
                     emotion: "happy",
                     choices: [
-                        { label: "시온 씨랑 놀아야죠!", score: 5, reply: "ㅎㅎ그럴래요? 맛있는 거 먹으러 가요." },
+                        { label: "시온 씨랑 놀아야죠!", score: 3, reply: "ㅎㅎ그럴래요? 맛있는 거 먹으러 가요." },
                         { label: "고민 중이에요", score: 0, reply: "고민 중이면... 저랑 저녁 드실래요?" },
-                        { label: "졸려서 푸데푸데 잘 거예용", score: 3, reply: "? 네? 푸데푸데... 가 뭔지 모르겠지만...ㅋㅋ 어감이 귀엽네요. 그럼 푹 주무세요." }
+                        { label: "졸려서 푸데푸데 잘 거예용", score: 1, reply: "? 네? 푸데푸데... 가 뭔지 모르겠지만...ㅋㅋ 어감이 귀엽네요. 그럼 푹 주무세요." }
                     ]
                 }
             ],
@@ -546,8 +546,8 @@ const affinityDialogues = {
                      text: "벚꽃잎 책갈피 하나 만들어 줄까요?",
                      emotion: "default",
                      choices: [
-                        { label: "만들어줘요", score: 0, reply: "기다려봐요. 제일 예쁜 잎으로 골라서 만들어줄게요." },
-                        { label: "괜찮아요", score: 5, reply: "이런 건 취향이 아닌가 보네요. 아쉽다." }
+                        { label: "만들어줘요", score: 3, reply: "기다려봐요. 제일 예쁜 잎으로 골라서 만들어줄게요." },
+                        { label: "괜찮아요", score: 0, reply: "이런 건 취향이 아닌가 보네요. 아쉽다." }
                     ]
                  },
                 {
@@ -559,8 +559,8 @@ const affinityDialogues = {
                         "바다": { text: "저도요! 사실 고향이 바닷가 마을이거든요. ...다음에 {user} 님도 초대하고 싶어요.", emotion: "happy", score: 5 },
                         "바닷가": { text: "저도요! 사실 고향이 바닷가 마을이거든요. ...다음에 {user} 님도 초대하고 싶어요.", emotion: "happy", score: 5 },
                         "도시": { text: "도시라... 편리하긴 하죠. 전 그래도 여기가 더 좋은 것 같아요.", emotion: "default", score: 3 },
-                        "너랑": { text: "...! 그런 멘트는 어디서 배우시는 거예요...", emotion: "love", score: 15 },
-                        "시온": { text: "...! 그런 멘트는 어디서 배우시는 거예요...", emotion: "love", score: 15 }
+                        "너랑": { text: "...! 그런 멘트는 어디서 배우시는 거예요...", emotion: "love", score: 5 },
+                        "시온": { text: "...! 그런 멘트는 어디서 배우시는 거예요...", emotion: "love", score: 5 }
                     }
                 }
             ]
@@ -580,7 +580,7 @@ const affinityDialogues = {
                     text: "(진열대의 물건 줄을 칼같이 맞추고 있다)", // 선택지
                     emotion: "default",
                     choices: [
-                        { label: "각이 살아있네!", score: 5, reply: "그쳐? 삐뚤어진 거 보면 못 참겟어여.. 리쿠 쫌 꼼꼼하져?" },
+                        { label: "각이 살아있네!", score: 3, reply: "그쳐? 삐뚤어진 거 보면 못 참겟어여.. 리쿠 쫌 꼼꼼하져?" },
                         { label: "대충 해~", score: 0, reply: "에.. 구럼 찜찜한데.. 깔끔한 게 보기 조차나여." }
                     ]
                 },
@@ -588,8 +588,8 @@ const affinityDialogues = {
                     text: "(칙칙- 몸에 무언가를 뿌리고 있다)",
                     emotion: "default",
                     choices: [
-                        { label: "뭐 뿌려?", score: 3, reply: "아, 땀 냄새 날까바여. 땀 나면 찝찝하자나여 ㅠㅠ" },
-                        { label: "좋은 냄새 난다", score: 5, reply: "진짜영? 다행이다ㅎㅎ" }
+                        { label: "뭐 뿌려?", score: 0, reply: "아, 땀 냄새 날까바여. 땀 나면 찝찝하자나여 ㅠㅠ" },
+                        { label: "좋은 냄새 난다", score: 3, reply: "진짜영? 다행이다ㅎㅎ" }
                     ]
                 }
                   
@@ -600,16 +600,16 @@ const affinityDialogues = {
                     text: "우산 잘 털고 들어오세여 ~ 물기 떨어지면 미끄러우니까.", // 선택지: 챙김
                     emotion: "default",
                     choices: [
-                        { label: "잔소리쟁이!", score: 5, reply: "아니거든여 ! {user} 넘어질까바 걱정해서 구런 거거든여 !" },
-                        { label: "알겠어, 꼼꼼하네.", score: 5, reply: "히히 당연하져. 사장님이 리쿠를 아끼는 데에는 이유가 다 잇져~" }
+                        { label: "잔소리쟁이!", score: 0, reply: "아니거든여 ! {user} 넘어질까바 걱정해서 구런 거거든여 !" },
+                        { label: "알겠어, 꼼꼼하네.", score: 3, reply: "히히 당연하져. 사장님이 리쿠를 아끼는 데에는 이유가 다 잇져~" }
                     ]
                 },
                 {
                      text: "눅눅해서 옷에서 냄새날 거 같아여.. {user}, 나한테서 꿉꿉한 냄새 나여?", // 위생 강박
                      emotion: "shock",
                      choices: [
-                        { label: "좋은 냄새만 나", score: 5, reply: "휴.. 다행이다. {user}도 조은 냄새 나여 헤헤" },
-                        { label: "조금...?", score: 5, reply: "으악!! 진짜영?! 집 가서 씻고 올래여 ㅠㅠ 오지 마여!!" }
+                        { label: "좋은 냄새만 나", score: 3, reply: "휴.. 다행이다. {user}도 조은 냄새 나여 헤헤" },
+                        { label: "조금...?", score: 0, reply: "으악!! 진짜영?! 집 가서 씻고 올래여 ㅠㅠ 오지 마여!!" }
                     ]
                  }
                  ],
@@ -621,7 +621,7 @@ const affinityDialogues = {
                     text: "사람들 옷차림이 다 가벼워졋네영. 봄이 오긴 왔나 바여.", // 선택지
                     emotion: "default",
                     choices: [
-                        { label: "리쿠 옷 예쁘네", score: 5, reply: "헤헤.. 신경 쫌 썻어여. 패션의 완성은 리쿠징 ~" },
+                        { label: "리쿠 옷 예쁘네", score: 3, reply: "헤헤.. 신경 쫌 썻어여. 패션의 완성은 리쿠징 ~" },
                         { label: "난 아직 추운데", score: 0, reply: "추워여? {user} 감기 걸리겟당. 따뜻하게 입고 다녀여." }
                     ]
                 }
@@ -636,8 +636,8 @@ const affinityDialogues = {
                     text: "가게에서 좋은 냄새 나지 않아여? 오늘 라벤더 향초 켜놧는데", // 키워드 (향기)
                     emotion: "default",
                     choices: [
-                        { label: "응 좋다~", score: 5, reply: "그쳐? 향기가 좋으니 기분이 좋다!" },
-                        { label: "조금 독해", score: 5, reply: "에.. 독해여? 구롬 이제 꺼야겟다 미안해여" },
+                        { label: "응 좋다~", score: 3, reply: "그쳐? 향기가 좋으니 기분이 좋다!" },
+                        { label: "조금 독해", score: 0, reply: "에.. 독해여? 구롬 이제 꺼야겟다 미안해여" },
                         { label: "아무 냄새도 안 나는데..", score: 0, reply: "그럴 수가 잇나? 코가 막힌 거 아니에여??? 병원 가봐여 병원!" }
                     ]
                 },
@@ -653,8 +653,8 @@ const affinityDialogues = {
                     text: "이거 먹을래여? 입안이 시원해져여.", // 키워드
                     emotion: "happy",
                     choices: [
-                        { label: "고마워!", score: 5, reply: "리쿠 필수템이에여! 식사하고 양치 바로 못 할 때 꼭 먹어여" },
-                        { label: "매워...", score: 5, reply: "엥? 이게 맵다구여? {user} 아직 애기구낭ㅋㅋ" },
+                        { label: "고마워!", score: 3, reply: "리쿠 필수템이에여! 식사하고 양치 바로 못 할 때 꼭 먹어여" },
+                        { label: "매워...", score: 0, reply: "엥? 이게 맵다구여? {user} 아직 애기구낭ㅋㅋ" },
                         { label: "난 괜찮아", score: 0, reply: ".. 치. 구럼 리쿠 혼자만 먹을게여." }
                     ]
                 },
@@ -662,7 +662,7 @@ const affinityDialogues = {
                     text: "오늘 날씨 짱 조아여. 이런 날엔 강가에 앉아서 물멍 때려야 대는데..",
                     emotion: "default",
                     choices: [
-                        { label: "같이 갈래?", score: 5, reply: "오! 사장님한테 안 들키게 해줄 수 있으면 갈게여 히히" },
+                        { label: "같이 갈래?", score: 3, reply: "오! 사장님한테 안 들키게 해줄 수 있으면 갈게여 히히" },
                         { label: "일해라 알바생", score: 0, reply: "넹.. ㅠㅠ 돈 벌어야징.. 리쿠는 개미예여 ㅠㅠ" }
                     ]
                 },
@@ -671,8 +671,8 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "귀여워서": { text: "헤헤 그쳐? 리쿠가 좀 귀엽긴 하징 ~ 알썽 인정!", emotion: "happy", score: 10 },
-                        "눈이": { text: "오.. 눈이 예쁘다는 건가? 칭찬이니 기분이 좋다", emotion: "happy", score: 5 },
+                        "귀여워서": { text: "헤헤 그쳐? 리쿠가 좀 귀엽긴 하징 ~ 알썽 인정!", emotion: "happy", score: 5 },
+                        "눈이": { text: "오.. 눈이 예쁘다는 건가? 칭찬이니 기분이 좋다", emotion: "happy", score: 3 },
                         "글쎄": { text: "엥? 반응이 왜 구래여 ㅠㅠ 대답해주기 귀찮은가?", emotion: "sad", score: 0 },
                         "몰라": { text: "엥? 반응이 왜 구래여 ㅠㅠ 리쿠 삐질거야", emotion: "sad", score: 0 },
                         "모르": { text: "엥? 반응이 왜 구래여 ㅠㅠ 리쿠 삐질거야", emotion: "sad", score: 0 }
@@ -700,20 +700,12 @@ const affinityDialogues = {
                     ]
                 },
                 {
-                    text: "우산 업서여? 구럼 리쿠 우산 같이 쓸래여?", // 선택지
-                    emotion: "happy",
-                    choices: [
-                        { label: "작아 보이는데?", score: 0, reply: "아니거든여 ! 딱 붙으면 다 가려지거든여 !!" },
-                        { label: "고마워! (착 붙는다)", score: 5, reply: "히히.. 따뜻하당.. 비 오는 것두 나쁘지 안네영 ~" }
-                    ]
-                },
-                {
                     text: "어? {user} 어깨에 벌레 붙어써여. 가만히 잇어바여.", // 키워드: 벌레
                     emotion: "default",
                     choices: [
                         { label: "고마워", score: 0, reply: "별거 아니에여 ~ 히히" },
-                        { label: "안 무서워?", score: 5, reply: "에? 이 쪼그만 게 뭐가 무서워여? 얘 입장에서는 우리가 더 무섭져" },
-                        { label: "으악!", score: 5, reply: "ㅋㅋㅋㅋ 반응 귀엽당. 벌레 리쿠가 다 잡아줄게여 걱정 마여!" }
+                        { label: "안 무서워?", score: 1, reply: "에? 이 쪼그만 게 뭐가 무서워여? 얘 입장에서는 우리가 더 무섭져" },
+                        { label: "으악!", score: 3, reply: "ㅋㅋㅋㅋ 반응 귀엽당. 벌레 리쿠가 다 잡아줄게여 걱정 마여!" }
                     ]
                 }
             ],
@@ -725,9 +717,9 @@ const affinityDialogues = {
                     text: "{user}한테서 조은 냄새 나여. 샴푸 뭐 써여?", // 키워드: 향기
                     emotion: "shy",
                     choices: [
-                        { label: "과일향", score: 0, reply: "아 ~ 달달해용! 리쿠도 이걸로 샴푸 바꿀까영" },
-                        { label: "꽃향", score: 5, reply: "아 ~ 향기로워용! 리쿠도 이걸로 샴푸 바꿀까영" },
-                        { label: "무향", score: 5, reply: "진짜영? 구롬 원래 살냄새가 조은가부다.. 부럽당" }
+                        { label: "과일향", score: 1, reply: "아 ~ 달달해용! 리쿠도 이걸로 샴푸 바꿀까영" },
+                        { label: "꽃향", score: 1, reply: "아 ~ 향기로워용! 리쿠도 이걸로 샴푸 바꿀까영" },
+                        { label: "무향", score: 3, reply: "진짜영? 구롬 원래 살냄새가 조은가부다.. 부럽당" }
                     ]
                 },
                 {
@@ -735,17 +727,17 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "리쿠": { text: "꺄 히히히 정답 ! {user}는 눈이 좋네 ~ 넘 조아 !!", emotion: "love", score: 10 },
+                        "리쿠": { text: "꺄 히히히 정답 ! {user}는 눈이 좋네 ~ 넘 조아 !!", emotion: "love", score: 3 },
                         "꽃": { text: "흥.. 그래여 꽃이랑 사귀세여 ㅠㅠ 리쿠는 갈 거야..", emotion: "sad", score: 0 },
-                        "둘다": { text: "에.. 그건 쫌 비겁한데.. 그래두 리쿠가 껴 잇으니 봐줄게영 ~", emotion: "default", score: 5 }
+                        "둘다": { text: "에.. 그건 쫌 비겁한데.. 그래두 리쿠가 껴 잇으니 봐줄게영 ~", emotion: "default", score: 1 }
                     }
                 },
                 {
                     text: "도시락 싸서 소풍 가고 싶다~ {user}는 요리 잘해여?", // 선택지
                     emotion: "happy",
                     choices: [
-                        { label: "완전 잘하지!", score: 5, reply: "오 ~ 나중에 리쿠한테두 맛보여줘영. 냉정하게 평가해줄게여." },
-                        { label: "라면만 끓여", score: 3, reply: "ㅋㅋㅋㅋ 그것두 기술이져. 라면 잘 끓이는 것두 쉽지 않아여." }
+                        { label: "완전 잘하지!", score: 3, reply: "오 ~ 나중에 리쿠한테두 맛보여줘영. 냉정하게 평가해줄게여." },
+                        { label: "라면만 끓여", score: 0, reply: "ㅋㅋㅋㅋ 그것두 기술이져. 라면 잘 끓이는 것두 쉽지 않아여." }
                     ]
                 }
             ]
@@ -758,28 +750,20 @@ const affinityDialogues = {
                     { text: "어? {user} 왓당! 오늘도 리쿠 보러 온 거져? 다 알아여 😙", emotion: "happy" },
                     { text: "아까 창고에서 넘어져서 무릎 까져떠여.. 호 해줘영 ㅠㅠ", emotion: "sad" },
                     {
-                    text: "가게 전구 깜빡거려서 리쿠가 갈아껴써여. 잘햇져?", // 선택지: 듬직함 어필
-                    emotion: "happy",
-                    choices: [
-                        { label: "오~ 키 크네?", score: 5, reply: "그쳐? 리쿠 은근 크다니까여 ~ 의자 밟긴 햇지만 히히" },
-                        { label: "상남자네!", score: 10, reply: "당연하져 ! 리쿠는 뭐든 다 고칠 수 잇어여 !" }
-                    ]
-                },
-                    {
                     text: "저기.. 나 땀 냄새 안 나여? 아까 춤 연습 쫌 하구 왓는데.. 솔직히 말해바여.", // 키워드
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "좋은": { text: "진짜영? 다행이다.. 섬유유연제 냄새인가? 맡아볼래여?", emotion: "happy", score: 10 },
+                        "좋은": { text: "진짜영? 다행이다.. 섬유유연제 냄새인가? 맡아볼래여?", emotion: "happy", score: 3 },
                         "땀": { text: "헐 !! 충격.. 저리 가여 ! 씻고 올 거야 ㅠㅠ", emotion: "shock", score: 0 },
-                        "안나": { text: "휴.. 리쿠 관리하는 남자예여. 이 정도는 기본이징.", emotion: "happy", score: 5 }
+                        "안나": { text: "휴.. 리쿠 관리하는 남자예여. 이 정도는 기본이징.", emotion: "happy", score: 1 }
                     }
                 },
                     {
                     text: "헉! 방금 {user} 보니까 심장이 쿵쿵해여. 병원 가야 되나??", // 선택지
                     emotion: "shy",
                     choices: [
-                        { label: "내가 의사 해줄게!", score: 10, reply: "오 ! 녱 ! 고쳐주세영 선생님 히히" },
+                        { label: "내가 의사 해줄게!", score: 3, reply: "오 ! 녱 ! 고쳐주세영 선생님 히히" },
                         { label: "부정맥 아니야?", score: 0, reply: "아 진짜.. 분위기 다 깸 ㅠㅠ 넘해 !!" }
                     ]
                 }
@@ -807,9 +791,9 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "향": { text: "오 ! 리쿠랑도 잘 어울리겟네영. 접수 완료 !", emotion: "happy", score: 5 },
-                        "리쿠": { text: "!!!!  ..그런 말은 예고하구 하라구여.. 심장 떨려떠여..", emotion: "love", score: 10 },
-                        "너": { text: "!!!! ..그런 말은 예고하구 하라구여.. 심장 떨려떠여..", emotion: "love", score: 10 }
+                        "향": { text: "오 ! 리쿠랑도 잘 어울리겟네영. 접수 완료 !", emotion: "happy", score: 3 },
+                        "리쿠": { text: "!!!!  ..그런 말은 예고하구 하라구여.. 심장 떨려떠여..", emotion: "love", score: 5 },
+                        "너": { text: "!!!! ..그런 말은 예고하구 하라구여.. 심장 떨려떠여..", emotion: "love", score: 5 }
                     }
                 },
                  {
@@ -829,17 +813,17 @@ const affinityDialogues = {
                     text: "머리에 꽃잎 묻엇어여. 가만히 잇어바여. (후 ~ 하고 불어준다)", // 선택지
                     emotion: "shy",
                     choices: [
-                        { label: "간지러워 ㅋㅋ", score: 5, reply: "히히 일부러 그런 건데 ~ 반응 귀엽당" },
-                        { label: "(눈을 마주친다)", score: 10, reply: "으.. 그렇게 쳐다보면 부끄러운뎅.. 얼굴 빨개졋져 ㅠㅠ" }
+                        { label: "간지러워 ㅋㅋ", score: 1, reply: "히히 일부러 그런 건데 ~ 반응 귀엽당" },
+                        { label: "(눈을 마주친다)", score: 3, reply: "으.. 그렇게 쳐다보면 부끄러운뎅.. 얼굴 빨개졋져 ㅠㅠ" }
                     ]
                 },
                 {
                     text: "만약에 리쿠가 아이돌 한다구 하면 어떨 거 같아여? 춤추는 거 조아하거든여.", // 키워드
                     emotion: "shy",
                     choices: [
-                        { label: "잘 어울려", score: 5, reply: "그쳐? 리쿠 끼가 쫌 넘치자나여 ~ " },
-                        { label: "인기 많을 것 같아", score: 10, reply: "헤헤.. 구롬 {user}가 1호 팬 해줄 거예여? 약속 !" },
-                        { label: "쉽지 않은 직업일 텐데..", score: 5, reply: "알아여.. 그래두 무대 서면 벅찰 거 같아서여!" },
+                        { label: "잘 어울려", score: 3, reply: "그쳐? 리쿠 끼가 쫌 넘치자나여 ~ " },
+                        { label: "인기 많을 것 같아", score: 3, reply: "헤헤.. 구롬 {user}가 1호 팬 해줄 거예여? 약속 !" },
+                        { label: "쉽지 않은 직업일 텐데..", score: 1, reply: "알아여.. 그래두 무대 서면 벅찰 거 같아서여!" },
                     ]
                 },
                   ]
@@ -851,9 +835,9 @@ const affinityDialogues = {
                     text: "왜 어제는 안 왓어여?? 리쿠 심심햇는데", 
                     emotion: "sad", 
                     choices: [
-                        { label: "미안~ 농장 일이 너무 바빴어", score: 5, reply: "흐음... 구롬 용서해줄게여" },
+                        { label: "미안~ 농장 일이 너무 바빴어", score: 0, reply: "흐음... 구롬 용서해줄게여" },
                         { label: "유우시랑 노느라...", score: -5, reply: "왜 리쿠를 두고 유우시랑 놀앗어여?? 질투나여 !!" },
-                        { label: "보고 싶었어?", score: 10, reply: "녱 ! 넘 심심햇단 말이에여" }
+                        { label: "보고 싶었어?", score: 3, reply: "녱 ! 넘 심심햇단 말이에여" }
                     ]
                 },
             { text: "왜 이제 왓어여 ! 기다리다 목 빠지는 줄 아랏네 ㅠㅠ 농장 일이 글케 바빠여?", emotion: "sad" },
@@ -862,7 +846,7 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "나랑먹으려고": { text: "정답 ~ 눈치 빠르네여. {user}랑 먹는 게 젤 편하니깐", emotion: "happy", score: 10 },
+                        "나랑먹으려고": { text: "정답 ~ 눈치 빠르네여. {user}랑 먹는 게 젤 편하니깐", emotion: "happy", score: 5 },
                         "배불러서": { text: "아니거든여 ! 배고파 죽겟는데 참은 거거든여 ! 왜 이리 눈치가 없어여!", emotion: "shock", score: 0 },
                         "몰라": { text: "내가 말해줘야 해여? 왜 이리 눈치가 없는고야..", emotion: "shock", score: 0 },
                         "왜": { text: "내가 말해줘야 해여? 왜 이리 눈치가 없는고야..", emotion: "shock", score: 0 },
@@ -875,18 +859,18 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "너": { text: "진짜영? ..나두여. {user} 잇는 곳이 젤 조아여.", emotion: "love", score: 10 },
-                        "리쿠": { text: "진짜영? ..나두여. {user} 잇는 곳이 젤 조아여.", emotion: "love", score: 10 },
-                        "여기": { text: "진짜영? 그럼 나랑 계속 여기서 평생 살아여!", emotion: "love", score: 10 },
-                        "도시": { text: "..에 구롬 리쿠도 따라가야지! 껌딱지처럼 붙어 잇을 거야.", emotion: "happy", score: 7 }
+                        "너": { text: "진짜영? ..나두여. {user} 잇는 곳이 젤 조아여.", emotion: "love", score: 5 },
+                        "리쿠": { text: "진짜영? ..나두여. {user} 잇는 곳이 젤 조아여.", emotion: "love", score: 5 },
+                        "여기": { text: "진짜영? 그럼 나랑 계속 여기서 평생 살아여!", emotion: "love", score: 5 },
+                        "도시": { text: "..에 구롬 리쿠도 따라가야지! 껌딱지처럼 붙어 잇을 거야.", emotion: "happy", score: 0 }
                     }
                 },
                 {
                     text: "손 줘바여. (손바닥에 소포장 젤리를 쥐여준다)", // 
                     emotion: "shy",
                     choices: [
-                        { label: "뭐야?", score: 5, reply: "리쿠가 아끼는 젤리예여. 먹구 힘내라구여." },
-                        { label: "(손을 잡는다)", score: 10, reply: "어.. 젤리 주려구 한 건데.. 그럼 계속 잡고 있을게여?" }
+                        { label: "이게 뭐야?", score: 0, reply: "리쿠가 아끼는 젤리예여. 먹구 힘내라구여." },
+                        { label: "(손을 잡는다)", score: 3, reply: "어.. 젤리 주려구 한 건데.. {user}가 먼저 잡은 거예여 안 놔줘야징" }
                     ]
                 }
                 
@@ -902,8 +886,8 @@ const affinityDialogues = {
                     emotion: "sad",
                     type: "keyword",
                     answers: {
-                        "간호": { text: "와.. 든든하당. 구럼 아파두 안 무섭겟네영 히히", emotion: "happy", score: 10 },
-                        "병원가": { text: "아니.. 걱정해달라구여 ㅠㅠ T예여?", emotion: "sad", score: 3 }
+                        "간호": { text: "와.. 든든하당. 구럼 아파두 안 무섭겟네영 히히", emotion: "happy", score: 3 },
+                        "병원가": { text: "아니.. 걱정해달라구여 ㅠㅠ T예여?", emotion: "sad", score: 0 }
                     }
                 },
                 {
@@ -911,7 +895,7 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "신랑감": { text: "아 징짜여? ㅋㅋㅋ 리쿠랑 살면 편하긴 하겟당 그쳐?", emotion: "happy", score: 10 },
+                        "신랑감": { text: "아 징짜여? ㅋㅋㅋ 리쿠랑 살면 편하긴 하겟당 그쳐?", emotion: "happy", score: 3 },
                         "일시키려": { text: "아.. 그런 건가? 낚인 건가? ㅠㅠ 리쿠 바보 아니거든여..", emotion: "shock", score: 0 }
                     }
                 }
@@ -925,9 +909,9 @@ const affinityDialogues = {
                     text: "꽃잎 잡으면 소원 이루어진다 햇어요 ! 빨리 잡아봐여 !", 
                     emotion: "happy",
                     choices: [
-                        { label: "이미 잡았지~ (리쿠에게 준다)", score: 10, reply: "어? 이고 리쿠 주는 거예여? ...감동이당 ㅠㅠ" },
+                        { label: "이미 잡았지~ (리쿠에게 준다)", score: 5, reply: "어? 이고 리쿠 주는 거예여? ...감동이당 ㅠㅠ" },
                         { label: "그런 걸 믿냐 바보야", score: 0, reply: "아 진짜거등여?? 낭만이 없엉 !!" },
-                        { label: "같이 잡자!", score: 5, reply: "조아여 ! 누가 더 많이 잡나 내기해여 !" }
+                        { label: "같이 잡자!", score: 3, reply: "조아여 ! 누가 더 많이 잡나 내기해여 !" }
                     ]
                 },
             { text: "낭만이 별거 잇나여. 조은 사람이랑 맛잇는 거 먹으면 그게 낭만이징.", emotion: "default" },
@@ -936,8 +920,8 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "안가": { text: "약속해여. 리쿠는 한번 정 주면 오래 가니깐.. {user}두 그래야 돼여", emotion: "love", score: 10 },
-                        "모르지": { text: "와.. 냉정하네. 정 없당.. 갈 거면 미리 말해여 맘 준비하게", emotion: "sad", score: 0 }
+                        "안가": { text: "약속해여. 리쿠는 한번 정 주면 오래 가니깐.. {user}두 그래야 돼여", emotion: "love", score: 5 },
+                        "모르": { text: "와.. 냉정하네. 정 없당.. 갈 거면 미리 말해여 맘 준비하게", emotion: "sad", score: 0 }
                     }
                 },
                 [
@@ -956,9 +940,9 @@ const affinityDialogues = {
                 text: "농장주 님의 농장에는 귀여운 게 많지요 ?", 
                 emotion: "happy",
                 choices: [
-                    { label: "어떤 거요? 허수아비?", score: 3, reply: "네 ! 근데 낮에는 괜찮은데 밤에 보면 좀 무서워요.." },
-                    { label: "어떤 거요? 트랙터?", score: 5, reply: "에.. 기계는 좀 시끄러워서.. 저는 별로 안 좋아해요." },
-                    { label: "어떤 거요? 동물?", score: 0, reply: "맞아요 ! 특히 하얀색 꼬꼬가 아주 귀여워요 ^_^ 이름이 있나요 ?" }
+                    { label: "어떤 거요? 허수아비?", score: 1, reply: "네 ! 근데 낮에는 괜찮은데 밤에 보면 좀 무서워요.." },
+                    { label: "어떤 거요? 트랙터?", score: 0, reply: "에.. 기계는 좀 시끄러워서.. 저는 별로 안 좋아해요." },
+                    { label: "어떤 거요? 동물?", score: 3, reply: "맞아요 ! 특히 하얀색 꼬꼬가 아주 귀여워요 ^_^ 이름이 있나요 ?" }
                 ]
                 }
             ],
@@ -976,7 +960,7 @@ const affinityDialogues = {
                     }
                 },
                 {
-                    text: "축축해서 털이.. 옷이 젖는 건 좀 싫네요.",
+                    text: "축축해서 털이 젖는 건 좀 싫네요..",
                     emotion: "sad",
                     choices: [
                         { label: "방금 털이라고 하셨어요?", score: 0, reply: "에..? 잘못 들으신 거 아니에요 ? ^_^;;" },
@@ -1030,10 +1014,10 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "소중": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 5 },
-                        "응": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 5 },
-                        "당연": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 5 },
-                        "맞아": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 5 },
+                        "소중": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 3 },
+                        "응": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 3 },
+                        "당연": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 3 },
+                        "맞아": { text: "그랗죠 ! 지나간 시간은 다시 돌아오지 않으니까요 ^_^", emotion: "happy", score: 3 },
                         "그닥": { text: "에.. 너무 삭막한 거 아니에요 ? 낭만이 없으시네 !", emotion: "sad", score: 0 },
                         "별로": { text: "에.. 너무 삭막한 거 아니에요 ? 낭만이 없으시네 !", emotion: "sad", score: 0 },
                         "글쎄": { text: "에.. 너무 삭막한 거 아니에요 ? 낭만이 없으시네 !", emotion: "sad", score: 0 },
@@ -1057,8 +1041,8 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "김밥": { text: "땡 ! 틀렸습니다 ~ 정답은 유부초밥이지요 😙", emotion: "happy", score: 3 },
-                        "초밥": { text: "오 ! 비슷해요. 유부초밥 싸 왔거든요. 하나 드릴까요 ?", emotion: "happy", score: 5 }
+                        "김밥": { text: "땡 ! 틀렸습니다 ~ 정답은 유부초밥이지요 😙", emotion: "happy", score: 1 },
+                        "초밥": { text: "오 ! 비슷해요. 유부초밥 싸 왔거든요. 하나 드릴까요 ?", emotion: "happy", score: 3 }
                     }
                 },
                 {
@@ -1066,7 +1050,7 @@ const affinityDialogues = {
                     emotion: "default",
                     choices: [
                         { label: "제가 찍어드릴까요?", score: 0, reply: "좋아요 ! 예쁘게 찍어주세요 ~" },
-                        { label: "같이 찍어요 우리!", score: 5, reply: "에.. 같이요 ? 음.. 좋아요 ^_^ 추억 하나 저장 !" }
+                        { label: "같이 찍어요 우리!", score: 3, reply: "에.. 같이요 ? 음.. 좋아요 ^_^ 추억 하나 저장 !" }
                     ]
                 }
             ]
@@ -1080,8 +1064,8 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "수영": { text: "우주에서 수영이라니.. 낭만적이네요 ! 같이 헤엄칠까요 ? ^_^", emotion: "happy", score: 5 },
-                        "낮잠": { text: "무중력 상태로 둥둥 떠서 자는 거네요. 와.. 진짜 편하겠다 ! ", emotion: "default", score: 5 },
+                        "수영": { text: "우주에서 수영이라니.. 낭만적이네요 ! 같이 헤엄칠까요 ? ^_^", emotion: "happy", score: 3 },
+                        "낮잠": { text: "무중력 상태로 둥둥 떠서 자는 거네요. 와.. 진짜 편하겠다 ! ", emotion: "default", score: 3 },
                         "외계인": { text: "에.. {user}가 외계인 잡으러 다니면 저는 도망 다녀야겠네요 ~", emotion: "shy", score: 5 }
                     }
                 },
@@ -1089,7 +1073,7 @@ const affinityDialogues = {
                     text: "(풀밭에 엎드려서 무언가를 열심히 찾고 있다)",
                     emotion: "default",
                     choices: [
-                        { label: "뭐 찾아요? 네잎클로버?", score: 5, reply: "딩동댕 ! 찾으면 {user}한테 선물로 주려고 했지요 ~" },
+                        { label: "뭐 찾아요? 네잎클로버?", score: 3, reply: "딩동댕 ! 찾으면 {user}한테 선물로 주려고 했지요 ~" },
                         { label: "개미 관찰해요?", score: 0, reply: "에.. 개미는 너무 작아서 안 보여요. 행운을 찾는 중 !" }
                     ]
                 }
@@ -1103,16 +1087,16 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "핫초코": { text: "달달한 거 좋아하시는구나. 저도 초코 진짜 좋아해요 ! ^_^", emotion: "love", score: 5 },
-                        "우유": { text: "따뜻한 우유.. 잠 잘 오겠네요. 아기 같아요 ~", emotion: "happy", score: 5 },
-                        "커피": { text: "에- 역시 {user}(은)는 어른이네요. 시온이 형도 커피를 참 좋아하지요 ^_^", emotion: "sad", score: 5 }
+                        "핫초코": { text: "달달한 거 좋아하시는구나 ! ^_^", emotion: "love", score: 1 },
+                        "우유": { text: "따뜻한 우유.. 잠 잘 오겠네요. 아기 같아요 ~", emotion: "happy", score: 3 },
+                        "커피": { text: "에- 역시 {user}(은)는 어른이네요. 시온이 형도 커피를 참 좋아하지요 ^_^", emotion: "sad", score: 1 }
                     }
                 },
                 {
                     text: "신발 젖는 거 싫은데.. {user}가 나를 업고 가주면 조켄네...", // 
                     emotion: "shy",
                     choices: [
-                        { label: "어휴, 업히세요! (등을 내민다)", score: 5, reply: "와 ! 진짜요 ? 농담이었는데 ! {user}는 정말 착하네요~^_^" },
+                        { label: "어휴, 업히세요! (등을 내민다)", score: 3, reply: "와 ! 진짜요 ? 농담이었는데 ! {user}는 정말 착하네요~^_^" },
                         { label: "그건 좀 무리일 것 같은데요?", score: 0, reply: "치.. 너무해 ! 그치만 저도 농담이었어요 !" },
                         { label: "(못 들은 척)", score: 0, reply: "{user}가 나를 업고 가주면 조켄네... {user}가 나를 업고 가주면 조켄네... {user}가 나를 업고 가주면 조켄네... (앵우시가 나타났다!)" }
                     ]
@@ -1125,8 +1109,8 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "미인": { text: "에.. {user} 이야기하는 거예요 ? ^_^ 농담 ~", emotion: "happy", score: 5 },
-                        "순결": { text: "오 ! 잘 아시네요. 역시 똑똑해 !", emotion: "default", score: 5 },
+                        "미인": { text: "에.. {user} 이야기하는 거예요 ? ^_^ 농담 ~", emotion: "happy", score: 1 },
+                        "순결": { text: "오 ! 잘 아시네요. 역시 똑똑해 !", emotion: "default", score: 3 },
                         "중간고사": { text: "에에 ! 그건 너무 현실적인데요.. 분위기 깼어 !", emotion: "shock", score: 0 }
                     }
                 },
@@ -1152,7 +1136,8 @@ const affinityDialogues = {
                     answers: {
                         "재밌": { text: "에.. 그렇구나. 저는 {user}랑 노는 게 제일 재밌는데..", emotion: "sad", score: 0 },
                         "응": { text: "에.. 그렇구나. 저는 {user}랑 노는 게 제일 재밌는데..", emotion: "sad", score: 0 },
-                        "그저": { text: "그럼 저랑 놀아요 ! 제가 더 재밌게 해줄 수 있어요 😙", emotion: "happy", score: 5 },
+                        "그저": { text: "그럼 저랑 놀아요 ! 제가 더 재밌게 해줄 수 있어요 😙", emotion: "happy", score: 3 },
+                        "별로": { text: "그럼 저랑 놀아요 ! 제가 더 재밌게 해줄 수 있어요 😙", emotion: "happy", score: 3 },
                         "아니": { text: "역시 그렇죠 ? 다행이에요~ ^_^", emotion: "happy", score: 5 }
                     }
                 },
@@ -1160,7 +1145,7 @@ const affinityDialogues = {
                     text: "나른하네요.. {user} 어깨 좀 빌려도 돼요 ?", // 선택지
                     emotion: "shy",
                     choices: [
-                        { label: "당연하지! (어깨를 내어준다)", score: 10, reply: "(기대며) 아.. 편하다. 냄새도 좋고.. 잠올 것 같아요." },
+                        { label: "당연하지! (어깨를 내어준다)", score: 3, reply: "(기대며) 아.. 편하다. 냄새도 좋고.. 잠올 것 같아요." },
                         { label: "무거워~", score: 0, reply: "에.. 저 깃털처럼 가벼운데 ! 너무해 !" }
                     ]
                 }
@@ -1173,16 +1158,16 @@ const affinityDialogues = {
                     emotion: "sad",
                     type: "keyword",
                     answers: {
-                        "슬퍼": { text: "저도요.. 상상만 해도 너무 슬퍼요. 그러니까 안 떠날래요 !", emotion: "happy", score: 10 },
-                        "안돼": { text: "에.. 감동 ! ^_^ 절대 안 떠날게요. 딱 붙어있어야지 ~", emotion: "love", score: 10 }
+                        "슬": { text: "저도요.. 상상만 해도 너무 슬퍼요. 그러니까 안 떠날래요 !", emotion: "happy", score: 5 },
+                        "안돼": { text: "에.. 감동 ! ^_^ 절대 안 떠날게요. 딱 붙어있어야지 ~", emotion: "love", score: 5 }
                     }
                 },
                 {
                     text: "천둥 칠 때마다 깜짝 놀라요.. 손 잡아주면 안 무서울 것 같은데 !", // 선택지
                     emotion: "shy",
                     choices: [
-                        { label: "(말없이 손을 잡아준다)", score: 10, reply: "와.. 손 진짜 따뜻하다. 계속 잡고 있어도 돼요 ? 😙" },
-                        { label: "겁쟁이네~", score: 3, reply: "아니거든요 ! 그냥 {user} 손이 잡고 싶었던.. 에.. 아무것도 아니에요 !" }
+                        { label: "(말없이 손을 잡아준다)", score: 3 reply: "에- 손 진짜 따뜻하다. 계속 잡고 있어도 돼요 ? 😙" },
+                        { label: "겁쟁이네~", score: 0, reply: "아니거든요 ! 그냥 {user} 손이 잡고 싶었던.. 에.. 아무것도 아니에요 !" }
                     ]
                 }
                 
@@ -1212,17 +1197,17 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "도와줘": { text: "진짜요? 와! 언제든 불러만 주세요! 바로 달려갈게요!", emotion: "happy", score: 5 },
-                        "괜찮아": { text: "에이~ 너무 무리하지 마요. 쓰러지면 마음 아프잖아요.", emotion: "sad", score: 3 },
-                        "방해돼": { text: "헉.. 제가 방해가 된다니.. 조용히 있을게요.. (시무룩)", emotion: "shock", score: 0 }
+                        "도와줘": { text: "진짜요? 와! 언제든 불러만 주세요! 바로 달려갈게요!", emotion: "happy", score: 3 },
+                        "괜찮아": { text: "에이~ 너무 무리하지 마요. 쓰러지면 마음 아프잖아요.", emotion: "sad", score: 1 },
+                        "방해": { text: "헉.. 제가 방해가 된다니.. 조용히 있을게요.. (시무룩)", emotion: "shock", score: 0 }
                     }
                 },
                 {
                     text: "(재희가 콧노래를 부르며 걷다가 제 발에 걸려 휘청거린다)", // 선택지 (덜렁거림)
                     emotion: "shock",
                     choices: [
-                        { label: "조심해야지!", score: 5, reply: "으아악! ..휴, 살았다. 잡아줘서 고마워요! {user} 아니었으면 코 깨질 뻔했네.. 허허." },
-                        { label: "몸개그 해?", score: 3, reply: "아하하! 웃으셨으면 됐죠 뭐!" }
+                        { label: "조심해야지!", score: 3, reply: "으아악! ..휴, 살았다. 잡아줘서 고마워요! {user} 아니었으면 코 깨질 뻔했네.. 허허." },
+                        { label: "몸개그 해?", score: 0, reply: "아하하! 웃으셨으면 됐죠 뭐!" }
                     ]
                 }
             ],
@@ -1236,16 +1221,16 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "좋아해": { text: "그쵸! 찌찌뽕! 나중에 같이 먹으러 가요! 제가 쏠게요!", emotion: "happy", score: 5 },
-                        "싫어해": { text: "에.. 진짜요? 그럼 김치전은요? 감자전은?", emotion: "shock", score: 3 }
+                        "좋아해": { text: "그쵸! 찌찌뽕! 나중에 같이 먹으러 가요! 제가 쏠게요!", emotion: "happy", score: 3 },
+                        "싫어해": { text: "에.. 진짜요? 그럼 김치전은요? 감자전은?", emotion: "shock", score: 0 }
                     }
                 },
                 {
                     text: "앗.. 우산이 좀 작은가? (어깨가 축축하게 젖어있다)", // 선택지
                     emotion: "happy",
                     choices: [
-                        { label: "내 우산 같이 쓸래?", score: 5, reply: "오! 대박! 천사세요? 그럼 실례하겠습니다~ ⸜( *ˊᵕˋ* )⸝" },
-                        { label: "어깨가 넓네~^^", score: 5, reply: "앗ㅋㅋㅋ 그런 건가?! ㅎㅎ" },
+                        { label: "내 우산 같이 쓸래?", score: 3, reply: "오! 대박! 천사세요? 그럼 실례하겠습니다~ ⸜( *ˊᵕˋ* )⸝" },
+                        { label: "어깨가 넓네~^^", score: 1, reply: "앗ㅋㅋㅋ 그런 건가?! ㅎㅎ" },
                         { label: "감기 걸리겠다..", score: 0, reply: "괜찮아요! 저 튼튼하거든요! 에취! ..머쓱하네." }
                     ]
                 }
@@ -1258,9 +1243,9 @@ const affinityDialogues = {
                     emotion: "default",
                     type: "keyword",
                     answers: {
-                        "돗자리": { text: "아 맞다! 돗자리! 바닥에 그냥 앉을 뻔했네. 땡큐!", emotion: "happy", score: 5 },
-                        "도시락": { text: "오~ 맛있는 거! {user}가 싸주는 거예요? 기대되네~ 허허", emotion: "happy", score: 3 },
-                        "재희": { text: "저요? 저를 챙겨가신다고요? ..어? (얼굴 빨개짐)", emotion: "shy", score: 7 }
+                        "돗자리": { text: "아 맞다! 돗자리! 바닥에 그냥 앉을 뻔했네. 땡큐!", emotion: "happy", score: 1 },
+                        "도시락": { text: "오~ 맛있는 거! {user}가 싸주는 거예요? 기대되네~ 허허", emotion: "happy", score: 0 },
+                        "재희": { text: "저요? 저를 챙겨가신다고요? ..어? (얼굴이 빨개진다)", emotion: "shy", score: 3 }
                     }
                 },
                 {
@@ -1282,47 +1267,38 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "스시": { text: "스시? 음.. 나쁘지 않네. 근데 스시 싫으면 저한테 시집오셔야 되는데? ⸜( *ˊᵕˋ* )⸝", emotion: "love", score: 10 },
-                        "고기": { text: "고기!! 대박!! 역시 {user}는 뭘 좀 아는구만! 가자 가자!", emotion: "happy", score: 5 },
-                        "사랑": { text: "오? {user}의 사랑? 그럼 제가 와아아앙 먹어버릴게요! 냠냠!", emotion: "happy", score: 10 }
+                        "스시": { text: "스시? 음.. 나쁘지 않네요 ⸜( *ˊᵕˋ* )⸝", emotion: "love", score: 1 },
+                        "고기": { text: "고기!! 대박!! 역시 {user}는 뭘 좀 아는구만! 가자 가자!", emotion: "happy", score: 3 },
+                        "사랑": { text: "오? {user}의 사랑? 그럼 제가 와아아앙 먹어버릴게요! 냠냠!", emotion: "happy", score: 3 }
                     }
                 },
                 {
                     text: "(주머니를 뒤적거리다) 어? 나 지갑 어디 뒀지? 흘렸나?", // 선택지 (덜렁이)
                     emotion: "shock",
                     choices: [
-                        { label: "또 잃어버렸어?", score: 3, reply: "아니.. '또'라뇨! 저번엔 찾았잖아요! ..아마도?" },
-                        { label: "같이 찾아줄게", score: 5, reply: "역시 {user}밖에 없다.. 힝.. 감동이에요 ㅠㅠ" }
+                        { label: "또 잃어버렸어?", score: 0, reply: "아니.. '또'라뇨! 저번엔 찾았잖아요! ..아마도?" },
+                        { label: "같이 찾아줄게", score: 3, reply: "역시 {user}밖에 없다.. 힝.. 감동이에요 ㅠㅠ" }
                     ]
                 }
             ],
             
             "비": [
-                { text: "비 오니까 몸이 쳐지네예.. {user} 보고 충전해야겠다!", emotion: "happy" }, // 일반
-                {
-                    text: "비 오는 날 좋아해요? 저는 {user}랑 있으면 태풍이 와도 좋을 것 같은데!", // 키워드
-                    emotion: "happy",
-                    type: "keyword",
-                    answers: {
-                        "나도좋아": { text: "진짜요? 와! 오늘 우리 통했다! 하이파이브!", emotion: "happy", score: 5 },
-                        "부담스러워": { text: "헉.. 농담인데.. 진지하게 받으시면 저 상처받아요 ㅠㅠ", emotion: "sad", score: 0 }
-                    }
-                },
+                { text: "비 오니까 몸이 쳐지네예.. {user} 보고 충전해야겠다!", emotion: "happy" },
                 { 
                     text: "아까 고민이 있어서 머리가 좀 복잡했는데... 자고 일어나니까 까먹었어요! 뭐였더라?", 
                     emotion: "happy",
                     choices: [
                         { label: "단순해서 좋겠다.", score: 0, reply: "칭찬이죠? 허허!" },
-                        { label: "별거 아니었나 보네요.", score: 5, reply: "맞아요! 중요한 거였으면 기억났겠죠? 긍정적으로 생각하려고요!" },
-                        { label: "다시 생각해 봐요.", score: -2, reply: "으음... 머리 아파요. 그냥 맛있는 거 먹고 잊을래요!" }
+                        { label: "별거 아니었나 보네요.", score: 3, reply: "맞아요! 중요한 거였으면 기억났겠죠? 긍정적으로 생각하려고요!" },
+                        { label: "다시 생각해봐요.", score: 0, reply: "으음... 머리 아파요. 그냥 맛있는 거 먹고 잊을래요!" }
                     ]
                 },
                 {
                     text: "우산 꼭 챙기고 다니세요! 감기 걸리면 제가 어엄청 부담스럽게 업고 병원 뛰어갑니다!", // 선택지 (대구 사투리 훅)
                     emotion: "serious",
                     choices: [
-                        { label: "오~ 박력 있는데?", score: 5, reply: "제가 또 한 박력 하죠! {user} 한정으로다가! ( •̀ ω •́ )✧" },
-                        { label: "무거워서 못 업을걸?", score: 3, reply: "에이~ 저 힘세거든요? 진짜 한번 업어볼까요? 이리 와요!" }
+                        { label: "오~ 박력 있는데?", score: 3, reply: "제가 또 한 박력 하죠! {user} 한정으로다가! ( •̀ ω •́ )✧" },
+                        { label: "무거워서 못 업을걸?", score: 0, reply: "에이~ 저 힘세거든요? 진짜 한번 업어볼까요? 이리 와요!" }
                     ]
                 }
             ],
@@ -1335,20 +1311,12 @@ const affinityDialogues = {
                     text: "저기, 머리에 꽃잎 붙었어요. ...떼어드릴까요?", 
                     emotion: "shy",
                     choices: [
-                        { label: "응, 고마워.", score: 5, reply: "(조심스럽게 떼어내며) 됐다! 꽃보다 {user} 님이 더 빛나서 꽃이 질투했나 봐요. 허허." },
+                        { label: "응, 고마워.", score: 3, reply: "(조심스럽게 떼어내며) 됐다! 꽃보다 {user} 님이 더 빛나서 꽃이 질투했나 봐요. 허허." },
                         { label: "내가 뗄게.", score: 0, reply: "아, 넵! 거울 보여드릴까요?" },
-                        { label: "일부러 붙인 거야.", score: 3, reply: "아! 패션이구나! 죄송해요 제가 패션을 몰라봐서! 근데 잘 어울려요!" }
+                        { label: "일부러 붙인 거야.", score: 1, reply: "아! 패션이구나! 죄송해요 제가 패션을 몰라봐서! 근데 잘 어울려요!" }
                     ]
                 },
-                { text: "{user} 님, 저기 봐요! 강아지가 산책하는데 너무 귀여워요! 나도 강아지 키우고 싶다...", emotion: "happy" },
-                {
-                    text: "아! 눈에 뭐 들어간 거 같어.. 아 따가워 ㅠㅠ", // 선택지
-                    emotion: "sad",
-                    choices: [
-                        { label: "후~ 불어줄게", score: 10, reply: "(가까이 다가온 얼굴에 움찔하며) ..어, 방금 좀 설렜다. 심장 소리 들렸어요?" },
-                        { label: "비켜봐", score: 3, reply: "으으.. 살살 해주세요.. 저 겁 많단 말이에요.." }
-                    ]
-                }
+                { text: "{user} 님, 저기 봐요! 강아지가 산책하는데 너무 귀여워요! 나도 강아지 키우고 싶다...", emotion: "happy" }
             ]
         },
         
@@ -1359,17 +1327,17 @@ const affinityDialogues = {
                     text: "혹시 쫀덕쿠키 좋아하세요요??", 
                     emotion: "happy",
                     choices: [
-                        { label: "쫀덕이 아니라 쫀득이야", score: 10, reply: "헐? 몰랐어요!! 근데 쫀덕이 더 쫀~덕한 느낌이지 않아요? 뭔 말인지 알죠?ㅎㅎ" },
-                        { label: "응 좋아해!", score: 0, reply: "짠! 사쿠야네 빵집 갔다가 하나 남았길래 사봤어요. 드세요!" },
-                        { label: "별로 안 좋아해", score: 5, reply: "아! 그렇구나! 저도 사실 달아서 제 취향은 아니에요ㅋㅋ" }
+                        { label: "쫀덕이 아니라 쫀득이야", score: 1, reply: "헐? 몰랐어요!! 근데 쫀덕이 더 쫀~덕한 느낌이지 않아요? 뭔 말인지 알죠?ㅎㅎ" },
+                        { label: "응 좋아해!", score: 3, reply: "짠! 사쿠야네 빵집 갔다가 하나 남았길래 사봤어요. 드세요!" },
+                        { label: "별로 안 좋아해", score: 0, reply: "아! 그렇구나! 저도 사실 달아서 제 취향은 아니에요ㅋㅋ" }
                     ]
                 },
                 {
                     text: "(발이 꼬여서 넘어질 뻔한다) 으악! ..어? 안 넘어졌네?", // 선택지 (유저가 잡아줌)
                     emotion: "shock",
                     choices: [
-                        { label: "내가 잡았으니까!", score: 5, reply: "와.. {user} 진짜 든든하다. 평생 저 잡아주시면 안 돼요? ⸜( *ˊᵕˋ* )⸝" },
-                        { label: "정신 차려 똥강아지야", score: 5, reply: "멍! ..아니 제가 왜 똥강아지예요! 그래도 {user}네 강아지면 할래!" }
+                        { label: "내가 잡았으니까!", score: 3, reply: "와.. {user} 진짜 든든하다. 평생 저 잡아주시면 안 돼요? ⸜( *ˊᵕˋ* )⸝" },
+                        { label: "정신 차려 똥강아지야", score: 0, reply: "멍! ..아니 제가 왜 똥강아지예요! 그래도 {user}네 강아지면 할래!" }
                     ]
                 }
 
@@ -1381,16 +1349,16 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "발라드": { text: "오케이! 분위기 잡고 한번 뽑아보겠습니다! 흠흠!", emotion: "happy", score: 5 },
-                        "댄스곡": { text: "이 분위기에 댄스요? ㅋㅋㅋ 아 진짜 {user} 웃겨서 좋아! 사랑한데이~", emotion: "happy", score: 7 }
+                        "발라드": { text: "오케이! 분위기 잡고 한번 뽑아보겠습니다! 흠흠!", emotion: "happy", score: 1 },
+                        "댄스곡": { text: "이 분위기에 댄스요? ㅋㅋㅋ 아 진짜 {user} 웃겨서 좋아!", emotion: "happy", score: 3 }
                     }
                 },
                 {
                     text: "추우면 제 옷 덮을래요? 냄새 안 날.. 걸요! (킁킁)", // 선택지
                     emotion: "happy",
                     choices: [
-                        { label: "좋은 냄새 나네", score: 5, reply: "그쵸! 다행이다.. {user} 덮어주려고 아껴 입은 옷이거든요." },
-                        { label: "됐거등요", score: 3, reply: "칫.. 튕기기는. 감기 걸려도 전 몰라요! ..그래도 약은 사주겠지만." }
+                        { label: "좋은 냄새 나네", score: 3, reply: "그쵸! 다행이다.. {user} 덮어주려고 아껴 입은 옷이거든요." },
+                        { label: "됐거등요", score: 0, reply: "칫.. 튕기기는. 감기 걸려도 전 몰라요! ..그래도 약은 사주겠지만." }
                     ]
                 }
             ],
@@ -1404,9 +1372,9 @@ const affinityDialogues = {
                     text: "이렇게 좋은 날에 좋은 사람이랑 있으니까 진짜 좋다! 시간이 멈췄으면 좋겠어요.", 
                     emotion: "happy",
                     choices: [
-                        { label: "나도 그래.", score: 10, reply: "진짜? 와... 다행이다. 나만 신난 줄 알았네! 우리 더 놀자!" },
-                        { label: "시간은 멈추지 않아.", score: -2, reply: "으아, T야? 감성 파괴! 너무해!" },
-                        { label: "사진이나 찍자.", score: 5, reply: "그래! 남는 건 사진뿐이지! 김치~ 치즈~ 쫀덕~" }
+                        { label: "나도 그래.", score: 3, reply: "진짜? 와... 다행이다. 나만 신난 줄 알았네! 우리 더 놀자!" },
+                        { label: "시간은 멈추지 않아.", score: -2, reply: "으아, T야? 감성 파괴! 너무하네!" },
+                        { label: "사진이나 찍자.", score: 1, reply: "그래! 남는 건 사진뿐이지! 김치~ 치즈~ 쫀덕~" }
                     ]
                 },
                 { text: "기분 너무 좋다아~ 날아갈 거 같어! 저 좀 잡아주세요!", emotion: "happy" },
@@ -1414,9 +1382,9 @@ const affinityDialogues = {
                     text: "소풍 가고 싶다... 김밥 쌀 줄 아세요?", 
                     emotion: "default",
                     choices: [
-                        { label: "당연하지! 내가 싸줄게.", score: 10, reply: "진짜요?! 대박! 와아아앙! 저 진짜 기대할 거예요? 약속!" },
+                        { label: "당연하지! 내가 싸줄게.", score: 3, reply: "진짜요?! 대박! 와아아앙! 저 진짜 기대할 거예요? 약속!" },
                         { label: "요리는 영 꽝이라...", score: 0, reply: "괜찮아요! 사 먹으면 되죠! 편의점 김밥도 맛있잖아요~" },
-                        { label: "재희 님이 싸오세요.", score: 5, reply: "제가요? 음... 도전해 볼까요? 계란말이 정도는 할 수 있는데!" }
+                        { label: "재희 님이 싸오세요.", score: 0, reply: "제가요? 음... 도전해 볼까요? 계란말이 정도는 할 수 있는데!" }
                     ]
                 },
                 {
@@ -1424,8 +1392,8 @@ const affinityDialogues = {
                     emotion: "shy",
                     type: "keyword",
                     answers: {
-                        "살래": { text: "네?! 진짜요? 와.. 나 방금 심장 멈출 뻔했어.. 책임져요!", emotion: "love", score: 10 },
-                        "꽃구경": { text: "아.. 역시 꽃구경이 낫나? 그래도 같이 가는 거니까 좋다!", emotion: "happy", score: 5 }
+                        "시집갈": { text: "네?! 진짜요????", emotion: "love", score: 3 },
+                        "꽃구경": { text: "아.. 역시 꽃구경이 낫나? 그래도 같이 가는 거니까 좋다!", emotion: "happy", score: 0 }
                     }
                 }
             ]
@@ -1440,15 +1408,15 @@ const affinityDialogues = {
                     emotion: "happy",
                     type: "keyword",
                     answers: {
-                        "좋아": { text: "진짜? 오예! 그럼 내가 풀코스로 쏠게요! 몸만 와요 몸만!", emotion: "happy", score: 10 },
-                        "바빠": { text: "에.. 섭섭하게.. 그럼 바쁜 거 끝나고 가요! 기다릴 수 있음!", emotion: "sad", score: 5 }
+                        "좋아": { text: "진짜? 오예! 그럼 내가 풀코스로 쏠게요! 몸만 와요 몸만!", emotion: "happy", score: 3 },
+                        "바빠": { text: "에.. 섭섭하게.. 그럼 바쁜 거 끝나고 가요! 기다릴 수 있음!", emotion: "sad", score: 0 }
                     }
                 },
                 {
                     text: "(슬쩍 옆으로 와서 어깨를 툭 친다) 심심한데.. 나랑 놀아주라~", // 선택지
                     emotion: "default",
                     choices: [
-                        { label: "그래 놀자! 뭐 하고 놀까?", score: 10, reply: "음.. 일단 {user} 얼굴 실컷 보기? 으하하! 농담이고 산책 가요!" },
+                        { label: "그래 놀자! 뭐 하고 놀까?", score: 3, reply: "음.. 일단 {user} 얼굴 실컷 보기? 으하하! 농담이고 산책 가요!" },
                         { label: "바빠, 저리 가", score: 0, reply: "힝.. 너무해.. 그럼 옆에서 구경만 할게요. 조용히 있을게요.." }
                     ]
                 },
@@ -1457,15 +1425,15 @@ const affinityDialogues = {
                     emotion: "sad",
                     type: "keyword",
                     answers: {
-                        "마음만받을게": { text: "진짜요? 천사다 천사.. 다음엔 꼭 코팅해서 가져올게요!", emotion: "happy", score: 10 },
-                        "바보야": { text: "반박할 수가 없네.. 저는 왜 이렇게 덜렁거릴까요.. 흑흑.", emotion: "sad", score: 5 }
+                        "마음만받을게": { text: "진짜요? 천사다 천사.. 다음엔 꼭 코팅해서 가져올게요!", emotion: "happy", score: 3 },
+                        "바보야": { text: "반박할 수가 없네.. 저는 왜 이렇게 덜렁거릴까요.. 흑흑.", emotion: "sad", score: 0 }
                     }
                 },
                 {
                     text: "(뒤에서 살금살금 다가와서 왁! 하고 놀래킨다)", // 장난
                     emotion: "happy",
                     choices: [
-                        { label: "으악!!!", score: 10, reply: "으하하하!! 반응 대박! 아 웃겨서 배 아파 ㅋㅋㅋ" },
+                        { label: "으악!!!", score: 3, reply: "으하하하!! 반응 대박! 아 웃겨서 배 아파 ㅋㅋㅋ" },
                         { label: "(정색)", score: 0, reply: "어.. 죄송합니다.. 너무 심했나.. 화풀어요 ㅠㅠ" }
                     ]
                 }
@@ -1478,7 +1446,7 @@ const affinityDialogues = {
                      text: "비 맞으니까 시원하다! 우리 그냥 우산 버리고 축구할래요?", // 활동성
                      emotion: "happy",
                      choices: [
-                        { label: "콜! 덤벼!", score: 10, reply: "오!! 역시 내 짝꿍! 옷 버려도 난 모른다! 으하하!" },
+                        { label: "콜! 덤벼!", score: 3, reply: "오!! 역시 내 짝꿍! 옷 버려도 난 모른다! 으하하!" },
                         { label: "감기 걸려", score: 0, reply: "에이~ 약골이네 약골! 난 하나도 안 추운데! 에취!" }
                     ]
                  }
@@ -1491,19 +1459,11 @@ const affinityDialogues = {
                      emotion: "shock",
                      type: "keyword",
                      answers: {
-                         "꺄악 떼줘": { text: "잠깐만요! ..어라? 그냥 벚꽃 잎이네? 으하하! 속았지!", emotion: "happy", score: 5 },
-                         "거짓말이지": { text: "칫.. 안 속네. {user}는 너무 눈치가 빨라서 탈이라니까.", emotion: "default", score: 3 }
+                         "꺄악 떼줘": { text: "잠깐만요! ..어라? 그냥 벚꽃 잎이네? 으하하! 속았지!", emotion: "happy", score: 3 },
+                         "거짓말이지": { text: "칫.. 안 속네. {user}는 너무 눈치가 빨라서 탈이라니까.", emotion: "default", score: 0 }
                      }
                  },
-                { text: "{user}랑 있으면 시간이 너무 빨리 가요... 벌써 해 지네. 아쉽다. 조금만 더 놀다 가까?", emotion: "sad" },
-                {
-                     text: "저기, 머리에 벚꽃 잎 붙었다. (떼어주려다 눈이 마주친다)", // 선택지
-                     emotion: "shy",
-                     choices: [
-                        { label: "(가만히 있는다)", score: 10, reply: "..어, 방금 좀 가까웠다. 그쵸? 심장 떨어질 뻔했네.." },
-                        { label: "떼줘서 고마워", score: 5, reply: "아, 아니에요! 별거 아닌데 뭐.. 허허 (귀 빨개짐)" }
-                     ]
-                 }
+                { text: "{user}랑 있으면 시간이 너무 빨리 가요... 벌써 해 지네. 아쉽다. 조금만 더 놀다 가까?", emotion: "sad" }
             ]
         }
     },    
@@ -1519,9 +1479,9 @@ ryo: {
                     text: "저기, 죄송한데료.. 저 지금 중요한 미션을 깨고 있어서..", 
                     emotion: "shame",
                     choices: [
-                        { label: "무슨 게임이야?", score: 5, reply: "동물의 숲이요. 빚 갚아야 해서 노동 중이에료." },
-                        { label: "방해해서 미안.", score: 0, reply: "아니에료.. 제가 너무 집중해서.." },
-                        { label: "나도 게임 좋아해!", score: 5, reply: "오.. 그렇군료. (다시 게임에 집중한다)" }
+                        { label: "무슨 게임이야?", score: 0, reply: "동물의 숲이요. 빚 갚아야 해서 노동 중이에료." },
+                        { label: "방해해서 미안.", score: 1, reply: "아니에료.. 제가 너무 집중해서.." },
+                        { label: "나도 게임 좋아해!", score: 3, reply: "오.. 그렇군료. (다시 게임에 집중한다)" }
                     ]
                 },
                 {
@@ -1530,8 +1490,8 @@ ryo: {
                         type: "keyword",
                         answers: {
                             "별로 안 좋아해": { text: "아.. 역시. 존중해료.", emotion: "default", score: 0 },
-                            "좋아해": { text: "에?! 진짜료? 도마뱀도? 뱀도?!", emotion: "shock", score: 10 },
-                            "관심없어": { text: "음.. 혐오하는 것보단 낫네요. 다행이다.", emotion: "default", score: 5 }
+                            "좋아해": { text: "에?! 진짜료? 도마뱀도? 뱀도?!", emotion: "shock", score: 5 },
+                            "관심없어": { text: "음.. 혐오하는 것보단 낫네요. 다행이다.", emotion: "default", score: 3 }
                         }
                     }
             ],
@@ -1543,7 +1503,7 @@ ryo: {
                         type: "keyword",
                         answers: {
                             "같이쓰자": { text: "음.. 괜찮아료. 어깨 젖는 거 싫어서. 그냥 비 그치면 갈게료.", emotion: "default", score: 0 },
-                            "빌려줄게": { text: "오.. 꽤괜? 그럼 감사히 쓸게료. 다음에 돌려드릴게료.", emotion: "happy", score: 5 }
+                            "빌려줄게": { text: "오.. 꽤괜? 그럼 감사히 쓸게료. 다음에 돌려드릴게료.", emotion: "happy", score: 3 }
                         }
                     },
                 {
@@ -1551,7 +1511,7 @@ ryo: {
                         emotion: "default",
                         choices: [
                             { label: "으악 징그러!", score: 0, reply: "에? 생태계의 소중한 분해자인데.. 너무해료." },
-                            { label: "피해서 가야지", score: 5, reply: "오.. 야무지네료. 생명을 존중하는 자세, 아주 좋아료." }
+                            { label: "응 피해서 가고 있어", score: 3, reply: "오.. 생명을 존중하는 자세 아주 좋아료." }
                         ]
                     }
             ],
@@ -1568,8 +1528,8 @@ ryo: {
                     emotion: "happy",
                     choices: [
                         { label: "으악, 징그러!", score: -2, reply: "에..? 귀여운데.. 자세히 보면 눈이 초롱초롱해료." },
-                        { label: "오, 신기하게 생겼다.", score: 5, reply: "그쵸? 다리가 영롱한 색이에료. 완내스!" },
-                        { label: "료가 더 귀여워.", score: 10, reply: "에..? 갑자기료? 료는 곤충이 아닌데료.. //" }
+                        { label: "오, 신기하게 생겼다.", score: 3, reply: "그쵸? 다리가 영롱한 색이에료. 완내스!" },
+                        { label: "료가 더 귀여워.", score: 5, reply: "에..? 갑자기료? 료는 곤충이 아닌데료.. //" }
                     ]
                 },
                 { 
@@ -1577,9 +1537,9 @@ ryo: {
                     emotion: "sad",
                     type: "keyword", 
                     answers: {
-                        "힘들어": { text: "역시.. 세상에 쉬운 일은 없네료. 힘내세료.", emotion: "default", score: 5 },
-                        "재밌어": { text: "오.. 꽤 긍정적이시네료. 꽤괜!", emotion: "happy", score: 10 },
-                        "도와줘": { text: "에? 료가료? 음.. 마음으로 응원할게료. 야하항~", emotion: "happy", score: 5 }
+                        "힘들어": { text: "역시.. 세상에 쉬운 일은 없네료. 힘내세료.", emotion: "default", score: 0 },
+                        "재밌어": { text: "오.. 꽤 긍정적이시네료. 꽤괜!", emotion: "happy", score: 3 },
+                        "도와줘": { text: "에? 료가료? 음.. 마음으로 응원할게료. 야하항~", emotion: "happy", score: 0 }
                     }
                 },
                 {
@@ -1587,17 +1547,17 @@ ryo: {
                         emotion: "happy",
                         type: "keyword",
                         answers: {
-                            "나도좋아해": { text: "진짜? 통했네료! 우주는 낭만적이잖아료. 끝이 없다는 게..", emotion: "happy", score: 5 },
-                            "무서워": { text: "그쵸. 미지의 세계니까. 그게 매력인데.. 아쉽네료.", emotion: "default", score: 3 },
-                            "인터스텔라": { text: "오! 그 영화 봤어료? 료는 그거 보면서 5번 울었어료..", emotion: "happy", score: 7 }
+                            "좋아": { text: "진짜? 통했네료! 우주는 낭만적이잖아료. 끝이 없다는 게..", emotion: "happy", score: 3 },
+                            "무서": { text: "그쵸. 미지의 세계니까. 그게 매력인데.. 아쉽네료.", emotion: "default", score: 1 },
+                            "인터스텔라": { text: "오! 그 영화 봤어료? 료는 그거 보면서 5번 울었어료..", emotion: "happy", score: 3 }
                         }
                     },
                 {
                         text: "야하~ 날씨 좋네료. 이런 날은 다큐멘터리 보기 딱인데.", // 선택지
                         emotion: "happy",
                         choices: [
-                            { label: "나가서 안 놀고?", score: 3, reply: "집에서 에어컨 틀고 코끼리 다큐 보는 게 최고의 피서에료." },
-                            { label: "무슨 다큐?", score: 5, reply: "동물의 왕국이요. 약육강식의 세계.. 꽤괜이에료." }
+                            { label: "나가서 안 놀고?", score: 0, reply: "집에서 에어컨 틀고 코끼리 다큐 보는 게 최고의 피서에료." },
+                            { label: "무슨 다큐?", score: 1, reply: "동물의 왕국이요. 약육강식의 세계.. 꽤괜이에료." }
                         ]
                     }
             ],
@@ -1610,17 +1570,17 @@ ryo: {
                         emotion: "happy",
                         type: "keyword",
                         answers: {
-                            "고양이": { text: "그쵸! 코끼리는 가족애도 깊고 똑똑하대료. 멋있지 않아료?", emotion: "happy", score: 5 },
-                            "강아지": { text: "음.. 강아지도 귀엽긴 하죠. 재희 형 같아서..", emotion: "happy", score: 3 },
-                            "코끼리": { text: "에, 진짜요?! 코끼리가 제일 좋다는 사람 처음이에요! 야하! 료도 동물 중에 코끼리가 제일 좋은데!", emotion: "happy", score: 3 }
+                            "고양이": { text: "고양이도 귀엽긴 하죠. 리쿠 형 같아서.", emotion: "happy", score: 0 },
+                            "강아지": { text: "강아지도 귀엽긴 하죠. 재희 형 같아서.", emotion: "happy", score: 0 },
+                            "코끼리": { text: "에, 진짜요?! 코끼리가 제일 좋다는 사람 처음이에요! 료도 동물 중에 코끼리가 제일 좋은데! 코끼리는 가족애도 깊고 똑똑하대료. 멋있지 않아료?", emotion: "happy", score: 3 }
                         }
                     },
                 {
                         text: "장화 신고 왔어료? 료는 운동화 신고 와서 양말 다 젖었어료.. 축축해.", // 선택지
                         emotion: "sad",
                         choices: [
-                            { label: "어부바 해줄까?", score: 5, reply: "에? 됐어료. 제가 애기도 아니고. ..근데 좀 편하긴 하겠다." },
-                            { label: "맨발로 다녀", score: 0, reply: "와.. 원시인이에료? 위생 관념 무슨 일이야.." }
+                            { label: "어부바 해줄까?", score: 3, reply: "에? 됐어료. 제가 애기도 아니고. ..근데 좀 편하긴 하겠다." },
+                            { label: "맨발로 다녀", score: 0, reply: "에.. 그건 싫어료." }
                         ]
                     }
             ],
@@ -1631,15 +1591,15 @@ ryo: {
                         emotion: "happy",
                         type: "keyword",
                         answers: {
-                            "부탁해": { text: "맡겨만 주세요. 다리 길어 보이게 찍어드릴게료. 꽤괜?", emotion: "happy", score: 5 },
-                            "같이찍자": { text: "음.. 료는 셀카 별론데.. 그래도 기념이니까 한 장만?", emotion: "shy", score: 5 }
+                            "부탁해": { text: "맡겨만 주세요. 다리 길어 보이게 찍어드릴게료. 꽤괜?", emotion: "happy", score: 0 },
+                            "같이찍자": { text: "음.. 료는 셀카 별론데.. 그래도 기념이니까 한 장만?", emotion: "shy", score: 3 }
                         }
                     },
                 {
                         text: "사쿠야한테 숲에 꽃구경 가자고 했는데 바쁘대요..", // 선택지
                         emotion: "sad",
                         choices: [
-                            { label: "나랑 놀자", score: 5, reply: "야하~ 좋아료! {user}는 착하네료. 사쿠야보다 낫다." },
+                            { label: "나랑 놀자", score: 3, reply: "야하~ 좋아료! {user}는 착하네료. 사쿠야보다 낫다." },
                             { label: "한 번 튕겨본 거 아냐? 다시 가봐", score: 0, reply: "싫어료. 여기서 {user}랑 쉴래료." }
                         ]
                     }
@@ -1653,7 +1613,7 @@ ryo: {
                     text: "저 오늘 사쿠야랑 놀기로 했는데 같이 놀래요? 셋이 놀면 더 재밌을 거 같은데.", 
                     emotion: "happy",
                     choices: [
-                        { label: "오! 좋아! 뭐 하고 놀 거야?", score: 10, reply: "그냥.. 숨바꼭질? 료가 술래 할게료!" },
+                        { label: "오! 좋아! 뭐 하고 놀 거야?", score: 3, reply: "그냥.. 숨바꼭질? 료가 술래 할게료!" },
                         { label: "사쿠야가 싫어하지 않을까?", score: 0, reply: "음.. 그럴 수도 있겠지만.. 료가 밀어붙이면 돼료! 으하항!" },
                         { label: "난 바빠서 패스.", score: -5, reply: "칫.. 알겠어료. 우리끼리 재밌게 놀아야지 뭐." }
                     ]
@@ -1664,7 +1624,7 @@ ryo: {
                         emotion: "happy",
                         choices: [
                             { label: "으악 못생겼어", score: 0, reply: "에?! 취소해료! 세상에서 제일 억울하고 귀여운 표정인데!" },
-                            { label: "말랑하다", score: 5, reply: "그쵸? 촉감 완내스(완전 내 스타일)에료. 힐링템이에료." }
+                            { label: "말랑하다", score: 3, reply: "그쵸? 촉감 완내스(완전 내 스타일)에료. 힐링템이에료." }
                         ]
                     }
             ],
@@ -1675,8 +1635,8 @@ ryo: {
                         emotion: "default",
                         type: "keyword",
                         answers: {
-                            "낭만적이네": { text: "야하~ 료랑 코드가 맞네료. {user}도 꽤 감성적인가 봐료.", emotion: "happy", score: 5 },
-                            "흙탕물이야": { text: "으음.. 너무 T 아니에료? 료보다 더해..", emotion: "sad", score: 0 }
+                            "낭만": { text: "야하~ 료랑 코드가 맞네료. {user}도 꽤 감성적인가 봐료.", emotion: "happy", score: 3 },
+                            "흙탕물": { text: "으음.. 너무 T 아니에료? 료보다 더해..", emotion: "sad", score: 0 }
                         }
                     },
                 { text: "비 와서 나가기 싫었는데.. {user} 보려고 나왔어료. 칭찬해 주세료!", emotion: "shy" }
@@ -1696,8 +1656,8 @@ ryo: {
                         text: "이 꽃잎 {user} 닮았어료.", // 선택지 (츤데레 칭찬)
                         emotion: "shy",
                         choices: [
-                            { label: "고마워", score: 5, reply: "들고 있어 봐요. 사진 찍어줄게요!" },
-                            { label: "료가 더 예뻐", score: 10, reply: "에?! 예, 예쁘다고는 안 했는데에..." }
+                            { label: "고마워", score: 0, reply: "들고 있어 봐요. 사진 찍어줄게요!" },
+                            { label: "료가 더 예뻐", score: 3, reply: "에?! 예, 예쁘다고는 안 했는데에..." }
                         ]
                     }
             
@@ -1720,9 +1680,9 @@ ryo: {
                     text: "있잖아요, 료는 {user} 님이랑 있으면 텐션이 올라가료. 사쿠야랑 있을 때랑은 좀 다른 느낌?", 
                     emotion: "happy",
                     choices: [
-                        { label: "어떤 느낌인데?", score: 5, reply: "음.. 더 편안하다고 해야 하나? 사쿠야는 내가 챙겨줘야 할 거 같은데 {user} 님은 절 챙겨주니까료." },
-                        { label: "내가 더 좋다는 거지?", score: 10, reply: "야하항! 뭐.. 부정은 안 할게료. 비밀이에료!" },
-                        { label: "사쿠야한테 이른다?", score: 5, reply: "아 쫌! 이르지 마세료! 사쿠야 삐진단 말이에료!" }
+                        { label: "어떤 느낌인데?", score: 1, reply: "음.. 더 편안하다고 해야 하나? 사쿠야는 내가 챙겨줘야 할 거 같은데 {user} 님은 절 챙겨주니까료." },
+                        { label: "내가 더 좋다는 거지?", score: 3, reply: "야하항! 뭐.. 부정은 안 할게료. 비밀이에료!" },
+                        { label: "사쿠야한테 이른다?", score: 0, reply: "아 쫌! 이르지 마세료! 사쿠야 삐진단 말이에료!" }
                     ]
                 },
             ],
@@ -1732,7 +1692,7 @@ ryo: {
                      text: "(웅덩이를 쪼그려 앉아 보고 있다) 여기 웅덩이 속에 또 다른 세상이 있어료. 거꾸로 된 세상.", // 선택지
                      emotion: "default",
                      choices: [
-                        { label: "료는 시인이네", score: 10, reply: "에.. 부끄럽게.. 그냥 보이는 대로 말한 건데료. (수줍)" },
+                        { label: "료는 시인이네", score: 3, reply: "에.. 부끄럽게.. 그냥 보이는 대로 말한 건데료. (수줍)" },
                         { label: "물 튄다 일어나", score: 0, reply: "칫.. 감성이 없어료 감성이. 낭만 파괴자.." }
                      ]
                  }
@@ -1745,8 +1705,8 @@ ryo: {
                      emotion: "happy",
                      type: "keyword",
                      answers: {
-                         "오 똑똑한데": { text: "야하~ 료가 좀 잡지식이 많아료. 나중에 다큐 보여드릴게료.", emotion: "happy", score: 10 },
-                         "어지러워": { text: "그쵸? 계속 보고 있으면 료도 눈이 핑글핑글 도는 거 같아료 @_@", emotion: "shock", score: 5 }
+                         "똑똑": { text: "야하~ 료가 좀 잡지식이 많아료. 나중에 다큐 보여드릴게료.", emotion: "happy", score: 3 },
+                         "어지러워": { text: "그쵸? 계속 보고 있으면 료도 눈이 핑글핑글 도는 거 같아료 @_@", emotion: "shock", score: 0 }
                      }
                  }
             ]
@@ -1762,7 +1722,7 @@ ryo: {
                         text: "팔에 있는 머리끈이요? 여동생이 준 거예요. 예쁘죠?", // 선택지 (가족)
                         emotion: "default",
                         choices: [
-                            { label: "핑크색 잘 어울려", score: 5, reply: "알아요. 제가 핑크색 좀 잘 받거든요." }, // 자신감
+                            { label: "핑크색 잘 어울려", score: 3, reply: "알아요. 제가 핑크색 좀 잘 받거든요." }, // 자신감
                             { label: "좀 튀는데?", score: 0, reply: "왜요? 예쁘기만 한데. 취존(취향존중) 부탁드려요." }
                         ]
                     }
@@ -1775,7 +1735,7 @@ ryo: {
                         emotion: "default",
                         type: "keyword",
                         answers: {
-                            "싫어해": { text: "역시! 맛을 좀 아시네요. 민초는 없어져야 해요.", emotion: "happy", score: 5 },
+                            "싫어해": { text: "역시! 맛을 좀 아시네요. 민초는 없어져야 해요.", emotion: "happy", score: 3 },
                             "좋아해": { text: "우와.. 진짜요? 저랑 겸상은 힘들겠네요. 농담이에요.", emotion: "shock", score: 0 }
                         }
                     },
@@ -1783,7 +1743,7 @@ ryo: {
                         text: "아, 매운 냄새.. 누가 떡볶이 만드나 봐요. 코 따가워.", // 선택지 (맵찔이)
                         emotion: "sad",
                         choices: [
-                            { label: "매운 거 못 먹어?", score: 5, reply: "못 먹는 게 아니라 안 먹는 거예요. 혀 아프잖아요." },
+                            { label: "매운 거 못 먹어?", score: 3, reply: "못 먹는 게 아니라 안 먹는 거예요. 혀 아프잖아요." },
                             { label: "애기 입맛이네", score: 0, reply: "에-? 맛있는 게 얼마나 많은데 굳이 고통을 즐겨야 해요?" }
                         ]
                     }
@@ -1796,8 +1756,8 @@ ryo: {
                         emotion: "default",
                         type: "keyword",
                         answers: {
-                            "무겁겠다": { text: "무거워도 포기 못 해요. 다 추억이 담긴 거라.", emotion: "happy", score: 5 },
-                            "나도하나줘": { text: "음.. 안 되는데. 이거 한정판이라.. 대신 빵 드릴게요.", emotion: "default", score: 3 }
+                            "무겁겠다": { text: "무거워도 포기 못 해요. 다 추억이 담긴 거라.", emotion: "happy", score: 3 },
+                            "나도하나줘": { text: "음.. 안 되는데. 이거 한정판이라.. 대신 빵 드릴게요.", emotion: "default", score: 0 }
                         }
                     }
             ]
@@ -1810,8 +1770,10 @@ ryo: {
                         emotion: "shy",
                         type: "keyword",
                         answers: {
-                            "알려줘": { text: "음.. {user}님이 빵 100개 사가는 꿈? 대박 날 징조인가 봐요.", emotion: "happy", score: 5 },
-                            "악몽꿨어?": { text: "아뇨. 저는 무서운 꿈 잘 안 꿔요. 자각몽도 가끔 꾸고.", emotion: "default", score: 3 }
+                            "알려": { text: "음.. {user}님이 빵 100개 사가는 꿈? 대박 날 징조인가 봐요.", emotion: "happy", score: 3 },
+                            "무슨": { text: "음.. {user}님이 빵 100개 사가는 꿈? 대박 날 징조인가 봐요.", emotion: "happy", score: 3 },
+                            "궁금": { text: "음.. {user}님이 빵 100개 사가는 꿈? 대박 날 징조인가 봐요.", emotion: "happy", score: 3 },
+                            "악몽": { text: "아뇨. 저는 무서운 꿈 잘 안 꿔요. 자각몽은 가끔 꾸는데.", emotion: "default", score: 3 }
                         }
                     },
                 {
@@ -1819,15 +1781,15 @@ ryo: {
                         emotion: "happy",
                         type: "keyword",
                         answers: {
-                            "나도해": { text: "오! 진짜요? 나중에 멀티 해요! 제가 집 지어드릴게요.", emotion: "happy", score: 10 },
-                            "그게뭐야": { text: "에.. 인생의 절반을 손해 보셨네. 네모난 세상이 얼마나 재밌는데요.", emotion: "default", score: 3 }
+                            "나도해": { text: "오! 진짜요? 나중에 멀티 해요!", emotion: "happy", score: 3 },
+                            "그게뭐야": { text: "에.. 인생의 절반을 손해 보셨네. 네모난 세상이 얼마나 재밌는데요.", emotion: "default", score: 30 }
                         }
                     },
                 {
                         text: "빵 만드는 거 쉬워 보이죠? 이거 다 과학이에요. 온도, 습도, 그리고 정성.", // 선택지 (프로의식)
                         emotion: "serious",
                         choices: [
-                            { label: "멋있다 파티시에!", score: 10, reply: "에- 칭찬한다고 공짜 빵은 없어요. ..서비스 하나 정도는 줄 수 있지만." },
+                            { label: "멋있다 파티시에!", score: 3, reply: "에- 칭찬한다고 공짜 빵은 없어요. ..서비스 하나 정도는 줄 수 있지만." },
                             { label: "하나만 줘", score: 0, reply: "돈 내고 사 드세요. 저희 가게 장사해야죠." }
                         ]
                     }
@@ -1840,7 +1802,7 @@ ryo: {
                         emotion: "shy",
                         type: "keyword",
                         answers: {
-                            "귀여워": { text: "귀여운 게 아니라 현명한 거죠! 양치 시간이 즐거워야 하니까.", emotion: "happy", score: 5 },
+                            "귀여워": { text: "귀여운 게 아니라 현명한 거죠! 양치 시간이 즐거워야 하니까.", emotion: "happy", score: 3 },
                             "애기네": { text: "아 진짜.. 애기 아니거든요? 입맛이 섬세한 거라고요.", emotion: "serious", score: 3 }
                         }
                     },
@@ -1848,8 +1810,8 @@ ryo: {
                         text: "료가 비 온다고 외계인 타령하던데.. {user}님도 들었어요?", // 선택지 (료 뒷담화?)
                         emotion: "default",
                         choices: [
-                            { label: "응 귀엽던데", score: 5, reply: "귀엽긴 하죠. 손이 많이 가서 문제지. 걔는 제가 없으면 안 돼요." }, // 형아미
-                            { label: "이상하던데", score: 3, reply: "원래 좀 4차원이에요. 나쁜 애는 아닌데.. 이해해 주세요." }
+                            { label: "응 귀엽던데", score: 3, reply: "귀엽긴 하죠. 손이 많이 가서 문제지. 걔는 제가 없으면 안 돼요." }, // 형아미
+                            { label: "이상하던데", score: 0, reply: "원래 좀 4차원이에요. 나쁜 애는 아닌데.. 이해해 주세요." }
                         ]
                     }
             ],
@@ -1862,7 +1824,7 @@ ryo: {
                         emotion: "happy",
                         choices: [
                             { label: "료 좀 챙겨줘", score: 3, reply: "에? 제가 얼마나 잘 챙겨주는데요. 가끔 좀 귀찮아서 그렇지." },
-                            { label: "잘했어", score: 5, reply: "그쵸? 역시 다루는 법을 안다니까요." }
+                            { label: "잘했어", score: 1, reply: "그쵸? 역시 다루는 법을 안다니까요." }
                         ]
                     }
 
@@ -1877,7 +1839,7 @@ ryo: {
                     emotion: "default",
                     choices: [
                         { label: "딸기맛? 애기야?", score: -5, reply: "아니거든요! 민트가 너무 매운 거라고요! 그게 치약이야 파스야..." }, // 민초단 배척
-                        { label: "나도 과일향 나는 거 써.", score: 5, reply: "오, 동지다! 역시 과일맛으로 해야 기분이 좋아지죠." },
+                        { label: "나도 과일향 나는 거 써.", score: 3, reply: "오, 동지다! 역시 과일맛으로 해야 기분이 좋아지죠." },
                         { label: "죽염 치약", score: 0, reply: "오.. 어른이다." }
                     ]
                 },
@@ -1893,7 +1855,7 @@ ryo: {
                         emotion: "default",
                         type: "keyword",
                         answers: {
-                            "고마워": { text: "별말씀을요. 힘들면 빵 먹으러 와요. 서비스 줄게요.", emotion: "happy", score: 10 },
+                            "고마워": { text: "별말씀을요. 힘들면 빵 먹으러 와요. 서비스 줄게요.", emotion: "happy", score: 3 },
                             "너나잘해": { text: "에- 걱정해줘도 난리네. 저 삐지면 오래가요.", emotion: "serious", score: 0 }
                         }
                     }
@@ -1908,16 +1870,16 @@ ryo: {
                         emotion: "shy",
                         type: "keyword",
                         answers: {
-                            "이상형": { text: "이상형이요? 음.. 밥 잘 먹고, 향기 좋고, 제 장난 받아주는 사람?", emotion: "happy", score: 10 },
-                            "보물": { text: "제 키링들이죠. 건드리면 물어요.", emotion: "happy", score: 5 }
+                            "이상형": { text: "이상형이요? 음.. 밥 잘 먹고, 향기 좋고, 제 장난 받아주는 사람?", emotion: "happy", score: 3 },
+                            "보물": { text: "제 키링들이죠. 건드리면 물어요.", emotion: "happy", score: 3 }
                         }
                     },
                 {
                         text: "료가 자꾸 {user}님 찾던데.. 둘이 뭐예요? 수상한데.", // 선택지 (살짝 질투?)
                         emotion: "serious",
                         choices: [
-                            { label: "질투해?", score: 10, reply: "하! 참나. 제가요? 그럴 리가요. 그냥 료가 귀찮게 할까 봐 그렇죠." },
-                            { label: "그냥 친해", score: 5, reply: "그렇구나.. 뭐, 친하게 지내면 좋죠. 료가 친구가 별로 없어서." }
+                            { label: "질투해?", score: 3, reply: "하! 참나. 제가요? 그럴 리가요. 그냥 료가 귀찮게 할까 봐 그렇죠." },
+                            { label: "그냥 친해", score: 1, reply: "그렇구나.. 뭐, 친하게 지내면 좋죠." }
                         ]
                     }
             ]
@@ -1938,9 +1900,9 @@ ryo: {
                     text: "자꾸 사람들이 저보고 볼살 빵 같다고 찌르는데... {user} 님도 찔러보고 싶어요?", 
                     emotion: "shy",
                     choices: [
-                        { label: "(콕 찌른다) 와 진짜 빵이다!", score: 10, reply: "아! ㅋㅋㅋ 진짜 찌르네. ...뭐, {user} 님이니까 봐줄게요. 특별히." },
-                        { label: "아니, 아껴줄 거야.", score: 10, reply: "오... 멘트 좀 하는데? 기분 나쁘지 않네요." },
-                        { label: "(양손으로 잡고 늘린다)", score: 5, reply: "으아, 아파요! 하지 마요! ㅋㅋㅋ" }
+                        { label: "(콕 찌른다) 와 진짜 빵이다!", score: 1, reply: "아! ㅋㅋㅋ 진짜 찌르네. ...뭐, {user} 님이니까 봐줄게요. 특별히." },
+                        { label: "아니. 아껴줄 거야.", score: 3, reply: "오... 멘트 좀 치시네요." },
+                        { label: "(양손으로 잡고 늘린다)", score: 3, reply: "으아, 아파요! 하지 마요! ㅋㅋㅋ" }
                     ]
                 },
             ],
@@ -1950,8 +1912,8 @@ ryo: {
                         text: "(우산을 씌워주며) 왜 비 맞고 계세요. 감기 걸리면 빵 맛 못 느끼잖아요.", // 선택지
                         emotion: "shy",
                         choices: [
-                            { label: "걱정해주는거야?", score: 10, reply: "뭐.. 단골손님 관리 차원이죠. 아프지 말라고요." },
-                            { label: "너나 잘해", score: 5, reply: "전 튼튼하거든요! 걱정 붙들어 매세요." }
+                            { label: "걱정해주는거야?", score: 3, reply: "뭐.. 단골손님 관리 차원이죠. 아프지 말라고요." },
+                            { label: "너나 잘해", score: 0, reply: "전 튼튼하거든요! 걱정 붙들어 매세요." }
                         ]
                     }
             ],
@@ -1962,16 +1924,16 @@ ryo: {
                         emotion: "shy",
                         type: "keyword",
                         answers: {
-                            "이걸줘?": { text: "네. 저한테 소중한 거니까, 소중한 사람한테 주는 거예요. 잃어버리면 안 돼요!", emotion: "love", score: 10 },
-                            "괜찮아": { text: "아.. 거절은 거절인데. 일단 받아봐요. 제 성의니까.", emotion: "sad", score: 5 }
+                            "진짜": { text: "저한테 소중한 거니까 소중한 사람한테 주는 거예요. 잃어버리면 안 돼요!", emotion: "love", score: 3 },
+                            "괜찮아": { text: "아.. 거절은 거절인데. 일단 받아봐요. 제 성의니까.", emotion: "sad", score: 3 }
                         }
                     },
                 {
                         text: "료가 자꾸 우리 사이 수상하다고 하던데. 뭐라고 해줄까요?", // 선택지 (돌직구)
                         emotion: "happy",
                         choices: [
-                            { label: "비밀이라고 해", score: 10, reply: "오~ 신비주의? 재밌겠네요. 료 약 좀 올려야겠다. (씨익)" },
-                            { label: "아무 사이 아니라고 해", score: 0, reply: "단호박이네. 알겠어요. 정정해둘게요. 그냥 친한 사이라고." }
+                            { label: "비밀이라고 해", score: 3, reply: "오~ 신비주의? 재밌겠네요. 료 약 좀 올려야겠다. (씨익)" },
+                            { label: "아무 사이 아니라고 해", score: -5, reply: "에.. 아무 사이 아닌 건 아니지 않아요? 좀 섭섭해요." }
                         ]
                     }
             ]
@@ -2304,6 +2266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
