@@ -1710,11 +1710,11 @@ const affinityEvents = {
 // 3. 장소 및 레시피 데이터
 const locations = {
     farm: { name: "농장", bg: "assets/images/backgrounds/farm.png", items: ["수선화", "흙", "딸기"] },
-    square: { name: "마을 광장", bg: "assets/images/backgrounds/square.png", items: ["수선화", "민들레", "리모컨", "에너지 드링크", "흙"] },
+    square: { name: "마을 광장", bg: "assets/images/backgrounds/square.png", items: ["수선화", "에너지 드링크", "흙"] },
     forest: { name: "비밀의 숲", bg: "assets/images/backgrounds/forest.png", items: ["스타푸르트", "블루 재즈", "블롭피쉬", "딸기", "도토리", "흙"] },
     shop: { name: "피에르 상점", bg: "assets/images/backgrounds/shop.png", items: ["설탕", "치즈", "밀가루", "달걀"] },
-    hall: { name: "마을 회관", bg: "assets/images/backgrounds/hall.png", items: ["에너지 드링크", "초코케이크", "흙"] },
-    saloon: { name: "별빛 주점", bg: "assets/images/backgrounds/saloon.png", items: ["딸기 빵", "행운의 점심", "초코케이크", "커피"] }
+    hall: { name: "마을 회관", bg: "assets/images/backgrounds/hall.png", items: ["에너지 드링크", "흙", "민들레", "리모컨"] },
+    saloon: { name: "별빛 주점", bg: "assets/images/backgrounds/saloon.png", items: ["행운의 점심", "초코케이크", "커피"] }
 };
 
 const recipes = [
@@ -1732,7 +1732,7 @@ const itemData = {
     "치즈": { img: "assets/images/items/cheese.png", desc: "꼬릿꼬릿한 냄새가 난다" }, //ㅎㅇ
     "설탕": { img: "assets/images/items/Sugar.png", desc: "혈당 관리 해야하는데..." }, //ㅎㅇ
     "핑크케이크": { img: "assets/images/items/pink_cake.png", desc: "사랑스러운 핑크색 케이크" }, //ㅎㅇ
-    "초코케이크": { img: "assets/images/items/chocolatecake.png", desc: "찐한 초콜릿 냄새가 난다" }, //ㅎㅇ
+    "초코케이크": { img: "assets/images/items/chocolate_cake.png", desc: "찐한 초콜릿 냄새가 난다" }, //ㅎㅇ
     "딸기": { img: "assets/images/items/Strawberry.png", desc: "뚜왈기!" }, //ㅎㅇ
     "행운의 점심": { img: "assets/images/items/luckylunch.png", desc: "행운이 올 것 같다!" }, //ㅎㅇ
     "밀가루": { img: "assets/images/items/Flour.png", desc: "제빵의 기본 재료" }, //ㅎㅇ
@@ -1751,32 +1751,32 @@ const itemData = {
 const endingScripts = {
     sion: {
         title: "시온과의 따뜻한 티타임",
-        image: "assets/images/portraits/sion_happy.png",
+        image: "assets/images/portraits/sion_default.png",
         text: "어, {user}님. 아직 안 가셨네요? 해 졌는데.\n기다려봐요. 농장까지 같이 가요. 가로등도 별로 없어서 위험해요.\n...저기, 혹시 이번 주말에 시간 괜찮으세요?\n얼마 전에 진짜 괜찮은 원두를 구했거든요. 향이 진짜 좋은데...\n제일 먼저 {user}님한테 내려주고 싶어요. ...우리 집 놀러 올래요?\n맛있는 커피랑, 귀여운 소들이랑... 그리고 저도 기다리고 있을게요."
     },
     riku: {
         title: "리쿠의 영원한 단짝",
-        image: "assets/images/portraits/riku_happy.png",
+        image: "assets/images/portraits/riku_default.png",
         text: "누나누나!! 이제 어디 가면 안 대여 알겟져?\n\n리쿠는 누나랑 평생~ 같이 놀 거야!\n약속 도장 꾹!! 헤헤, 사랑해여!!"
     },
     yushi: {
         title: "수줍은 고백",
-        image: "assets/images/portraits/yushi_happy.png",
+        image: "assets/images/portraits/yushi_default.png",
         text: "(숲속 깊은 곳, 유우시가 나무 그루터기에 앉아 하늘을 보고 있다.)\n\n어 ? {user} ! 어떻게 알고 왔어요 ? 여기 제 비밀 기지인데 😙\n사실.. 아까부터 {user} 생각을 좀 하고 있었거든요.\n\n저는 원래 혼자 있는 게 제일 편하거든요 ? 누가 옆에 있으면 신경 쓰이고.. 귀찮고.."
     },
     jaehee: {
         title: "든든한 파트너",
-        image: "assets/images/portraits/jaehee_happy.png",
+        image: "assets/images/portraits/jaehee_default.png",
         text: "허허, 농장주님만큼 저랑 잘 맞는 사람은 처음 봤습니다.\n\n우리 둘이 힘을 합치면 못 할 게 없겠죠.\n앞으로도 잘 부탁합니다, 나의 파트너."
     },
     ryo: {
         title: "최고의 콤비",
-        image: "assets/images/portraits/ryo_happy.png",
+        image: "assets/images/portraits/ryo_default.png",
         text: "야하~ 역시 누나가 최고야!\n\n나랑 같이 있으면 심심할 틈 없을걸?\n내가 매일매일 웃게 해 줄게! 진짜루!"
     },
     sakuya: {
         title: "달콤한 빵 냄새",
-        image: "assets/images/portraits/sakuya_happy.png",
+        image: "assets/images/portraits/sakuya_default.png",
         text: "갓 구운 빵 냄새보다 농장주님이 더 좋은걸요?\n\n매일 아침 맛있는 빵과 함께 당신을 기다릴게요.\n저랑.. 사귀어 주실래요?"
     },
     // 양다리 엔딩 (호감도 높은 사람이 2명 이상일 때)
@@ -1909,6 +1909,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
