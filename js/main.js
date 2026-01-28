@@ -641,7 +641,7 @@ function finishTyping() {
         nextCursor.classList.remove('hidden');
 
         // ★ [문제 해결 2] 행동 묘사(이미 대화함) 상황이면 바로 선물 버튼 띄우기
-        if (shouldShowInput) {
+        if (shouldShowInput && !gameState.isEnding) {
             inputArea.classList.remove('hidden');
             
             // 선물 버튼만 보이고 나머지는 숨김
@@ -941,6 +941,11 @@ function checkEnding() {
 
 function playEndingSequence(data, npcKey) {
     if (!data) return;
+
+   // ★ [추가] 엔딩 시작 시 선물 버튼 표시 기능 강제 종료
+    shouldShowInput = false; 
+    
+    // ... (기존 코드 계속) ...
     
     currentEndingData = data; 
     gameState.isEnding = true;
@@ -1093,6 +1098,7 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
 
 
 
