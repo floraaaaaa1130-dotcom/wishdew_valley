@@ -1713,12 +1713,33 @@ const affinityEvents = {
 
 // 3. 장소 및 레시피 데이터
 const locations = {
-    farm: { name: "농장", bg: "assets/images/backgrounds/farm.png", items: ["수선화", "흙", "딸기"] },
-    square: { name: "마을 광장", bg: "assets/images/backgrounds/square.png", items: ["수선화", "에너지 드링크", "흙"] },
-    forest: { name: "비밀의 숲", bg: "assets/images/backgrounds/forest.png", items: ["스타푸르트", "블루 재즈", "블롭피쉬", "딸기", "도토리", "흙"] },
-    shop: { name: "피에르 상점", bg: "assets/images/backgrounds/shop.png", items: ["설탕", "치즈", "밀가루", "달걀"] },
-    hall: { name: "마을 회관", bg: "assets/images/backgrounds/hall.png", items: ["에너지 드링크", "흙", "민들레", "리모컨"] },
-    saloon: { name: "별빛 주점", bg: "assets/images/backgrounds/saloon.png", items: ["행운의 점심", "초코케이크", "커피"] }
+    farm: { name: "농장", bg: "assets/images/backgrounds/farm.png", 
+           items: ["수선화", "흙", "딸기", "우유"]
+          },
+    
+    square: { name: "마을 광장", bg: "assets/images/backgrounds/square.png", 
+             items: ["흙", "콜라",
+                     { id: "에너지 드링크", chance: 0.3 },
+                     { id: "외계인 인형", chance: 0.1 },
+                     { id: "카메라", days: [3, 5], chance: 0.5 },
+                     { id: "별자리 도감", days: [2, 5], chance: 0.1 },
+                    ]
+            },
+    
+    forest: { name: "비밀의 숲", bg: "assets/images/backgrounds/forest.png", 
+             items: [{ id: "스타푸르트", chance: 0.3 }, { id: "블루 재즈", chance: 0.3 }, { id: "블롭 피쉬", chance: 0.3 },
+                     { id: "만년필", days: [2, 5], chance: 0.5 }, "딸기", { id: "도토리", chance: 0.5 }, "흙", ] },
+    
+    shop: { name: "피에르 상점", bg: "assets/images/backgrounds/shop.png", 
+           items: ["설탕", "치즈", "밀가루", "달걀", ] },
+    
+    hall: { name: "마을 회관", bg: "assets/images/backgrounds/hall.png",
+           items: [{ id: "에너지 드링크", chance: 0.3 },
+                   { id: "오마모리", days: [4, 5], chance: 0.5 },
+                   "흙", "민들레", "리모컨"] },
+    
+    saloon: { name: "별빛 주점", bg: "assets/images/backgrounds/saloon.png", 
+             items: [{ id: "행운의 점심", chance: 0.1 }, { id: "초코케이크", chance: 0.3 }, "커피"] }
 };
 
 const recipes = [
@@ -1921,6 +1942,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
