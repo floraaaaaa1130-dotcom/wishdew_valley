@@ -107,7 +107,7 @@ const npcs = {
                 { text: "시원하게 원샷 할게요! 진짜 고마워요!!", emotion: "happy" },
                 { text: "앗 아니다! {user} 먼저 한 입 해요!", emotion: "happy" }
                 ],
-            love: { text: "헐! 대박!! 제가 진짜 좋아하는 건데! {uesr} 최고예요!!", emotion: "happy" },
+            love: { text: "헐! 대박!! 제가 진짜 좋아하는 건데! {user} 최고예요!!", emotion: "happy" },
             hate: { text: "오..! 뭔지 모르겠지만 그래도 {user}(이)가 준 거니까 일단 잘 챙겨둘게요! 허허", emotion: "serious" },
             default: { text: "우와! 저 주는 거예요? 고마워요!!", emotion: "default" }
         },
@@ -1396,9 +1396,10 @@ const affinityDialogues = {
             ],
             
             "벚꽃": [
-                [ { text: "꽃구경 따로 갈 필요 없겠는데요? 여기 꽃이 있는데~?, emotion: "shock" },
+                [
+                    { text: "꽃구경 따로 갈 필요 없겠는데요? 여기 꽃이 있는데~?, emotion: "shock" },
                 { text: "으악 오글거려! 취소 취소! 죄송해요!", emotion: "shock" }
-             ]
+             ],
                  { 
                     text: "이렇게 좋은 날에 좋은 사람이랑 있으니까 진짜 좋다! 시간이 멈췄으면 좋겠어요.", 
                     emotion: "happy",
@@ -1472,7 +1473,7 @@ const affinityDialogues = {
             ],
             "비": [
                 { text: "와! 웅덩이 엄청 크다! {user}, 여기서 점프하면 물 다 튀겠죠?", emotion: "happy" },
-                { text: "비 그치면 무지개 뜨겠지? 우리 무지개 보러 가요!  {user}(이)랑 보면 왠지 행운이 올 거 같어.", emotion: "happy" }
+                { text: "비 그치면 무지개 뜨겠지? 우리 무지개 보러 가요!  {user}(이)랑 보면 왠지 행운이 올 거 같어.", emotion: "happy" },
                 {
                      text: "비 맞으니까 시원하다! 우리 그냥 우산 버리고 축구할래요?", // 활동성
                      emotion: "happy",
@@ -1881,7 +1882,7 @@ ryo: {
                     ]
                 },
         { text: "료가 자꾸 귀찮게 해요. 아까도 와서 껴안길래 더워서 저리 가라 그랬어요.", emotion: "default" }
-                ]
+                ],
             
             "비": [
                 { text: "비 그치면 무지개 뜨려나? 보고 싶은데.", emotion: "default" },
@@ -1975,9 +1976,7 @@ ryo: {
                     }
             ]
         }
-    },    
-    
-    // 유우시, 재희, 료, 사쿠야도 위와 똑같은 구조(low/mid/high -> 맑음/비/벚꽃)로 만드시면 됩니다.
+    }   
 };
 
 // ★ 2. 호감도 달성 이벤트 (특정 점수 도달 시 1회 발동)
@@ -2024,7 +2023,7 @@ const locations = {
             },
     
     forest: { name: "비밀의 숲", bg: "assets/images/backgrounds/forest.png", 
-             items: [{ id: "스타푸르트", chance: 0.4 }, { id: "블루 재즈", chance: 0.4 }, { id: "블롭피쉬", chance: 0.4 }, "깨진 안경"
+             items: [{ id: "스타푸르트", chance: 0.4 }, { id: "블루 재즈", chance: 0.4 }, { id: "블롭피쉬", chance: 0.4 }, "깨진 안경",
                      { id: "만년필", days: [2, 3, 5], chance: 0.5 }, "딸기", { id: "도토리", chance: 0.5 }, "흙", ] },
     
     shop: { name: "피에르 상점", bg: "assets/images/backgrounds/shop.png", 
@@ -2305,6 +2304,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
