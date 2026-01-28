@@ -859,7 +859,7 @@ function goToSleep() {
 }
 
 function startNextDay() {
-    if (gameState.day >= 10) { 
+    if (gameState.day >= 5) { 
         checkEnding(); 
         return; 
     }
@@ -1093,6 +1093,7 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
 
 
 
