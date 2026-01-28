@@ -222,16 +222,37 @@ function renderLocation() {
     itemLayer.innerHTML = "";
     
     if (loc.items && loc.items.length > 0) {
-        // (1) 배열을 섞는다 (Shuffle)
-        const shuffled = [...loc.items].sort(() => Math.random() - 0.5);
-        // (2) 앞에서 3개만 자른다 (아이템이 3개보다 적으면 있는 만큼만 나옴)
+        
+        // ★ [수정됨] 날짜와 확률 필터링 로직 시작
+        const validItems = loc.items.filter(item => {
+            // (1) 그냥 글자("수선화")로 적힌 경우 -> 무조건 통과
+            if (typeof item === 'string') return true;
+
+            // (2) 날짜(days) 조건이 있는데, 오늘 날짜가 아니라면 -> 탈락
+            if (item.days && !item.days.includes(gameState.day)) return false;
+
+            // (3) 확률(chance) 조건이 있는데, 랜덤 돌려서 실패하면 -> 탈락
+            // Math.random()은 0~1 사이 랜덤 숫자. chance보다 크면 꽝!
+            if (item.chance !== undefined && Math.random() > item.chance) return false;
+
+            return true;
+        });
+        // ★ 필터링 로직 끝
+
+        // (1) 남은 아이템들을 섞는다 (Shuffle)
+        const shuffled = [...validItems].sort(() => Math.random() - 0.5);
+        
+        // (2) 그 중에서 최대 3개만 뽑는다
         const selectedItems = shuffled.slice(0, 3);
 
-        // (3) 선택된 아이템만 화면에 뿌린다
-        selectedItems.forEach(itemName => {
+        // (3) 화면에 뿌린다
+        selectedItems.forEach(itemEntry => {
+            // 객체({id: "..."})면 id를 쓰고, 문자열이면 그대로 씀
+            const itemName = typeof itemEntry === 'string' ? itemEntry : itemEntry.id;
             createItemElement(itemName);
         });
     }
+   
     const npcLayer = document.getElementById('npc-layer');
     npcLayer.innerHTML = "";
     
@@ -760,14 +781,21 @@ function giveGift(npcKey) {
     let points = 5;
     let response = npc.giftReactions?.default || { text: "고마워요.", emotion: "default" };
 
-    if (npc.gifts.love.includes(item)) {
+    // 1. 최고(Best) 선물인지 확인
+    if (npc.gifts.best === item) {
+        points = 50; // ★ 점수 대박 (원하는 만큼 조절)
+        if (npc.giftReactions?.best) response = npc.giftReactions.best;
+    } 
+    // 2. 좋아하는(Love) 선물인지 확인
+    else if (npc.gifts.love.includes(item)) {
         points = 20;
-        if(npc.giftReactions?.love) response = npc.giftReactions.love;
-    } else if (npc.gifts.hate.includes(item)) {
+        if (npc.giftReactions?.love) response = npc.giftReactions.love;
+    } 
+    // 3. 싫어하는(Hate) 선물인지 확인
+    else if (npc.gifts.hate.includes(item)) {
         points = -10;
-        if(npc.giftReactions?.hate) response = npc.giftReactions.hate;
+        if (npc.giftReactions?.hate) response = npc.giftReactions.hate;
     }
-
     gameState.affinities[npcKey] += points;
     gameState.hasGiftedToday[npcKey] = true;
     gameState.inventory.splice(selectedSlotIndex, 1);
@@ -1116,6 +1144,8 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
+
 
 
 
