@@ -31,6 +31,7 @@ const npcs = {
             forest: { top: "48%", left: "16%" }
         }
     },
+    
     riku: {
         name: "리쿠",
         sprite: "assets/images/sprites/riku.png",
@@ -62,7 +63,7 @@ const npcs = {
         name: "유우시",
         sprite: "assets/images/sprites/yushi.png",
         portrait: "assets/images/portraits/yushi_default.png",
-        gifts: { // gifts 속성 추가 (코드 일관성을 위해 임의 추가함, 필요시 수정)
+        gifts: {
              best: "외계인 인형",
              love: ["스타푸르트", "블루 재즈", "치즈볼", "푸딩"],
              hate: ["쓰레기"]
@@ -164,11 +165,10 @@ const npcs = {
             best: [
                 { text: "에―?! 핑크 케이크?!", emotion: "happy" }, 
                 { text: "색깔 진짜 예쁘다... 딸기 향도 나고.", emotion: "happy" },
-                { text: "아까워서 어떻게 먹지? 일단 사진부터 찍어서 간직해야겠어요., emotion: "happy" },
+                { text: "아까워서 어떻게 먹지? 일단 사진부터 찍어서 간직해야겠어요.", emotion: "happy" },
                 { text: "역시 {user} 센스 진짜 인정. 잘 먹을게요! 기분 완전 좋아졌어요.", emotion: "happy" },
                 { text: "근데 혼자 먹기엔 너무 커요. 같이 먹을래요?", emotion: "happy" }
                 ],
-            best: { text: "아까워서 어떻게 먹지? 일단 사진부터 찍어서 간직해야겠어요. 잘 먹을게요! 역시 {user} 센스 진짜 인정.", emotion: "happy" },
             love: { text: "에에! 이거 완전 제 스타일! 센스 짱이네요. 잘 먹을게요!", emotion: "happy" },
             hate: { text: "아... 진짜 죄송한데... 이건 다른 사람 주는 게 어때요?", emotion: "serious" },
             default: { text: "에- 엄청 다정하네요. 이런 걸 다 챙겨주고. 고맙습니다.", emotion: "default" }
@@ -2002,6 +2002,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 
 
 
