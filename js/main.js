@@ -801,7 +801,7 @@ function giveGift(npcKey) {
 
     // 1. 최고(Best) 선물인지 확인
     if (npc.gifts.best === item) {
-        points = 10; // ★ 점수 대박 (원하는 만큼 조절)
+        points = 15; // ★ 점수 대박 (원하는 만큼 조절)
         if (npc.giftReactions?.best) response = npc.giftReactions.best;
     } 
     // 2. 좋아하는(Love) 선물인지 확인
@@ -1167,6 +1167,7 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
 
 
 
