@@ -806,7 +806,7 @@ function giveGift(npcKey) {
     } 
     // 2. 좋아하는(Love) 선물인지 확인
     else if (npc.gifts.love.includes(item)) {
-        points = 5;
+        points = 7;
         if (npc.giftReactions?.love) response = npc.giftReactions.love;
     } 
     // 3. 싫어하는(Hate) 선물인지 확인
@@ -1167,6 +1167,7 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
+
 
 
 
