@@ -747,7 +747,6 @@ const affinityDialogues = {
         
         mid: {
             "맑음": [
-                [
                     { text: "{user} 오늘 머해여? 리쿠랑 놀장 ~", emotion: "sad" },
                     { text: "어? {user} 왓당! 오늘도 리쿠 보러 온 거져? 다 알아여 😙", emotion: "happy" },
                     { text: "아까 창고에서 넘어져서 무릎 까져떠여.. 호 해줘영 ㅠㅠ", emotion: "sad" },
@@ -769,7 +768,6 @@ const affinityDialogues = {
                         { label: "부정맥 아니야?", score: 0, reply: "아 진짜.. 분위기 다 깸 ㅠㅠ 넘해 !!" }
                     ]
                 }
-                ]
             ],
             "비": [
                 {
