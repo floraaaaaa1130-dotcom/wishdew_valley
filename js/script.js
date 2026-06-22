@@ -2043,12 +2043,91 @@ const affinityEvents = {
     
     riku: [
         {
-            id: "riku_event_50",
-            threshold: 50,
-            bg: "assets/images/backgrounds/shop.png",
+            id: "riku_event_30", // 이벤트 고유 ID
+            threshold: 30,       // 발동 조건 호감도
+            bg: "assets/images/backgrounds/hall.png", // 이벤트 배경 (원하는 이미지 경로)
             script: [
-                { text: "누나! 이거 봐바여! 리쿠가 아꼈던 사탕인데 누나 줄게여!", emotion: "happy" },
-                { text: "(리쿠의 소중한 사탕을 받았다...)", emotion: "default" }
+                { text: "(잡화점 구석, 박스들이 쌓여 있는 좁은 공간. 리쿠가 박스 위에 걸터앉아 이어폰을 끼고 젤리를 먹고 있다.)", emotion: "default" },
+                { text: "(화면을 보며 킥킥대다가 인기척에 고개를 든다)", emotion: "happy" },
+                { text: "...엄마야!!", emotion: "default" },
+                { text: "아.. 모야 {user} 님이엇어여? 사장님인 줄 알앗네...", emotion: "happy" },
+                { text: "리쿠 심장 떨어질 뻔해뗘여 ㅠㅠ 책임져여", emotion: "default" },
+                { text: "쉿! 조용히... 지금 농땡이.. 가 아니라 재고 파악하러 온 건데", emotion: "default" },
+                { text: "비 오니 손님도 없구 해서 애니 좀 보고 잇어뗘여", emotion: "default" },
+                { text: "흠 근데 혼자 보니까 좀 심심하당", emotion: "default" },
+                { text: "{user} 님이 옆에 잇으니 같이 보면 되겟네여 그져?", emotion: "default" },
+                { text: "보세요. 라면은 그냥 먹으면 안 돼요.", emotion: "default" },
+                { text: "자, 여기여 (끼고 있던 이어폰 한쪽을 내민다)", emotion: "default" },
+                { text: "이고 진짜 재밋는 거니까 딴짓하면 안대여! 집중해여!", emotion: "happy" },
+            ]
+        },
+
+        {
+            id: "riku_event_50", 
+            threshold: 50,      
+            bg: "assets/images/backgrounds/square.png", // 이벤트 배경 (원하는 이미지 경로)
+            script: [
+                { text: "(가로등이 깜빡거리는 마을 광장 구석. 리쿠가 벽에 붙어서 오도 가도 못하고 있다.)", emotion: "default" },
+                { text: "아 진짜... 저리 가라구... 왜 안 가는데엥!!", emotion: "happy" },
+                { text: "(당신을 보자마자 달려와서 등 뒤로 숨는다) 으아 {user} 님!! 저기 좀 봐바여 ㅠㅠ", emotion: "default" },
+                { text: "(리쿠가 가리킨 곳에는 길고양이가 하악질을 하고 있다.)", },
+                { text: "제가 쳐다보니까 막 소리 질러뗘여... 리쿠 잡아먹을 거 가타여 ㅠㅠ 빨리 쫓아내줘영", emotion: "happy" },
+                { text: "(고양이에게 다가가서 훠이 하니 고양이가 도망간다)", emotion: "default" },
+                { text: "(그제야 당신 등 뒤에서 고개를 빼꼼 내민다) 갓어여? 진짜 갓어여? 휴...", emotion: "happy" },
+                { text: "아 사실 별로 안 무서웟어여", emotion: "happy" },
+                { text: "걍 고양이가 넘 사납길래 {user} 님이 다치면 안대니까 리쿠가 화내지 않고 참은 거예여", emotion: "happy" },
+                { text: "(당신의 옷소매를 꽉 잡고 놓지 않으며) 구로니까 집까지 같이 가여", emotion: "happy" },
+                { text: "무서워서 그러는 거 절대 아니구... 걍 밤길은 위험하니 같이 가는 게 조차나여 그져?",
+                    choices: [
+                        {
+                            label: "리쿠 걱정마 내가 지켜줄게!",
+                            score: 5,
+                            reply: [
+                                { text: "에 정말?? {user} 넘 머시따!!", emotion: "happy" },
+                                { text: "손 꼭 잡고 가여. 놓으면 안대여! 절대루!", emotion: "happy" },
+                                { text: "(리쿠가 당신의 팔에 찰싹 달라붙는다. 체온이 따뜻하게 전해진다.)", emotion: "happy" }
+                            ]
+                        },
+                        {
+                            label: "손 너무 떨리는 거 아냐?",
+                            score: 0,
+                            reply: [
+                                { text: "쫌 추워서 그런거예용!!", emotion: "sad" },
+                                { text: "손 꼭 잡고 가여. 놓으면 안대여! 절대루!", emotion: "happy" },
+                                { text: "(리쿠가 당신의 팔에 찰싹 달라붙는다. 체온이 따뜻하게 전해진다.)", emotion: "happy" }
+                            ]
+                        },
+                        {
+                            label: "겁쟁이네 ㅋㅋ",
+                            score: -5,
+                            reply: [
+                                { text: "치.. 아닌데? {user} 겁쟁이 뜻을 모르는구낭", emotion: "sad" },
+                                { text: "(리쿠가 당신의 팔에 찰싹 달라붙는다. 체온이 따뜻하게 전해진다.)", emotion: "happy" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: "riku_event_70", 
+            threshold: 70,       
+            bg: "assets/images/backgrounds/hall.png", // 이벤트 배경 (원하는 이미지 경로)
+            script: [
+                { text: "(노을이 지는 호숫가. 리쿠가 바닥에 있는 돌멩이를 호수로 툭툭 차 넣고 있다. 당신이 인사를 했는데도 뾰로통한 표정이다.)", emotion: "default" },
+                { text: "몰라여. 저리 가여.", emotion: "happy" },
+                { text: "(리쿠가 휙 돌아서서 가려고 한다. 걸음이 느린 걸 보니 잡아달라는 뜻이 분명하다.)", emotion: "default" },
+                { text: "(막아서며 무슨 일이냐고 묻자 어쩔 수 없다는 듯 팔짱을 끼고 한숨을 작게 쉰다.)", emotion: "happy" },
+                { text: "아까 다른 친구랑 왤케 재밋게 놀앗어여?", emotion: "happy" },
+                { text: "리쿠가 계속 쳐다봣는데 눈길도 안 주구... {user} 님은 리쿠보다 그 친구가 더 조아여?", emotion: "happy" },
+                { text: "리쿠는 여기서 계속 기다렷는데... 다리 아픈데 계속 기다렷다구여 ㅠㅠ", emotion: "happy" },
+                { text: "내가 이로케 기다렷으니 {user} 님은 리쿠한테 잘해야 대여", emotion: "happy" },
+                { text: "그게 공평한 거자나여?", emotion: "happy" },
+                { text: "솔직히 말해바여. 리쿠가 젤 좋져? 젤 귀엽져?", emotion: "happy" },
+                { text: "히히 그쳐? 리쿠가 젤 귀여우니 한 눈 팔면 안대여!", emotion: "happy" },
+                { text: "(리쿠가 기분이 풀렸는지 팔짱을 껴온다.)", emotion: "happy" },
+                { text: "기분 조으니까 오늘 저녁은 제가 마싯는거 쏠게용! 고고!", emotion: "happy" },
             ]
         }
     ],
@@ -2255,6 +2334,7 @@ const locations = {
 
 const recipes = [
     { ingredients: ["밀가루", "달걀", "딸기", "설탕"], result: "핑크케이크" },
+    { ingredients: ["밀가루", "달걀", "초콜릿", "설탕"], result: "초코케이크" },
     { ingredients: ["수선화", "민들레", "블루 재즈"], result: "꽃다발" },
     { ingredients: ["스타푸르트", "커피"], result: "스타드롭커피" }
 ];
@@ -2293,6 +2373,7 @@ const itemData = {
     "도토리": { img: "assets/images/items/Acorn.png", desc: "다람쥐가 좋아할 것 같다" },  
     "치즈볼": { img: "assets/images/items/chesseball.png", desc: "식기 전에 먹어야 해!" },  
     "쓰레기": { img: "assets/images/items/trash.png", desc: "으..." },  
+    "초콜릿": { img: "assets/images/items/choco.png", desc: "먹으면 기부니 좋아지그등요" },  
     "깨진 안경": { img: "assets/images/items/glasses.png", desc: "더이상 쓸 수 없는 안경" },  
     "젖은 신문지": { img: "assets/images/items/news.png", desc: "글자도 번져서 읽을 수 없다" },
     "헤드폰": { img: "assets/images/items/headphone.png", desc: "누군가의 헤드폰" },  
@@ -2315,7 +2396,7 @@ const endingScripts = {
     yushi: {
         title: "수줍은 고백",
         image: "assets/images/portraits/yushi_default.png",
-        text: "(숲속 깊은 곳, 유우시가 나무 그루터기에 앉아 하늘을 보고 있다. 당신이 다가가는 소리에 그가 고개를 돌린다.)\n\n에.. 안 자고 뭐 해요 ? 저 기다린 거 아니죠 ?\n농담이에요 ^_^ !\n\n(유우시가 옆 그루터기를 툭툭 친다. 유우시와 나란히 앉아 밤하늘을 올려다본다.)\n\n있지요, 우주는 엄청 넓고 우리는 진짜 먼지보다 작잖아요.\n\n만약에 내일 갑자기.. 펑 ! 하고 지구가 없어지면 어떡하죠 ?"
+        text: "(숲속 깊은 곳, 유우시가 나무 그루터기에 앉아 하늘을 보고 있다. 당신이 다가가는 소리에 그가 고개를 돌린다.)\n\n에.. 안 자고 뭐 해요 ? 저 기다린 거 아니죠 ?\n농담이에요 ^_^ !\n\n(유우시가 옆 그루터기를 툭툭 친다. 유우시와 나란히 앉아 밤하늘을 올려다본다.)\n\n있지요, 우주는 엄청 넓고 우리는 진짜 먼지보다 작잖아요.\n\n만약에 내일 갑자기.. 펑 ! 하고 지구가 없어지면 어떡하죠 ?\nn(유우시가 꽤 심각한 표정으로 당신을 바라본다. 당신은 고민하다가 겨우 대답을 했다.)\n\n에- 그렇구나 !\n저는 내일 지구가 사라져도 우리가 같이 있으면 슬프지 않을 것 같아요 !\n\n 맛있는 거 먹고 노래 듣고 하늘 보면서 이야기 하고...\n그거면 마지막 날이라도 충분하지 않을까요 ?\n\n내일 무슨 일이 있어도 ~ 누가 뭐라 해도 그냥 우리대로 살면 되는 거겠지요 !\n\n(유우시가 당신의 손을 잡고 가볍게 흔든다)\n\n우리는 지구가 사라져도 행복합시다 ! ^^"
     },
     jaehee: {
         title: "든든한 파트너",
@@ -2336,13 +2417,13 @@ const endingScripts = {
     cheater: {
         title: "위시듀밸리의 카사노바",
         image: "assets/images/ui/star_icon.png", // 또는 경고 이미지
-        text: "시온: 농장주님.. 저한테만 잘해주신 게 아니었나요?\n리쿠: 누나 미워!! 리쿠만 좋아한다구 해짜나!!\n\n모두의 마음을 얻으려다 결국 신뢰를 잃고 말았습니다...\n(Bad Ending?)"
+        text: "시온: 농장주님.. 저한테만 잘해주신 게 아니었나요?\n리쿠: 미워!! 리쿠랑 제일 친하다구 해짜나!!\n\n모두의 마음을 얻으려다 결국 신뢰를 잃고 말았습니다...\n(Bad Ending?)"
     },
     // 노말 엔딩 (호감도 부족)
     normal: {
         title: "평화로운 귀농 생활",
         image: "assets/images/backgrounds/farm.png",
-        text: "7일간의 체험이 끝났습니다.\n특별한 인연은 만들지 못했지만 훌륭한 농장주가 되었습니다.\n\n- The End -"
+        text: "특별한 인연은 만들지 못했지만 훌륭한 농장주가 되었습니다.\n\n- The End -"
     }
 };
 
