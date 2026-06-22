@@ -2033,10 +2033,10 @@ const affinityEvents = {
                 { text: "어, 타이밍 기가 막히네요. 지금 막 추출 끝났는데.", emotion: "happy" },
                 { text: "한 잔 드실래요? 산미는 적고 고소한 원두예요. 좋아하실지 모르겠네.", emotion: "default" },
                 { text: "(시온이 예쁜 찻잔에 김이 모락모락 나는 커피를 따라 당신 앞에 놓아준다.)", emotion: "happy" },
-                { text: "...요즘 그런 생각이 들어요.", emotion: "happy" },
+                { text: "요즘 그런 생각이 들어요.", emotion: "happy" },
                 { text: "매일 반복되는 일상이 좀 지루했거든요.", emotion: "happy" },
                 { text: "근데 {user}(이)가 마을에 오고 나서는, 내일은 또 무슨 일이 생길까 기대가 돼요.", emotion: "happy" },
-                { text: "어때요? ...맛있어요?", emotion: "happy" },
+                { text: "어때요? 맛있어요?", emotion: "happy" },
                 { text: "다행이다. 앞으로 커피 마시고 싶으면 언제든 와요.", emotion: "happy" },
                 { text: "멀리 나갈 필요 없게 제가 {user} 전용 바리스타 할게요 ㅎㅎ", emotion: "happy" }
             ]
@@ -2057,7 +2057,7 @@ const affinityEvents = {
     
     yushi: [
         {
-            id: "sion_event_30", // 이벤트 고유 ID
+            id: "yushi_event_30", // 이벤트 고유 ID
             threshold: 30,       // 발동 조건 호감도
             bg: "assets/images/backgrounds/forest.png", // 이벤트 배경 (원하는 이미지 경로)
             script: [
@@ -2071,7 +2071,7 @@ const affinityEvents = {
 
     jaehee: [
         {
-            id: "sion_event_30", // 이벤트 고유 ID
+            id: "jaehee_event_30", // 이벤트 고유 ID
             threshold: 30,       // 발동 조건 호감도
             bg: "assets/images/backgrounds/forest.png", // 이벤트 배경 (원하는 이미지 경로)
             script: [
@@ -2085,7 +2085,7 @@ const affinityEvents = {
 
     ryo: [
         {
-            id: "sion_event_30", // 이벤트 고유 ID
+            id: "ryo_event_30", // 이벤트 고유 ID
             threshold: 30,       // 발동 조건 호감도
             bg: "assets/images/backgrounds/forest.png", // 이벤트 배경 (원하는 이미지 경로)
             script: [
@@ -2099,7 +2099,7 @@ const affinityEvents = {
 
     sakuya: [
         {
-            id: "sion_event_30", // 이벤트 고유 ID
+            id: "sakuya_event_30", // 이벤트 고유 ID
             threshold: 30,       // 발동 조건 호감도
             bg: "assets/images/backgrounds/forest.png", // 이벤트 배경 (원하는 이미지 경로)
             script: [
