@@ -2054,15 +2054,126 @@ const affinityEvents = {
     ],
     
     yushi: [
-        {
+{
             id: "yushi_event_30", // 이벤트 고유 ID
             threshold: 30,       // 발동 조건 호감도
-            bg: "assets/images/backgrounds/forest.png", // 이벤트 배경 (원하는 이미지 경로)
+            bg: "assets/images/backgrounds/hall.png", // 이벤트 배경 (원하는 이미지 경로)
             script: [
-                { text: "(시온이 숲속에서 혼자 무언가를 보고 있다.)", emotion: "default" },
-                { text: "아, 농장주님. 오셨군요.", emotion: "happy" },
-                { text: "사실 여기서만 보이는 희귀한 꽃을 찾고 있었어요.", emotion: "default" },
-                { text: "당신에게 보여주고 싶었거든요.", emotion: "happy" }
+                { text: "(주점 구석 테이블. 유우시가 컵라면과 삼각김밥 그리고 핫바를 아주 진지한 표정으로 세팅하고 있다.)", emotion: "default" },
+                { text: "에.. 먼저 국물을 한 입 먹고, 면을 반쯤 먹은 뒤에 밥을..", emotion: "happy" },
+                { text: "아, 아니다. 핫바 먼저가 좋을까나 ?", emotion: "default" },
+                { text: "(다가가자 화들짝 놀란다.)", emotion: "happy" },
+                { text: "에..?!", emotion: "default" },
+                { text: "(후다닥 핫바를 숨기려다 실패한다)", emotion: "default" },
+                { text: "아.. {user} 님이군요.. 깜짝이야 !", emotion: "default" },
+                { text: "에.. 비밀로 해주세요. 밤에 라면 먹은 거 들키면 잔소리 듣거든요 ^_^;", emotion: "default" },
+                { text: "...에, 음. 같이 드실래요 ?", emotion: "default" },
+                { text: "보세요. 라면은 그냥 먹으면 안 돼요.", emotion: "default" },
+                { text: "(면발을 들어 올리며) 공기랑 마찰을 시키면 더 쫄깃해지지요 !", emotion: "default" },
+                { text: "You see, 배워 ^_^",
+                    choices: [
+                        {
+                            label: "오, 역시 배우신 분! 먹을 줄 아시네요!",
+                            score: 5, // 호감도 증가
+                            // 선택 후 이어지는 대사 (배열로 작성)
+                            reply: [
+                                { text: "(눈을 반짝이며) 그렇지요 ?! 먹는 건 중요한 문제니까요 !", emotion: "happy" },
+                                { text: "맛있는 걸 먹으면 행복해지잖아요. 전 행복하게 사는 게 목표거든요 ^_^", emotion: "default" },
+                                { text: "{user} 님이랑 먹으니까 더 맛있는 것 같기도 하고.. 에.. 기분 탓인가 ?", emotion: "happy" },
+                                { text: "다음에도 맛있는 거 발견하면 제일 먼저 알려드릴게요 !", emotion: "happy" }
+                            ]
+                        },
+                        {
+                            label: "그냥 대충 먹으면 안 돼요? (긁적슨)",
+                            score: -5,
+                            reply: [
+                                { text: "(왠지 시무룩한 표정으로) 에.. {user] 님은 먹는 것의 행복을 모르시는군요.. ", emotion: "sad" },
+                                { text: "저는 맛있는 걸 먹으면 행복해져요. 전 행복하게 사는 게 목표거든요 ^_^", emotion: "default" }
+                            ]
+                        },
+                        {
+                            label: "밤에 먹으면 얼굴 부을 텐데...",
+                            score: 0,
+                            reply: [
+                                { text: "에, 그렇긴 하지만... 조금 부으면 어때요 !", emotion: "sad" },
+                                { text: "맛있는 걸 먹으면 행복해지잖아요. 전 행복하게 사는 게 목표거든요 ^_^", emotion: "default" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: "yushi_event_50", 
+            threshold: 50,      
+            bg: "assets/images/backgrounds/square.png", // 이벤트 배경 (원하는 이미지 경로)
+            script: [
+                { text: "(유우시가 나무 그늘 아래 쭈그리고 앉아 땅바닥을 뚫어져라 쳐다보고 있다.)", emotion: "default" },
+                { text: "간바레.. 에.. 쟤는 왜 반대로 가지 ? 길치인가 ?", emotion: "happy" },
+                { text: "(가까이 가보니 개미 떼가 줄지어 가는 것을 구경 중이다. 당신이 옆에 쭈그리고 앉아도 모를 정도로 집중하고 있다.)", emotion: "default" },
+                { text: "엣. {user} ? 언제 오셨어요 ? ", },
+                { text: "개미들이 열심히 살길래 응원하고 있었어요 ^_^", emotion: "happy" },
+                { text: "네? 멋있었다고요? 빈말도 잘하시네요ㅋㅋ", emotion: "default" },
+                { text: "{user} 님은 거인이 되면 뭐 하고 싶어요 ?", emotion: "happy" },
+                { text: "전 구름을 손으로 꽉 쥐어서 진짜 없어지는지 확인해보고 싶어요. 이상한가요 ?",
+                    choices: [
+                        {
+                            label: "완전 재밌을 것 같은데요? 저는 구름 맛도 볼래요!",
+                            score: 0,
+                            reply: [
+                                { text: "그쵸 ! ! 역시 {user} 님은 저를 이해해 줄 알았어요 😙", emotion: "happy" },
+                                { text: "구름 맛이라.. 솜사탕 맛일까요 ? 아님 그냥 물 맛 ? 궁금하다..", emotion: "happy" },
+                                { text: "(유우시가 풀밭에 벌러덩 드러눕는다. 옆자리를 툭툭 치며 당신에게도 누우라는 신호를 보낸다.)", emotion: "happy" },
+                                { text: "여기 누워서 하늘 보면 지구가 둥글다는 게 느껴져요. 같이 느껴볼래요 ?", emotion: "happy" },
+                                { text: "좋다 ! 아무 말 안 해도 편안하고.", emotion: "happy" },
+                                { text: "우리 꽤 잘 맞는 것 같지 않아요 ? 전 설명 많이 안 해도 되는 사람이 좋거든요 ^_^", emotion: "happy" }
+                            ]
+                        },
+                        {
+                            label: "음... 좀 특이하긴 하네요.",
+                            score: 5,
+                            reply: [
+                                { text: "에, 역시 그런가요...", emotion: "sad" },
+                                { text: "(유우시가 풀밭에 벌러덩 드러눕는다. 옆자리를 툭툭 치며 당신에게도 누우라는 신호를 보낸다.)", emotion: "happy" },
+                                { text: "여기 누워서 하늘 보면 지구가 둥글다는 게 느껴져요. 같이 느껴볼래요 ?", emotion: "happy" },
+                                { text: "좋다 !", emotion: "happy" }
+                            ]
+                        },
+                        {
+                            label: "개미 구경 그만하고 일하러 가요.",
+                            score: 3,
+                            reply: [
+                                { text: "에... 잔소리하지 않았으면 조켄네...", emotion: "sad" },
+                                { text: "(유우시가 풀밭에 벌러덩 드러눕는다. 옆자리를 툭툭 치며 당신에게도 누우라는 신호를 보낸다.)", emotion: "happy" },
+                                { text: "여기 누워서 하늘 보면 지구가 둥글다는 게 느껴져요. 같이 느껴볼래요 ?", emotion: "happy" },
+                                { text: "좋다 !", emotion: "happy" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            id: "yushi_event_70", 
+            threshold: 70,       
+            bg: "assets/images/backgrounds/hall.png", // 이벤트 배경 (원하는 이미지 경로)
+            script: [
+                { text: "(노을이 지는 마을 광장 벤치. 유우시가 이어폰 한쪽을 낀 채 발을 까딱거리고 있다.)", emotion: "default" },
+                { text: "(당신을 발견하고 이어폰을 뺀다) 어, 왔다 ! 기다리고 있었어요 ^_^", emotion: "happy" },
+                { text: "에, 아뇨 ! 그냥요. 오늘 하루 종일 못 본 것 같아서. 얼굴 까먹을 뻔했잖아요 ~", emotion: "default" },
+                { text: "(옆에 앉자 이어폰 한 쪽을 건네준다. 잔잔한 팝송이 흘러나온다.)", emotion: "happy" },
+                { text: "에.. 좋다, 그렇지요 ?", emotion: "happy" },
+                { text: "원래 이 노래는 혼자 들을 때 제일 좋다고 생각했는데..", emotion: "happy" },
+                { text: "정정해야겠네요. 같이 들으니까 더 좋네 !", emotion: "happy" },
+                { text: "사실 저는 원래 혼자 있는 게 제일 편해서 좋아하는데요 ~ ", emotion: "happy" },
+                { text: "이상하게 {user} 님이랑은 같이 있어도 혼자 있을 때만큼 편해요 ! 오히려 더 안정적이라고 해야 하나 ?", emotion: "happy" },
+                { text: "저기, {user} 님. 다음 일정 있어요 ? 바빠요 ?", emotion: "happy" },
+                { text: "없으면 그냥 여기 계속 있으면 안 돼요 ?", emotion: "happy" },
+                { text: "(유우시가 당신의 옷소매를 살짝 잡았다 놓는다.)", emotion: "happy" },
+                { text: "배고플 때까지 여기 이러고 있어요 우리 ^_^ !", emotion: "happy" },
+                
             ]
         }
     ],
@@ -2204,7 +2315,7 @@ const endingScripts = {
     yushi: {
         title: "수줍은 고백",
         image: "assets/images/portraits/yushi_default.png",
-        text: "(숲속 깊은 곳, 유우시가 나무 그루터기에 앉아 하늘을 보고 있다.)\n\n어 ? {user} ! 어떻게 알고 왔어요 ? 여기 제 비밀 기지인데 😙\n사실.. 아까부터 {user} 생각을 좀 하고 있었거든요.\n\n저는 원래 혼자 있는 게 제일 편하거든요 ? 누가 옆에 있으면 신경 쓰이고.. 귀찮고.."
+        text: "(숲속 깊은 곳, 유우시가 나무 그루터기에 앉아 하늘을 보고 있다. 당신이 다가가는 소리에 그가 고개를 돌린다.)\n\n에.. 안 자고 뭐 해요 ? 저 기다린 거 아니죠 ?\n농담이에요 ^_^ !\n\n(유우시가 옆 그루터기를 툭툭 친다. 유우시와 나란히 앉아 밤하늘을 올려다본다.)\n\n있지요, 우주는 엄청 넓고 우리는 진짜 먼지보다 작잖아요.\n\n만약에 내일 갑자기.. 펑 ! 하고 지구가 없어지면 어떡하죠 ?"
     },
     jaehee: {
         title: "든든한 파트너",
