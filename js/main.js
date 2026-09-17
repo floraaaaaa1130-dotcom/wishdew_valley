@@ -12,15 +12,15 @@ let gameState = {
     currentLocation: 'farm',
     inventory: [], 
     affinities: { sion: 0, riku: 0, yushi: 0, jaehee: 0, ryo: 0, sakuya: 0 },
-    hasGiftedToday: {}, // 오늘 선물 줬는지 체크 (NPC별)
-    hasTalkedToday: {}, // 오늘 대화했는지 체크 (NPC별)
-    playerName: "농장주", // 플레이어 이름
-    isEnding: false, // 엔딩 진행 중인지 여부
-    // ★ [추가] 퀘스트 상태 저장 (target: 누구, item: 뭘 원하는지)
+    hasGiftedToday: {}, 
+    hasTalkedToday: {}, 
+    playerName: "농장주", 
+    isEnding: false, 
     activeQuest: null,
-    seenEvents: [],       // 이미 본 이벤트 ID 저장
-    isEventPlaying: false, // 현재 이벤트 진행 중인가?
-    originalLoc: null     // 이벤트 끝나고 돌아갈 원래 배경
+    seenEvents: [],       
+    isEventPlaying: false, 
+    originalLoc: null, // ← 이 쉼표가 빠져서 먹통이 됐을 가능성이 커.
+    seenDialogues: [] 
 };
 
 // ★ [추가] 입력창(선물 버튼 등)을 현재 대사와 함께 띄울지 판단하는 변수
@@ -476,6 +476,7 @@ function toggleDeleteMode() {
    ========================================================================== */
 
 // [교체] 대화창 열기 함수 (로직 단순화)
+// [교체] 대화창 열기 함수
 function openDialogue(npcKey) {
     lastInteractedNPC = npcKey;
     const overlay = document.getElementById('dialogue-overlay');
@@ -499,7 +500,6 @@ function openDialogue(npcKey) {
         dialogueQueue = [{ text: actionText, emotion: 'default' }];
         currentDialogueIndex = 0;
 
-        // 선물 아직 안 줬으면 버튼 보이기 예약
         if (!gameState.hasGiftedToday[npcKey]) {
             shouldShowInput = true;
         }
@@ -513,7 +513,7 @@ function openDialogue(npcKey) {
     gameState.hasTalkedToday[npcKey] = true;
     shouldShowInput = false;
 
-    // ★ [1순위] 날짜별 고정 스토리 (dailyScripts) 확인 - 이걸 꼭 넣어야 함!
+    // ★ [1순위] 날짜별 고정 스토리 
     if (dailyScripts[gameState.day] && dailyScripts[gameState.day][npcKey]) {
         overlay.classList.remove('hidden');
         let scriptData = dailyScripts[gameState.day][npcKey];
@@ -525,36 +525,31 @@ function openDialogue(npcKey) {
         return;
     }
 
-    // ★ [2순위] 호감도 이벤트 (affinityEvents) 확인
+    // ★ [2순위] 호감도 이벤트 
     const currentAffinity = gameState.affinities[npcKey];
     if (typeof affinityEvents !== 'undefined' && affinityEvents[npcKey]) {
         const events = affinityEvents[npcKey];
-        // 조건: 호감도 달성 AND 아직 안 본 이벤트
         const targetEvent = events.find(e => 
             currentAffinity >= e.threshold && 
             gameState.seenEvents && !gameState.seenEvents.includes(e.id)
         );
 
         if (targetEvent) {
-            // 이벤트 트리거 (overlay는 triggerEvent 함수 안에서 페이드 효과와 함께 켜짐)
             triggerEvent(targetEvent);
             return;
         }
     }
 
-    // ★ [3순위] 호감도별 랜덤 대사 (affinityDialogues)
+    // ★ [3순위] 호감도별 랜덤 대사 
     overlay.classList.remove('hidden');
 
-    // (1) 호감도 단계 판단
-    let stage = 'very_low'; // 기본값 (0~10점 구간)
+    let stage = 'very_low'; 
+    if (currentAffinity >= 70) stage = 'high';
+    else if (currentAffinity >= 30) stage = 'mid';
+    else if (currentAffinity > 10) stage = 'low';
 
-    if (currentAffinity >= 70) stage = 'high';       // 70점 이상
-    else if (currentAffinity >= 30) stage = 'mid';   // 30~69점
-    else if (currentAffinity > 10) stage = 'low';    // 11~29점 (10점 초과)
-    // (2) 날씨 확인
     const weather = gameState.weather;
 
-    // (3) 대사 풀 가져오기
     let pool = [];
     if (affinityDialogues[npcKey] && 
         affinityDialogues[npcKey][stage] && 
@@ -562,19 +557,32 @@ function openDialogue(npcKey) {
         pool = affinityDialogues[npcKey][stage][weather];
     }
 
-    // (4) 데이터가 없으면 기본값
     if (!pool || pool.length === 0) {
         pool = [{ text: "안녕하세요.", emotion: "default" }];
     }
 
-    // (5) 랜덤 뽑기
-    const randomPick = pool[Math.floor(Math.random() * pool.length)];
+    // (5) 랜덤 뽑기 (★ 중복 방지 로직 적용)
+    let unseenPool = pool.filter(dialogue => {
+        const firstLineText = Array.isArray(dialogue) ? dialogue[0].text : dialogue.text;
+        return !gameState.seenDialogues.includes(firstLineText);
+    });
+
+    // 안 본 대사가 없으면 기억을 지우고 전체 풀에서 다시 뽑기
+    if (unseenPool.length === 0) {
+        unseenPool = pool; 
+        gameState.seenDialogues = []; 
+    }
+
+    const randomPick = unseenPool[Math.floor(Math.random() * unseenPool.length)];
+
+    const pickedText = Array.isArray(randomPick) ? randomPick[0].text : randomPick.text;
+    if (!gameState.seenDialogues.includes(pickedText)) {
+        gameState.seenDialogues.push(pickedText);
+    }
 
     if (Array.isArray(randomPick)) {
-        // 뽑힌 게 배열이면(여러 줄이면) -> 그대로 대기열에 넣음
         dialogueQueue = randomPick;
     } else {
-        // 뽑힌 게 객체면(한 줄이면) -> 배열로 감싸서 넣음
         dialogueQueue = [randomPick];
     }
 
