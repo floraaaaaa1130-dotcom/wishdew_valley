@@ -20,10 +20,7 @@ let gameState = {
     activeQuest: null,
     seenEvents: [],       // 이미 본 이벤트 ID 저장
     isEventPlaying: false, // 현재 이벤트 진행 중인가?
-    originalLoc: null,     // 이벤트 끝나고 돌아갈 원래 배경
-       
-   // ★ [추가] 이미 본 일반 대사의 첫 줄을 저장해둘 배열
-    seenDialogues: []
+    originalLoc: null     // 이벤트 끝나고 돌아갈 원래 배경
 };
 
 // ★ [추가] 입력창(선물 버튼 등)을 현재 대사와 함께 띄울지 판단하는 변수
@@ -570,36 +567,17 @@ function openDialogue(npcKey) {
         pool = [{ text: "안녕하세요.", emotion: "default" }];
     }
 
-// (5) 랜덤 뽑기 (★ 중복 방지 로직 적용)
-    
-    // 안 본 대사만 걸러내기 (대사의 첫 줄 텍스트를 기준으로 확인)
-    let unseenPool = pool.filter(dialogue => {
-        const firstLineText = Array.isArray(dialogue) ? dialogue[0].text : dialogue.text;
-        return !gameState.seenDialogues.includes(firstLineText);
-    });
+    // (5) 랜덤 뽑기
+    const randomPick = pool[Math.floor(Math.random() * pool.length)];
 
-    // 만약 현재 조건(날씨+호감도)의 모든 대사를 이미 다 봤다면? 
-    // 에러를 막기 위해 다시 전체 대사 풀에서 뽑도록 되돌림
-    if (unseenPool.length === 0) {
-        unseenPool = pool; 
-    }
-
-    // 안 본 대사 풀(unseenPool) 안에서 랜덤으로 하나 뽑기
-    const randomPick = unseenPool[Math.floor(Math.random() * unseenPool.length)];
-
-    // 방금 뽑힌 대사를 '본 대사' 목록에 등록하기
-    const pickedText = Array.isArray(randomPick) ? randomPick[0].text : randomPick.text;
-    if (!gameState.seenDialogues.includes(pickedText)) {
-        gameState.seenDialogues.push(pickedText);
-    }
-
-    // 대기열에 넣기
     if (Array.isArray(randomPick)) {
+        // 뽑힌 게 배열이면(여러 줄이면) -> 그대로 대기열에 넣음
         dialogueQueue = randomPick;
     } else {
+        // 뽑힌 게 객체면(한 줄이면) -> 배열로 감싸서 넣음
         dialogueQueue = [randomPick];
     }
-   
+
     currentDialogueIndex = 0;
     showNextLine(npcKey);
 }
@@ -1189,7 +1167,6 @@ function endEvent() {
         if (fadeOverlay) fadeOverlay.classList.remove('visible');
     }, 1000);
 }
-
 
 
 
