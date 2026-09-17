@@ -7,7 +7,8 @@
 // --- 1. 게임 상태 데이터 (Game State) ---
 let gameState = {
     day: 1, 
-    energy: 4, 
+    energy: 6, // ★ 1일 차 초기 에너지를 6으로 증가 (기존 4)
+    maxEnergy: 6, // ★ 하트 UI 표시를 위해 최대 에너지 변수 추가
     weather: '맑음', 
     currentLocation: 'farm',
     inventory: [], 
@@ -19,7 +20,7 @@ let gameState = {
     activeQuest: null,
     seenEvents: [],       
     isEventPlaying: false, 
-    originalLoc: null, // ← 이 쉼표가 빠져서 먹통이 됐을 가능성이 커.
+    originalLoc: null,
     seenDialogues: [] 
 };
 
@@ -892,9 +893,10 @@ function displayDialogue(npcKey, dialogueObj) {
 function updateUI() {
     document.getElementById('date-display').innerText = `Day ${gameState.day} - ${gameState.weather}`;
     
+    // ★ 하트 표시 로직을 maxEnergy에 맞춰 유동적으로 변경
     let hearts = "";
-    for(let i=0; i<gameState.energy; i++) hearts += "♥";
-    for(let i=gameState.energy; i<3; i++) hearts += "♡"; 
+    for(let i = 0; i < gameState.energy; i++) hearts += "♥";
+    for(let i = gameState.energy; i < gameState.maxEnergy; i++) hearts += "♡"; 
     document.getElementById('energy-hearts').innerText = hearts;
     
     const slots = document.querySelectorAll('#inventory-slots .slot');
@@ -937,7 +939,11 @@ function startNextDay() {
     }
     
     gameState.day++;
-    gameState.energy = 4; 
+    
+    // ★ 2일 차부터는 다시 기본 에너지(4)로 원상 복구
+    gameState.maxEnergy = 4; 
+    gameState.energy = gameState.maxEnergy; 
+    
     gameState.hasGiftedToday = {}; 
     gameState.hasTalkedToday = {};
     
