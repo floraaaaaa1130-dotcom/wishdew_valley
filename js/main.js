@@ -20,7 +20,7 @@ let gameState = {
     activeQuest: null,
     seenEvents: [],       // 이미 본 이벤트 ID 저장
     isEventPlaying: false, // 현재 이벤트 진행 중인가?
-    originalLoc: null     // 이벤트 끝나고 돌아갈 원래 배경
+    originalLoc: null,     // 이벤트 끝나고 돌아갈 원래 배경
        
    // ★ [추가] 이미 본 일반 대사의 첫 줄을 저장해둘 배열
     seenDialogues: []
